@@ -18,12 +18,8 @@
 #include <QStringList>
 #include <QUrl>
 
-/* clang-format off */
-#define DEFAULT_PREFERRED_SEARCH_PROVIDERS \
-    QStringList {QStringLiteral("google"), QStringLiteral("youtube"), QStringLiteral("yahoo"), QStringLiteral("wikipedia"), QStringLiteral("wikit")}
-/* clang-format on */
-
 class SearchProvider;
+class WebShortcutsSettings;
 
 class KURISearchFilterEngine
 {
@@ -57,11 +53,8 @@ private:
     QString substituteQuery(const QString &url, SubstMap &map, const QString &userquery, QTextCodec *codec) const;
 
     SearchProviderRegistry m_registry;
-    QString m_defaultWebShortcut;
-    QStringList m_preferredWebShortcuts;
-    bool m_bWebShortcutsEnabled;
-    bool m_bUseOnlyPreferredWebShortcuts;
-    char m_cKeywordDelimiter;
+    WebShortcutsSettings *m_settings;
+    QLatin1Char m_cKeywordDelimiter;
 };
 
 #endif // KURIIKWSFILTERENG_H

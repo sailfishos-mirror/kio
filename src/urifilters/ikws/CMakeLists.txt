@@ -20,6 +20,8 @@ ecm_qt_export_logging_category(
     EXPORT KIO
 )
 
+kconfig_add_kcfg_files(kuriikwsfilter_SRCS ikwsconfig.kcfgc)
+
 kcoreaddons_add_plugin(kuriikwsfilter INSTALL_NAMESPACE "kf5/urifilters" JSON kuriikwsfilter.json SOURCES ${kuriikwsfilter_SRCS})
 
 target_link_libraries(kuriikwsfilter
@@ -41,6 +43,8 @@ set(kurisearchfilter_SRCS
 )
 
 ki18n_wrap_ui(kurisearchfilter_SRCS ikwsopts_ui.ui searchproviderdlg_ui.ui)
+
+kconfig_add_kcfg_files(kurisearchfilter_SRCS ikwsconfig.kcfgc)
 
 kcoreaddons_add_plugin(kurisearchfilter INSTALL_NAMESPACE "kf5/urifilters" JSON kurisearchfilter.json SOURCES ${kurisearchfilter_SRCS})
 
