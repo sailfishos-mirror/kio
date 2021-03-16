@@ -209,6 +209,10 @@ bool KCoreDirListerCache::listDir(KCoreDirLister *lister, const QUrl &dirUrl, bo
             //        else
             {
                 KIO::ListJob *job = KIO::listDir(_url, KIO::HideProgressInfo);
+                if (lister->mimeTypeFromSlave()) {
+                    job->addMetaData(QStringLiteral("statDetails"), QString::number(KIO::StatDefaultDetails | KIO::StatMimeType));
+
+                }
                 runningListJobs.insert(job, KIO::UDSEntryList());
 
                 lister->jobStarted(job);
@@ -678,8 +682,19 @@ void KCoreDirListerCache::updateDirectory(const QUrl &_dir)
     }
     Q_ASSERT(listers.isEmpty() || killed);
 
+    bool mimeTypeFromSlave = std::any_of(listers.begin(), listers.end(), [](KCoreDirLister *lister) {
+        return lister->mimeTypeFromSlave();
+    });
+    mimeTypeFromSlave = mimeTypeFromSlave || std::any_of(holders.begin(), holders.end(), [](KCoreDirLister *lister) {
+        return lister->mimeTypeFromSlave();
+    });
+
     job = KIO::listDir(dir, KIO::HideProgressInfo);
     runningListJobs.insert(job, KIO::UDSEntryList());
+
+    if (mimeTypeFromSlave) {
+        job->addMetaData(QStringLiteral("statDetails"), QString::number(KIO::StatDefaultDetails | KIO::StatMimeType));
+    }
 
     connect(job, &KIO::ListJob::entries, this, &KCoreDirListerCache::slotUpdateEntries);
     connect(job, &KJob::result, this, &KCoreDirListerCache::slotUpdateResult);
@@ -2182,6 +2197,20 @@ void KCoreDirLister::setDirOnlyMode(bool dirsOnly)
 
     d->prepareForSettingsChange();
     d->settings.dirOnlyMode = dirsOnly;
+}
+
+bool KCoreDirLister::mimeTypeFromSlave() const
+{
+    return d->mimeTypeFromSlave;
+}
+
+void KCoreDirLister::setMimeTypeFromSlave(bool fromSlave)
+{
+    if (d->mimeTypeFromSlave == fromSlave) {
+        return;
+    }
+
+    d->mimeTypeFromSlave = fromSlave;
 }
 
 QUrl KCoreDirLister::url() const

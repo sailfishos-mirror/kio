@@ -48,6 +48,8 @@ public:
         rootFileItem = KFileItem();
 
         hasPendingChanges = false;
+
+        mimeTypeFromSlave = false;
     }
 
     void emitCachedItems(const QUrl &, bool, bool);
@@ -110,6 +112,8 @@ public:
     bool delayedMimeTypes : 1;
 
     bool hasPendingChanges : 1; // i.e. settings != oldSettings
+
+    bool mimeTypeFromSlave : 1;
 
     struct JobData {
         long unsigned int percent, speed;

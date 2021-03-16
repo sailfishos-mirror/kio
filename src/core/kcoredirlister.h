@@ -61,6 +61,7 @@ class KIOCORE_EXPORT KCoreDirLister : public QObject
     Q_PROPERTY(bool showingDotFiles READ showingDotFiles WRITE setShowingDotFiles)
     Q_PROPERTY(bool dirOnlyMode READ dirOnlyMode WRITE setDirOnlyMode)
     Q_PROPERTY(bool delayedMimeTypes READ delayedMimeTypes WRITE setDelayedMimeTypes)
+    Q_PROPERTY(bool mimeTypeFromSlave READ mimeTypeFromSlave WRITE setMimeTypeFromSlave)
     Q_PROPERTY(QString nameFilter READ nameFilter WRITE setNameFilter)
     Q_PROPERTY(QStringList mimeFilter READ mimeFilters WRITE setMimeFilter RESET clearMimeFilter)
 
@@ -215,6 +216,39 @@ public:
      * @param dirsOnly set to @c true to list only directories
      */
     virtual void setDirOnlyMode(bool dirsOnly);
+
+    /**
+     * Checks whether this KCoreDirLister requests the mime type of files from the slave.
+     *
+     * Enabling this will tell the slave used for listing that it should try to
+     * determine the mime type of entries while listing them. This potentially
+     * reduces the speed at which entries are listed but ensures mime types are
+     * immediately available when an entry is added, greatly speeding up things
+     * like mime type filtering.
+     *
+     * By default this is disabled.
+     *
+     * @return @c true if the slave is asked for mime types, @c false otherwise.
+     *
+     * @see setMimeTypeFromSlave(bool)
+     *
+     * @since 5.81
+     */
+    bool mimeTypeFromSlave() const;
+
+    /**
+     * Toggles whether to request mime types from the slave or in-process.
+     *
+     * @param fromSlave set to @c true to request mime types from the slave.
+     *
+     * @note If this is changed while the lister is already listing a directory,
+     * it will only have an effect the next time openUrl() is called.
+     *
+     * @see mimeTypeFromSlave()
+     *
+     * @since 5.81
+     */
+    void setMimeTypeFromSlave(bool fromSlave);
 
     /**
      * Returns the top level URL that is listed by this KCoreDirLister.
