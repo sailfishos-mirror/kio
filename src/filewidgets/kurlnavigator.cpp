@@ -312,6 +312,12 @@ KUrlNavigatorPrivate::KUrlNavigatorPrivate(const QUrl &url, KUrlNavigator *qq, K
     q->connect(q, &QWidget::customContextMenuRequested, q, [this](const QPoint &pos) {
         openContextMenu(pos);
     });
+
+    // Make sure pathBox does not portrude outside of the above frameLineEdit background
+    const int paddingLeft = q->style()->pixelMetric(QStyle::PM_LayoutLeftMargin);
+    const int paddingRight = q->style()->pixelMetric(QStyle::PM_LayoutRightMargin);
+    q->setContentsMargins(paddingLeft, 0, paddingRight, 0);
+    m_pathBox->setContentsMargins(paddingLeft, 0, paddingRight, 0);
 }
 
 void KUrlNavigatorPrivate::appendWidget(QWidget *widget, int stretch)
@@ -1409,12 +1415,6 @@ void KUrlNavigator::paintEvent(QPaintEvent *event)
     option.state = QStyle::State_Sunken;
     // Draw the background
     style()->drawPrimitive(QStyle::PE_FrameLineEdit, &option, &painter, this);
-    // Make sure pathBox does not portrude outside of the above frameLineEdit background
-    if (d->m_pathBox->isVisible()) {
-        const QRect pathgeo =
-            QRect(d->m_pathBox->geometry().left(), option.rect.top(), d->m_pathBox->geometry().width(), option.rect.height()).adjusted(0, 2, 0, -2);
-        d->m_pathBox->setGeometry(pathgeo);
-    }
 }
 
 #include "moc_kurlnavigator.cpp"

@@ -1075,10 +1075,7 @@ void KFileWidgetPrivate::initDirOpWidgets()
     m_urlNavigator = new KUrlNavigator(m_model, QUrl(), m_opsWidget); // d->m_toolbar);
     m_urlNavigator->setPlacesSelectorVisible(false);
 
-    m_urlNavigator->setContentsMargins(q->style()->pixelMetric(QStyle::PM_LayoutLeftMargin),
-                                       0,
-                                       q->style()->pixelMetric(QStyle::PM_LayoutRightMargin),
-                                       q->style()->pixelMetric(QStyle::PM_LayoutBottomMargin) - 2);
+    m_urlNavigator->setContentsMargins(q->style()->pixelMetric(QStyle::PM_LayoutLeftMargin), 0, q->style()->pixelMetric(QStyle::PM_LayoutRightMargin), 0);
 
     m_messageWidget = new KMessageWidget(q);
     m_messageWidget->setMessageType(KMessageWidget::Error);
