@@ -214,6 +214,7 @@ KUrlNavigatorPrivate::KUrlNavigatorPrivate(const QUrl &url, KUrlNavigator *qq, K
     , m_showPlacesSelector(placesModel != nullptr)
 {
     m_layout->setSpacing(0);
+    m_layout->setContentsMargins(0, 0, 0, 0);
 
     q->connect(m_coreUrlNavigator, &KCoreUrlNavigator::currentLocationUrlChanged, q, [this]() {
         Q_EMIT q->urlChanged(m_coreUrlNavigator->currentLocationUrl());
@@ -306,7 +307,6 @@ KUrlNavigatorPrivate::KUrlNavigatorPrivate(const QUrl &url, KUrlNavigator *qq, K
     m_layout->addWidget(m_pathBox, 1);
     m_layout->addWidget(m_badgeWidgetContainer);
     m_layout->addWidget(m_toggleEditableMode);
-    m_layout->setContentsMargins(0, 0, 0, 0);
 
     q->setContextMenuPolicy(Qt::CustomContextMenu);
     q->connect(q, &QWidget::customContextMenuRequested, q, [this](const QPoint &pos) {
@@ -1413,6 +1413,8 @@ void KUrlNavigator::paintEvent(QPaintEvent *event)
     QStyleOption option;
     option.initFrom(this);
     option.state = QStyle::State_Sunken;
+    // Adjust the rectangle due to how QRect coordinates work
+    option.rect = option.rect.adjusted(1, 0, -1, 0);
     // Draw the background
     style()->drawPrimitive(QStyle::PE_FrameLineEdit, &option, &painter, this);
 }
