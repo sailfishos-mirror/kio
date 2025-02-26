@@ -208,8 +208,8 @@ void KUrlNavigatorButton::paintEvent(QPaintEvent *event)
     }
 
     const int widthModifier = iconW + m_padding / 2;
-    KFileItem fileItem(url());
-    auto pixmap = QIcon::fromTheme(fileItem.iconName()).pixmap(iconSize(), devicePixelRatioF());
+    auto iconName = KIO::iconNameForUrl(url());
+    auto pixmap = QIcon::fromTheme(iconName).pixmap(iconSize(), devicePixelRatioF());
     style()->drawItemPixmap(&painter, QRect(iconX, iconY, iconW, iconW), Qt::AlignCenter, pixmap);
     if (leftToRight) {
         textLeft += widthModifier;
@@ -710,9 +710,9 @@ void KUrlNavigatorButton::initMenu(KUrlNavigatorMenu *menu, int startIndex)
             QFont font(action->font());
             font.setBold(true);
             action->setFont(font);
+            action->setData(i);
+            menu->addAction(action);
         }
-        action->setData(i);
-        menu->addAction(action);
     }
     if (subDirsSize > maxIndex) {
         // If too much items are shown, move them into a sub menu
