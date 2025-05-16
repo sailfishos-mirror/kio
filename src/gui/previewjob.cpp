@@ -162,6 +162,7 @@ public:
     // Metadata returned from the KIO thumbnail worker
     QMap<QString, QString> thumbnailWorkerMetaData;
     qreal devicePixelRatio = s_defaultDevicePixelRatio;
+    bool useImage = false;
     static const int idUnknown = -1;
     // Id of a device storing currently processed file
     int currentDeviceId = 0;
@@ -523,6 +524,16 @@ void KIO::PreviewJob::setDevicePixelRatio(qreal dpr)
 void PreviewJob::setIgnoreMaximumSize(bool ignoreSize)
 {
     d_func()->ignoreMaximumSize = ignoreSize;
+}
+
+bool KIO::PreviewJob::useImage() const
+{
+    return d_func()->useImage;
+}
+
+void KIO::PreviewJob::setUseImage(bool useImage)
+{
+    d_func()->useImage = useImage;
 }
 
 void PreviewJobPrivate::cleanupTempFile()
@@ -1083,15 +1094,20 @@ void PreviewJobPrivate::saveThumbnailData(QImage &thumb)
 void PreviewJobPrivate::emitPreview(const QImage &thumb)
 {
     Q_Q(PreviewJob);
-    QPixmap pix;
     const qreal ratio = thumb.devicePixelRatio();
-    if (thumb.width() > width * ratio || thumb.height() > height * ratio) {
-        pix = QPixmap::fromImage(thumb.scaled(QSize(width * ratio, height * ratio), Qt::KeepAspectRatio, Qt::SmoothTransformation));
-    } else {
-        pix = QPixmap::fromImage(thumb);
+
+    QImage preview = thumb;
+    if (preview.width() > width * ratio || preview.height() > height * ratio) {
+        preview = preview.scaled(QSize(width * ratio, height * ratio), Qt::KeepAspectRatio, Qt::SmoothTransformation);
     }
-    pix.setDevicePixelRatio(ratio);
-    Q_EMIT q->gotPreview(currentItem.item, pix);
+
+    if (useImage) {
+        Q_EMIT q->finished(currentItem.item, preview);
+    } else {
+        QPixmap pixmap = QPixmap::fromImage(preview);
+        pixmap.setDevicePixelRatio(ratio);
+        Q_EMIT q->gotPreview(currentItem.item, pixmap);
+    }
 }
 
 QList<KPluginMetaData> PreviewJob::availableThumbnailerPlugins()
