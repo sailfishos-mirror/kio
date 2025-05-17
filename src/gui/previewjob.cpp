@@ -162,7 +162,6 @@ public:
     // Metadata returned from the KIO thumbnail worker
     QMap<QString, QString> thumbnailWorkerMetaData;
     qreal devicePixelRatio = s_defaultDevicePixelRatio;
-    bool useImage = false;
     static const int idUnknown = -1;
     // Id of a device storing currently processed file
     int currentDeviceId = 0;
@@ -177,6 +176,7 @@ public:
     QString m_tempDirPath;
     // Whether to try using KIOFuse to resolve files. Set to false if KIOFuse is not available.
     bool tryKioFuse = true;
+    // bool useImage = false;
 
     void getOrCreateThumbnail();
     void createThumbnailViaFuse(const QUrl &, const QUrl &);
@@ -528,12 +528,13 @@ void PreviewJob::setIgnoreMaximumSize(bool ignoreSize)
 
 bool KIO::PreviewJob::useImage() const
 {
-    return d_func()->useImage;
+    return false;
+    // return d_func()->useImage;
 }
 
 void KIO::PreviewJob::setUseImage(bool useImage)
 {
-    d_func()->useImage = useImage;
+    // d_func()->useImage = useImage;
 }
 
 void PreviewJobPrivate::cleanupTempFile()
@@ -1094,20 +1095,15 @@ void PreviewJobPrivate::saveThumbnailData(QImage &thumb)
 void PreviewJobPrivate::emitPreview(const QImage &thumb)
 {
     Q_Q(PreviewJob);
+    QPixmap pix;
     const qreal ratio = thumb.devicePixelRatio();
-
-    QImage preview = thumb;
-    if (preview.width() > width * ratio || preview.height() > height * ratio) {
-        preview = preview.scaled(QSize(width * ratio, height * ratio), Qt::KeepAspectRatio, Qt::SmoothTransformation);
-    }
-
-    if (useImage) {
-        Q_EMIT q->finished(currentItem.item, preview);
+    if (thumb.width() > width * ratio || thumb.height() > height * ratio) {
+        pix = QPixmap::fromImage(thumb.scaled(QSize(width * ratio, height * ratio), Qt::KeepAspectRatio, Qt::SmoothTransformation));
     } else {
-        QPixmap pixmap = QPixmap::fromImage(preview);
-        pixmap.setDevicePixelRatio(ratio);
-        Q_EMIT q->gotPreview(currentItem.item, pixmap);
+        pix = QPixmap::fromImage(thumb);
     }
+    pix.setDevicePixelRatio(ratio);
+    Q_EMIT q->gotPreview(currentItem.item, pix);
 }
 
 QList<KPluginMetaData> PreviewJob::availableThumbnailerPlugins()

@@ -203,7 +203,7 @@ Q_SIGNALS:
      * \note This signal will be emitted only if useImage() is \c true.
      * \since 6.15
      */
-    void finished(const KFileItem &item, const QImage &preview);
+    // void finished(const KFileItem &item, const QImage &preview);
 
 protected Q_SLOTS:
     void slotResult(KJob *job) override;
