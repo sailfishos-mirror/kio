@@ -64,12 +64,6 @@ public:
     FilePreviewJob(const PreviewItem &item, const QString &thumbRoot);
     ~FilePreviewJob();
 
-    struct StandardThumbnailerData {
-        QString id;
-        QString exec;
-        QStringList mimetypes;
-    };
-
     void start() override;
 
     QMap<QString, QString> thumbnailWorkerMetaData() const;
@@ -77,7 +71,7 @@ public:
     QImage previewImage() const;
     PreviewItem item() const;
     static QList<KPluginMetaData> loadAvailablePlugins();
-    static QList<StandardThumbnailerData> standardThumbnailers();
+    static QList<KPluginMetaData> standardThumbnailers();
 
 private Q_SLOTS:
     void slotStatFile(KJob *job);
