@@ -906,16 +906,6 @@ public:
      */
     void setKillFlag();
 
-    /* Internally used
-     * \internal
-     */
-    void lookupHost(const QString &host);
-
-    /* Internally used
-     * \internal
-     */
-    int waitForHostInfo(QHostInfo &info);
-
     /*
      * Checks with job if privilege operation is allowed.
      * Returns privilege operation status.
