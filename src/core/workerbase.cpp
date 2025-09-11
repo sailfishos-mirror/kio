@@ -107,9 +107,8 @@ void WorkerBase::dataReq()
     d->bridge.dataReq();
 }
 
-void WorkerBase::workerStatus(const QString &host, bool connected)
+void WorkerBase::workerStatus(const QString & /*host*/, bool /*connected*/)
 {
-    d->bridge.slaveStatus(host, connected);
 }
 
 void WorkerBase::canResume()

@@ -65,7 +65,6 @@ enum Message {
     MSG_WRITTEN,
     MSG_HOST_INFO_REQ,
     MSG_PRIVILEGE_EXEC,
-    MSG_WORKER_STATUS,
     // add new ones here once a release is done, to avoid breaking binary compatibility
 };
 
@@ -111,7 +110,6 @@ Q_SIGNALS:
     void error(int, const QString &);
     void connected();
     void finished();
-    void workerStatus(qint64, const QByteArray &, const QString &, bool);
     void listEntries(const KIO::UDSEntryList &);
     void statEntry(const KIO::UDSEntry &);
 

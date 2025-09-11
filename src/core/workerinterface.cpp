@@ -107,7 +107,6 @@ bool WorkerInterface::dispatch(int _cmd, const QByteArray &rawdata)
 
     QString str1;
     qint32 i;
-    qint8 b;
     quint32 ul;
 
     switch (_cmd) {
@@ -158,13 +157,6 @@ bool WorkerInterface::dispatch(int _cmd, const QByteArray &rawdata)
         // qDebug() << "error " << i << " " << str1;
         Q_EMIT error(i, str1);
         break;
-    case MSG_WORKER_STATUS: {
-        qint64 pid;
-        QByteArray protocol;
-        stream >> pid >> protocol >> str1 >> b;
-        Q_EMIT workerStatus(pid, protocol, str1, (b != 0));
-        break;
-    }
     case MSG_CONNECTED:
         Q_EMIT connected();
         break;
