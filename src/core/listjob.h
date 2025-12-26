@@ -37,9 +37,29 @@ public:
 
     /*!
      * \value IncludeHidden Include hidden files in the listing.
+     *
+     * \value ExcludeHidden
+     *        Don't include items whoe name starts with '.' \since 6.23
+     * \value IncludeHidden
+     *        Include items whose name starts with '.'
+     * \value ExcludeDot
+     *        Skip the '.' entry for the root dir, there are always skipped for sub-directories \since 6.23
+     * \value ExcludeDotDot
+     *        Skip the '..' entry for the root dir, there are always skipped for sub-directories \since 6.23
+     * \value ExcludeDotAndDotDot = ExcludeDot | ExcludeDotDot
+     *
+     * \omitvalue ExcludeHidden
+     * \omitvalue IncludeHidden
+     * \omitvalue ExcludeDot
+     * \omitvalue ExcludeDotDot
+     * \omitvalue ExcludeDotAndDotDot
      */
     enum class ListFlag {
+        ExcludeHidden = 0,
         IncludeHidden = 1 << 0,
+        ExcludeDot = 2 << 0,
+        ExcludeDotDot = 1 << 2,
+        ExcludeDotAndDotDot = ExcludeDot | ExcludeDotDot,
     };
     Q_DECLARE_FLAGS(ListFlags, ListFlag)
 
