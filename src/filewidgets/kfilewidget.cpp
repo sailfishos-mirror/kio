@@ -96,6 +96,8 @@ public:
         // emitted after this object is destroyed
         delete m_placesDock;
         delete m_ops;
+        delete m_optionsMenu;
+        delete m_bookmarkButton;
     }
 
     QSize screenSize() const
@@ -251,6 +253,7 @@ public:
 
     KFileBookmarkHandler *m_bookmarkHandler = nullptr;
 
+    KActionMenu *m_optionsMenu = nullptr;
     KActionMenu *m_bookmarkButton = nullptr;
 
     QToolBar *m_toolbar = nullptr;
@@ -1242,9 +1245,9 @@ void KFileWidgetPrivate::initToolbar()
     });
 
     // Build the settings menu
-    KActionMenu *menu = new KActionMenu(QIcon::fromTheme(QStringLiteral("configure")), i18n("Options"), q);
-    q->addAction(menu);
-    menu->setWhatsThis(
+    m_optionsMenu = new KActionMenu(QIcon::fromTheme(QStringLiteral("configure")), i18n("Options"), q);
+    q->addAction(m_optionsMenu);
+    m_optionsMenu->setWhatsThis(
         i18n("<qt>This is the preferences menu for the file dialog. "
              "Various options can be accessed from this menu including: <ul>"
              "<li>how files are sorted in the list</li>"
@@ -1254,15 +1257,15 @@ void KFileWidgetPrivate::initToolbar()
              "<li>file previews</li>"
              "<li>separating folders from files</li></ul></qt>"));
 
-    menu->addAction(m_ops->action(KDirOperator::AllowExpansionInDetailsView));
-    menu->addSeparator();
-    menu->addAction(m_ops->action(KDirOperator::ShowHiddenFiles));
-    menu->addAction(m_togglePlacesPanelAction);
-    menu->addAction(m_toggleQuickFilterAction);
-    menu->addAction(m_ops->action(KDirOperator::ShowPreviewPanel));
+    m_optionsMenu->addAction(m_ops->action(KDirOperator::AllowExpansionInDetailsView));
+    m_optionsMenu->addSeparator();
+    m_optionsMenu->addAction(m_ops->action(KDirOperator::ShowHiddenFiles));
+    m_optionsMenu->addAction(m_togglePlacesPanelAction);
+    m_optionsMenu->addAction(m_toggleQuickFilterAction);
+    m_optionsMenu->addAction(m_ops->action(KDirOperator::ShowPreviewPanel));
 
-    menu->setPopupMode(QToolButton::InstantPopup);
-    q->connect(menu->menu(), &QMenu::aboutToShow, m_ops, &KDirOperator::updateSelectionDependentActions);
+    m_optionsMenu->setPopupMode(QToolButton::InstantPopup);
+    q->connect(m_optionsMenu->menu(), &QMenu::aboutToShow, m_ops, &KDirOperator::updateSelectionDependentActions);
 
     m_bookmarkButton = new KActionMenu(QIcon::fromTheme(QStringLiteral("bookmarks")), i18n("Bookmarks"), q);
     m_bookmarkButton->setPopupMode(QToolButton::InstantPopup);
@@ -1305,7 +1308,7 @@ void KFileWidgetPrivate::initToolbar()
     m_toolbar->addSeparator();
 
     m_toolbar->addAction(m_ops->action(KDirOperator::NewFolder));
-    m_toolbar->addAction(menu);
+    m_toolbar->addAction(m_optionsMenu);
 
     m_toolbar->setToolButtonStyle(Qt::ToolButtonIconOnly);
     m_toolbar->setMovable(false);
