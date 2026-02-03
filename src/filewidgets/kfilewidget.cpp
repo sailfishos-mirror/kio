@@ -1281,7 +1281,7 @@ void KFileWidgetPrivate::initToolbar()
     q->connect(m_bookmarkHandler, &KFileBookmarkHandler::openUrl, q, [this](const QString &path) {
         enterUrl(path);
     });
-    m_bookmarkButton->setMenu(m_bookmarkHandler->menu());
+    m_bookmarkButton->replaceMenu(m_bookmarkHandler->menu());
 
     QWidget *midSpacer = new QWidget(q);
     midSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
