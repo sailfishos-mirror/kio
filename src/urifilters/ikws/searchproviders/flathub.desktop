@@ -2,6 +2,6 @@
 Charset=
 Name=Flathub
 Type=Service
-Keys=flathub
+Keys=flathub,app
 Query=https://flathub.org/apps/search?q=\\{@}
 Query[de]=https://flathub.org/de/apps/search?q=\\{@}
