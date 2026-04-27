@@ -1,0 +1,7 @@
+[Desktop Entry]
+Charset=
+Hidden=false
+Keys=ard
+Name=ARD Mediathek
+Query=https://www.ardmediathek.de/suche/\\{@}
+Type=Service
