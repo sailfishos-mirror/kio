@@ -1,0 +1,7 @@
+[Desktop Entry]
+Charset=
+Hidden=false
+Keys=zdf
+Name=ZDF Mediathek
+Query=https://www.zdf.de/suche?q=\\{@}
+Type=Service
