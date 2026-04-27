@@ -1,7 +1,6 @@
 [Desktop Entry]
 Charset=
-Hidden=false
-Keys=osm
+Keys=osm,openstreetmap
 Name=OpenStreetMap
 Query=https://www.openstreetmap.org/search?query=\\{@}
 Type=Service
