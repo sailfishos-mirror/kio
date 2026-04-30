@@ -8,6 +8,7 @@ Name[es]=Startpage
 Name[fr]=Page de démarrage
 Name[he]=Startpage
 Name[ia]=Pagina de initio
+Name[is]=Startpage
 Name[ka]=Startpage
 Name[lt]=Startpage
 Name[nl]=Startpagina
@@ -27,6 +28,7 @@ Query[es]=https://www.startpage.com/sp/search?query=\\{@}
 Query[fr]=https://www.startpage.com/sp/search?query=\\{@}
 Query[he]=https://www.startpage.com/sp/search?query=\\{@}
 Query[ia]=https://www.startpage.com/sp/search?query=\\{@}
+Query[is]=https://www.startpage.com/sp/search?query=\\{@}
 Query[ka]=https://www.startpage.com/sp/search?query=\\{@}
 Query[lt]=https://www.startpage.com/sp/search?query=\\{@}
 Query[nl]=https://www.startpage.com/sp/search?query=\\{@}
