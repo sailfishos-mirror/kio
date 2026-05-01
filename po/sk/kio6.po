@@ -2148,7 +2148,8 @@ msgid ""
 "The operation could not be completed because the source and destination file "
 "or folder are the same."
 msgstr ""
-"Operáciu sa nepodarilo dokončiť, pretože zdrojový a cieľový súbor sú rovnaké."
+"Operáciu sa nepodarilo dokončiť, pretože zdrojový a cieľový súbor alebo "
+"priečinok sú rovnaké."
 
 #: core/job_error.cpp:1220
 #, kde-format
@@ -2463,13 +2464,13 @@ msgstr "Iba pre &aktuálne sedenia"
 #, kde-format
 msgctxt "@action:inmenu Context menu shown when files are dragged"
 msgid "Move Into New Folder"
-msgstr "Vytvoriť priečinok"
+msgstr "Presunúť do nového priečinka"
 
 #: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:70
 #, kde-format
 msgctxt "@title:window"
 msgid "Create New Folder for These Items"
-msgstr "Vytvoriť priečinok"
+msgstr "Vytvoriť nový priečinok pre tieto položky"
 
 #: filewidgets/kdiroperator.cpp:314
 #, kde-format
@@ -2660,7 +2661,7 @@ msgstr "Zobraziť skryté súbory"
 #: filewidgets/kdiroperator.cpp:2255
 #, kde-format
 msgid "Show Preview Panel"
-msgstr "Zobraziť náhľad"
+msgstr "Zobraziť panel náhľadu"
 
 #: filewidgets/kdiroperator.cpp:2262
 #, kde-format
@@ -2928,7 +2929,7 @@ msgstr "Značky"
 #, kde-format
 msgctxt "@info:tooltip path (mounted from)"
 msgid "%1 (from %2)"
-msgstr "%1 (Chyba %2)"
+msgstr "%1 (z %2)"
 
 #: filewidgets/kfileplacesmodel.cpp:158
 msgctxt "KFile System Bookmarks"
@@ -3539,8 +3540,8 @@ msgid ""
 "<qt>This is the file type selector. It is used to select the format of the "
 "files shown.</qt>"
 msgstr ""
-"<qt>Toto je výber typu súboru. Používa sa na výber formátu, v ktorom sa "
-"súbor uloží.</qt>"
+"<qt>Toto je výber typu súboru. Používa sa na výber formátu zobrazených "
+"súborov.</qt>"
 
 #: filewidgets/knewfilemenu.cpp:518
 #, kde-format
@@ -3694,7 +3695,7 @@ msgstr "Vytvoriť nový priečinok v %1:"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Enter folder name"
-msgstr "Zadať iný názov"
+msgstr "Zadať názov priečinka"
 
 #: filewidgets/knewfilemenu.cpp:1641
 #, kde-format
@@ -3712,7 +3713,7 @@ msgstr "Vytvoriť nový súbor"
 #: filewidgets/knewfilemenu_newfiledialog.ui:57
 #, kde-format
 msgid "Enter file name"
-msgstr "Zadať iný názov"
+msgstr "Zadať názov súboru"
 
 #. i18n: ectx: property (title), widget (KCollapsibleGroupBox, chooseIconBox)
 #: filewidgets/knewfilemenu_newfiledialog.ui:79
@@ -3725,7 +3726,7 @@ msgstr "Vybrať vlastnú ikonu alebo farbu"
 #, kde-format
 msgctxt "@action:button"
 msgid "Choose Other Icon…"
-msgstr "Vyberte &ikonu:"
+msgstr "Vybrať inú ikonu…"
 
 #. i18n: ectx: property (text), widget (QLabel, iconHintLabel)
 #: filewidgets/knewfilemenu_newfiledialog.ui:145
@@ -3781,7 +3782,7 @@ msgstr "Zobraziť celú cestu"
 #, kde-kuit-format
 msgctxt "@info:tooltip for button. 1 is path"
 msgid "Go to any location on the path <filename>%1</filename>"
-msgstr "Nepodarilo sa preniesť <filename>%1</filename>"
+msgstr "Prejsť na ľubovoľné miesto na ceste <filename>%1</filename>"
 
 #: filewidgets/kurlnavigatorbutton.cpp:725
 #, kde-format
@@ -4799,7 +4800,7 @@ msgstr "&Presunúť sem"
 #, kde-format
 msgctxt "@action:inmenu Download contents of URL here"
 msgid "&Download Here"
-msgstr "Stiahnuté"
+msgstr "Stiahnuť sem"
 
 #: widgets/dropjob.cpp:296
 #, kde-format
@@ -4838,7 +4839,7 @@ msgstr "&Otvoriť pomocou %1"
 #: widgets/executablefileopendialog.ui:26
 #, kde-format
 msgid "Would you like to launch this file?"
-msgstr "Čo chcete urobiť s týmto súborom?"
+msgstr "Chcete spustiť tento súbor?"
 
 #: widgets/fileundomanager.cpp:126
 #, kde-format
@@ -4873,7 +4874,7 @@ msgstr "Premenovanie"
 #: widgets/fileundomanager.cpp:147
 #, kde-format
 msgid "Moving to Trash"
-msgstr "Presunúť do koša"
+msgstr "Presúvanie do koša"
 
 #: widgets/fileundomanager.cpp:152
 #, kde-format
@@ -4938,47 +4939,47 @@ msgstr "&Redo"
 #: widgets/fileundomanager.cpp:363
 #, kde-format
 msgid "&Redo: Copy"
-msgstr "&Späť: Kopírovať"
+msgstr "&Znova: Kopírovať"
 
 #: widgets/fileundomanager.cpp:365
 #, kde-format
 msgid "&Redo: Link"
-msgstr "&Späť: Odkaz"
+msgstr "&Znova: Odkaz"
 
 #: widgets/fileundomanager.cpp:367
 #, kde-format
 msgid "&Redo: Move"
-msgstr "&Späť: Presunúť"
+msgstr "&Znova: Presunúť"
 
 #: widgets/fileundomanager.cpp:369
 #, kde-format
 msgid "&Redo: Rename"
-msgstr "&Späť: Premenovať"
+msgstr "&Znova: Premenovať"
 
 #: widgets/fileundomanager.cpp:371
 #, kde-format
 msgid "&Redo: Trash"
-msgstr "&Späť: Kôš"
+msgstr "&Znova: Kôš"
 
 #: widgets/fileundomanager.cpp:373
 #, kde-format
 msgid "&Redo: Create Folder"
-msgstr "&Späť: Vytvoriť priečinok"
+msgstr "&Znova: Vytvoriť priečinok"
 
 #: widgets/fileundomanager.cpp:375
 #, kde-format
 msgid "&Redo: Create Folder(s)"
-msgstr "&Späť: Vytvoriť priečinok(y)"
+msgstr "&Znova: Vytvoriť priečinok(y)"
 
 #: widgets/fileundomanager.cpp:377
 #, kde-format
 msgid "&Redo: Create File"
-msgstr "&Späť: Vytvoriť súbor"
+msgstr "&Znova: Vytvoriť súbor"
 
 #: widgets/fileundomanager.cpp:379
 #, kde-format
 msgid "&Redo: Batch Rename"
-msgstr "&Späť: Hromadné premenovanie"
+msgstr "&Znova: Hromadné premenovanie"
 
 #: widgets/fileundomanager.cpp:906
 #, kde-format
@@ -5104,7 +5105,7 @@ msgstr "Vlastník"
 #, kde-format
 msgctxt "UNIX permissions"
 msgid "Owning Group"
-msgstr "Skupina vlastníkov"
+msgstr "Vlastnícka skupina"
 
 #: widgets/kacleditwidget.cpp:235 widgets/kacleditwidget.cpp:247
 #, kde-format
@@ -5290,7 +5291,7 @@ msgstr "&Akcie"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Open Folder With…"
-msgstr "&Otvoriť priečinok pomocou"
+msgstr "&Otvoriť priečinok pomocou…"
 
 #: widgets/kfileitemactions.cpp:756
 #, kde-format
@@ -5768,8 +5769,8 @@ msgid ""
 "Type a generic name for the application here. Examples: an image viewing "
 "application would be \"Image Viewer\"."
 msgstr ""
-"Sem zadajte popis tejto aplikácie podľa jej použitia. Napríklad: pre "
-"pripojenie na internet (KPPP) to bude \"Nástroj pre pripojenie na Internet\"."
+"Sem zadajte všeobecný názov aplikácie. Napríklad: aplikácia na prezeranie "
+"obrázkov bude mať názov \"Prehliadač obrázkov\"."
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: widgets/kpropertiesdesktopbase.ui:42
@@ -6044,7 +6045,7 @@ msgstr "Zadajte cieľové umiestnenie"
 #, kde-kuit-format
 msgctxt "@info:tooltip Go to path %1"
 msgid "Show <filename>%1</filename>"
-msgstr "Nepodarilo sa preniesť <filename>%1</filename>"
+msgstr "Zobraziť <filename>%1</filename>"
 
 #: widgets/kpropertiesdialogbuiltin_p.cpp:561
 #, kde-format
@@ -6139,7 +6140,7 @@ msgstr "Môže iba čítať"
 
 #: widgets/kpropertiesdialogbuiltin_p.cpp:1076
 msgid "Can View & Modify"
-msgstr "Môže zobraziť a meniť obsah"
+msgstr "Môže zobraziť a meniť"
 
 #: widgets/kpropertiesdialogbuiltin_p.cpp:1077
 msgid "Can Only View Content"
@@ -6223,17 +6224,17 @@ msgstr "Iba &vlastník môže premenovať a odstrániť obsah priečinka"
 #: widgets/kpropertiesdialogbuiltin_p.cpp:1225
 #, kde-format
 msgid "Allow &executing file as program"
-msgstr "Tento príznak umožňuje spúšťanie súboru ako program."
+msgstr "Povoliť &spúšťanie súboru ako program"
 
 #: widgets/kpropertiesdialogbuiltin_p.cpp:1227
 #, kde-format
 msgid "Delete or rename:"
-msgstr "Predvolené meno užívateľa:"
+msgstr "Vymazať alebo premenovať:"
 
 #: widgets/kpropertiesdialogbuiltin_p.cpp:1227
 #, kde-format
 msgid "Execute:"
-msgstr "S&pustiť"
+msgstr "Spustiť:"
 
 #: widgets/kpropertiesdialogbuiltin_p.cpp:1228
 #, kde-format
@@ -6550,12 +6551,12 @@ msgstr "Overujem kontrolný súčet..."
 #: widgets/kpropertiesdialogbuiltin_p.cpp:2440
 #, kde-format
 msgid "The checksums of all files are identical."
-msgstr "Súbory sú <b>identické</b>."
+msgstr "Kontrolné súčty všetkých súborov sú zhodné."
 
 #: widgets/kpropertiesdialogbuiltin_p.cpp:2445
 #, kde-format
 msgid "The selected files have different checksums."
-msgstr "Súbory sú <b>rôzne</b>."
+msgstr "Vybrané súbory majú rôzne kontrolné súčty."
 
 #: widgets/kpropertiesdialogbuiltin_p.cpp:2451
 #, kde-format
@@ -6724,7 +6725,7 @@ msgstr "&Vložiť súbor"
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Paste Clipboard Content"
-msgstr "Vložiť obsah schránky..."
+msgstr "Vložiť obsah schránky"
 
 #: widgets/paste.cpp:122
 #, kde-format
@@ -6999,8 +7000,7 @@ msgstr "Súbor s názvom <filename>%1</filename> už existuje."
 #, kde-kuit-format
 msgctxt "@info %1 is an invalid filename"
 msgid "<filename>%1</filename> is not a valid file name."
-msgstr ""
-"Zdá sa, že súbor <filename>%1</filename> nie je spustiteľným programom."
+msgstr "Súbor <filename>%1</filename> nie je platný názov súboru."
 
 #: widgets/renamefiledialog.cpp:164
 #, kde-format
@@ -7048,7 +7048,7 @@ msgstr[2] "Premenovať %1 vybratých položiek na:"
 #, kde-format
 msgctxt "@info replace as in replacing [value] with [value]"
 msgid "Replacing:"
-msgstr "Nahradiť"
+msgstr "Nahradzujem:"
 
 #: widgets/renamefiledialog.cpp:316
 #, kde-format
@@ -7060,13 +7060,13 @@ msgstr "Vzor"
 #, kde-format
 msgctxt "@info with as in replacing [value] with [value]"
 msgid "With:"
-msgstr "Otvoriť s:"
+msgstr "S:"
 
 #: widgets/renamefiledialog.cpp:322
 #, kde-format
 msgctxt "@info placeholder text"
 msgid "Replacement"
-msgstr "Nahradiť"
+msgstr "Náhrada"
 
 #: widgets/renamefiledialog.cpp:369
 #, kde-format
@@ -7109,13 +7109,13 @@ msgstr "Text na pridanie"
 #, kde-format
 msgctxt "@item:inlistbox as in insert text before filename"
 msgid "Before filename"
-msgstr "Zadať iný názov"
+msgstr "Pred názvom súboru"
 
 #: widgets/renamefiledialog.cpp:415
 #, kde-format
 msgctxt "@item:inlistbox as in insert text after filename"
 msgid "After filename"
-msgstr "Zadať iný názov"
+msgstr "Za názvom súboru"
 
 #: widgets/renamefiledialog.cpp:532
 #, kde-format
@@ -7139,7 +7139,7 @@ msgstr "Premenovať"
 #, kde-format
 msgctxt "@info"
 msgid "How to rename:"
-msgstr "Predvolené meno užívateľa:"
+msgstr "Ako premenovať:"
 
 #: widgets/renamefiledialog.cpp:555
 #, kde-format
@@ -7151,7 +7151,7 @@ msgstr "Enumerate"
 #, kde-format
 msgctxt "@info renaming operation"
 msgid "Replace text"
-msgstr "Nahradiť"
+msgstr "Nahradiť text"
 
 #: widgets/renamefiledialog.cpp:555
 #, kde-format
@@ -7163,14 +7163,13 @@ msgstr "Pridať text"
 #, kde-format
 msgctxt "@info As in filename renaming preview"
 msgid "Preview:"
-msgstr "Zobraziť náhľad"
+msgstr "Náhľad:"
 
 #: widgets/renamefiledialog.cpp:691
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> cannot be renamed to an empty file name."
-msgstr ""
-"Zdá sa, že súbor <filename>%1</filename> nie je spustiteľným programom."
+msgstr "Súbor <filename>%1</filename> nemožno premenovať na prázdny názov."
 
 #: widgets/skipdialog.cpp:29
 #, kde-format
