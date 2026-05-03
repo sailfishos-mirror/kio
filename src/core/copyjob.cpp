@@ -159,6 +159,29 @@ static bool isFatOrNtfs(KFileSystemType::Type fsType)
     return fsType == KFileSystemType::Ntfs || isFatFs(fsType);
 }
 
+// MTP storage rejects the same set of reserved characters libmtp inherits from the
+// Windows MTP API (see bug 489288), regardless of the device's actual filesystem.
+static bool isMtpScheme(const QUrl &url)
+{
+    return url.scheme() == QLatin1String("mtp");
+}
+
+static bool destDisallowsMsdosChars(const QUrl &url, KFileSystemType::Type fsType)
+{
+    if (url.isLocalFile()) {
+        return isFatOrNtfs(fsType);
+    }
+    return isMtpScheme(url);
+}
+
+static QString destFilesystemDisplayName(const QUrl &url, KFileSystemType::Type fsType)
+{
+    if (isMtpScheme(url)) {
+        return QStringLiteral("MTP");
+    }
+    return KFileSystemType::fileSystemName(fsType);
+}
+
 static QString symlinkSupportMsg(const QString &path, const QString &fsName)
 {
     const QString msg = i18nc(
@@ -1426,49 +1449,50 @@ void CopyJobPrivate::createNextDir()
     }
 
     if (it != dirs.end()) { // any dir to create, finally ?
+        KFileSystemType::Type destFileSystem = KFileSystemType::Unknown;
         if (it->uDest.isLocalFile()) {
             // uDest doesn't exist yet, check the filesystem of the parent dir
-            const auto destFileSystem = KFileSystemType::fileSystemType(it->uDest.adjusted(QUrl::StripTrailingSlash | QUrl::RemoveFilename).toLocalFile());
-            if (isFatOrNtfs(destFileSystem)) {
-                const QString dirName = it->uDest.adjusted(QUrl::StripTrailingSlash).fileName();
-                if (hasInvalidChars(dirName)) {
-                    // We already asked the user?
-                    if (m_autoReplaceInvalidChars) {
-                        processCreateNextDir(it, KIO::Result_ReplaceInvalidChars);
-                        return;
-                    } else if (m_autoSkipDirsWithInvalidChars) {
-                        processCreateNextDir(it, KIO::Result_Skip);
-                        return;
+            destFileSystem = KFileSystemType::fileSystemType(it->uDest.adjusted(QUrl::StripTrailingSlash | QUrl::RemoveFilename).toLocalFile());
+        }
+        if (destDisallowsMsdosChars(it->uDest, destFileSystem)) {
+            const QString dirName = it->uDest.adjusted(QUrl::StripTrailingSlash).fileName();
+            if (hasInvalidChars(dirName)) {
+                // We already asked the user?
+                if (m_autoReplaceInvalidChars) {
+                    processCreateNextDir(it, KIO::Result_ReplaceInvalidChars);
+                    return;
+                } else if (m_autoSkipDirsWithInvalidChars) {
+                    processCreateNextDir(it, KIO::Result_Skip);
+                    return;
+                }
+
+                const QString msg = invalidCharsSupportMsg(it->uDest.toDisplayString(QUrl::PreferLocalFile),
+                                                           destFilesystemDisplayName(it->uDest, destFileSystem),
+                                                           true /* isDir */);
+
+                if (auto *askUserActionInterface = KIO::delegateExtension<KIO::AskUserActionInterface *>(q)) {
+                    SkipDialog_Options options = KIO::SkipDialog_Replace_Invalid_Chars;
+                    if (dirs.size() > 1) {
+                        options |= SkipDialog_MultipleItems;
                     }
 
-                    const QString msg = invalidCharsSupportMsg(it->uDest.toDisplayString(QUrl::PreferLocalFile),
-                                                               KFileSystemType::fileSystemName(destFileSystem),
-                                                               true /* isDir */);
+                    auto skipSignal = &KIO::AskUserActionInterface::askUserSkipResult;
+                    QObject::connect(askUserActionInterface, skipSignal, q, [=, this](SkipDialog_Result result, KJob *parentJob) {
+                        Q_ASSERT(parentJob == q);
 
-                    if (auto *askUserActionInterface = KIO::delegateExtension<KIO::AskUserActionInterface *>(q)) {
-                        SkipDialog_Options options = KIO::SkipDialog_Replace_Invalid_Chars;
-                        if (dirs.size() > 1) {
-                            options |= SkipDialog_MultipleItems;
-                        }
+                        // Only receive askUserSkipResult once per skip dialog
+                        QObject::disconnect(askUserActionInterface, skipSignal, q, nullptr);
 
-                        auto skipSignal = &KIO::AskUserActionInterface::askUserSkipResult;
-                        QObject::connect(askUserActionInterface, skipSignal, q, [=, this](SkipDialog_Result result, KJob *parentJob) {
-                            Q_ASSERT(parentJob == q);
+                        processCreateNextDir(it, result);
+                    });
 
-                            // Only receive askUserSkipResult once per skip dialog
-                            QObject::disconnect(askUserActionInterface, skipSignal, q, nullptr);
+                    askUserActionInterface->askUserSkip(q, options, msg);
 
-                            processCreateNextDir(it, result);
-                        });
-
-                        askUserActionInterface->askUserSkip(q, options, msg);
-
-                        return;
-                    } else { // No Job Ui delegate
-                        qCWarning(KIO_COPYJOB_DEBUG) << msg;
-                        q->emitResult();
-                        return;
-                    }
+                    return;
+                } else { // No Job Ui delegate
+                    qCWarning(KIO_COPYJOB_DEBUG) << msg;
+                    q->emitResult();
+                    return;
                 }
             }
         }
@@ -1942,7 +1966,7 @@ bool CopyJobPrivate::handleMsdosFsQuirks(QList<CopyInfo>::Iterator it, KFileSyst
         }
 
         options = KIO::SkipDialog_Replace_Invalid_Chars;
-        msg = invalidCharsSupportMsg(it->uDest.toDisplayString(QUrl::PreferLocalFile), KFileSystemType::fileSystemName(fsType));
+        msg = invalidCharsSupportMsg(it->uDest.toDisplayString(QUrl::PreferLocalFile), destFilesystemDisplayName(it->uDest, fsType));
     }
 
     if (!msg.isEmpty()) {
@@ -2003,12 +2027,10 @@ void CopyJobPrivate::copyNextFile()
     }
 
     if (bCopyFile) { // any file to create, finally ?
-        if (isDestLocal) {
-            const auto destFileSystem = KFileSystemType::fileSystemType(m_globalDest.toLocalFile());
-            if (isFatOrNtfs(destFileSystem)) {
-                if (handleMsdosFsQuirks(it, destFileSystem)) {
-                    return;
-                }
+        const KFileSystemType::Type destFileSystem = isDestLocal ? KFileSystemType::fileSystemType(m_globalDest.toLocalFile()) : KFileSystemType::Unknown;
+        if (destDisallowsMsdosChars(m_globalDest, destFileSystem)) {
+            if (handleMsdosFsQuirks(it, destFileSystem)) {
+                return;
             }
         }
 
