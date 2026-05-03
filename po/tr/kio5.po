@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: kio4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 09:00+0000\n"
-"PO-Revision-Date: 2026-03-09 22:09+0300\n"
+"PO-Revision-Date: 2026-05-02 18:46+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -106,18 +106,18 @@ msgstr ""
 #: core/copyjob.cpp:1396 core/job_error.cpp:581
 #, kde-format
 msgid "Folder Already Exists"
-msgstr "Klasör Halihazırda Var"
+msgstr "Klasör Hâlihazırda Var"
 
 #: core/copyjob.cpp:1726 core/copyjob.cpp:2416 core/filecopyjob.cpp:373
 #: core/job_error.cpp:570 widgets/paste.cpp:80
 #, kde-format
 msgid "File Already Exists"
-msgstr "Dosya Halihazırda Var"
+msgstr "Dosya Hâlihazırda Var"
 
 #: core/copyjob.cpp:1726 core/copyjob.cpp:2416
 #, kde-format
 msgid "Already Exists as Folder"
-msgstr "Klasör Olarak Halihazırda Var"
+msgstr "Klasör Olarak Hâlihazırda Var"
 
 #: core/copyjob.cpp:1886 ioslaves/trash/kio_trash.cpp:286
 #, kde-format
@@ -1288,7 +1288,7 @@ msgid ""
 "The requested file could not be created because a file with the same name "
 "already exists."
 msgstr ""
-"Bu adda bir dosya halihazırda var olduğundan istenen dosya oluşturulamadı."
+"Bu adda bir dosya hâlihazırda var olduğundan istenen dosya oluşturulamadı."
 
 #: core/job_error.cpp:575
 #, kde-format
@@ -1311,7 +1311,7 @@ msgid ""
 "The requested folder could not be created because a folder with the same "
 "name already exists."
 msgstr ""
-"Bu adda bir klasör halihazırda var olduğundan istenilen klasör "
+"Bu adda bir klasör hâlihazırda var olduğundan istenilen klasör "
 "oluşturulamadı."
 
 #: core/job_error.cpp:586
@@ -3751,7 +3751,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid "A directory with name <filename>%1</filename> already exists."
-msgstr "<filename>%1</filename> adlı bir dizin halihazırda var."
+msgstr "<filename>%1</filename> adlı bir dizin hâlihazırda var."
 
 #: filewidgets/knewfilemenu.cpp:1296
 #, kde-kuit-format
