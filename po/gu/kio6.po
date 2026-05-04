@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio-gu\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-19 00:40+0000\n"
+"POT-Creation-Date: 2026-05-04 00:39+0000\n"
 "PO-Revision-Date: 2026-03-31 23:12+0530\n"
 "Last-Translator: CrazyCourt651 <CrazyCourt651@gmail.com>\n"
 "Language-Team: Gujarati\n"
@@ -48,7 +48,7 @@ msgstr ""
 msgid "Unable to create KIO worker: %1"
 msgstr "KIO કાર્યકર (worker) બનાવવામાં અસમર્થ: %1"
 
-#: core/copyjob.cpp:167 kioworkers/file/file_unix.cpp:1008
+#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1008
 #, kde-format
 msgctxt ""
 "The first arg is the path to the symlink that couldn't be created, the "
@@ -60,7 +60,7 @@ msgstr ""
 "સીમલિંક (symlink) \"%1\" બનાવી શકાયું નથી.\n"
 "ડેસ્ટિનેશન ફાઇલસિસ્ટમ (%2) સીમલિંક્સને સપોર્ટ કરતું નથી."
 
-#: core/copyjob.cpp:179
+#: core/copyjob.cpp:202
 #, kde-format
 msgid ""
 "Could not create \"%1\".\n"
@@ -73,7 +73,7 @@ msgstr ""
 "લક્ષ્ય ફાઇલસિસ્ટમ (%2) ફોલ્ડરના નામોમાં નીચેના અક્ષરોની મંજૂરી આપતું નથી: %3\n"
 "બદલો પસંદ કરવાથી અમાન્ય અક્ષરો અંડરસ્કોર \"_\" થી બદલાઈ જશે."
 
-#: core/copyjob.cpp:187
+#: core/copyjob.cpp:210
 #, kde-format
 msgid ""
 "Could not create \"%1\".\n"
@@ -86,23 +86,23 @@ msgstr ""
 "લક્ષ્ય ફાઇલસિસ્ટમ (%2) ફાઇલના નામોમાં નીચેના અક્ષરોની મંજૂરી આપતું નથી: %3\n"
 "'બદલો' પસંદ કરવાથી અમાન્ય અક્ષરો અંડરસ્કોર \"_\" થી બદલાઈ જશે."
 
-#: core/copyjob.cpp:1403 core/job_error.cpp:588
+#: core/copyjob.cpp:1426 core/job_error.cpp:588
 #, kde-format
 msgid "Folder Already Exists"
 msgstr "ફોલ્ડર પહેલેથી હાજર છે"
 
-#: core/copyjob.cpp:1736 core/copyjob.cpp:2441 core/filecopyjob.cpp:371
+#: core/copyjob.cpp:1760 core/copyjob.cpp:2463 core/filecopyjob.cpp:371
 #: core/job_error.cpp:577 widgets/paste.cpp:49
 #, kde-format
 msgid "File Already Exists"
 msgstr "ફાઇલ પહેલેથી હાજર છે"
 
-#: core/copyjob.cpp:1736 core/copyjob.cpp:2441
+#: core/copyjob.cpp:1760 core/copyjob.cpp:2463
 #, kde-format
 msgid "Already Exists as Folder"
 msgstr "ફોલ્ડર તરીકે પહેલેથી હાજર છે"
 
-#: core/copyjob.cpp:1890 kioworkers/trash/kio_trash.cpp:295
+#: core/copyjob.cpp:1914 kioworkers/trash/kio_trash.cpp:295
 #, kde-format
 msgid "Trash"
 msgstr "કચરાપેટી"

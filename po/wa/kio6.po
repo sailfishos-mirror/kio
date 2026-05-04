@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-19 00:40+0000\n"
+"POT-Creation-Date: 2026-05-04 00:39+0000\n"
 "PO-Revision-Date: 2012-07-04 22:08+0200\n"
 "Last-Translator: Jean Cayron <jean.cayron@base.be>\n"
 "Language-Team: Walloon <linux-wa@walon.org>\n"
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Unable to create KIO worker: %1"
 msgstr "Dji n' sai fé li module vårlet d' intrêye/sôrteye: %1"
 
-#: core/copyjob.cpp:167 kioworkers/file/file_unix.cpp:1008
+#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1008
 #, fuzzy, kde-format
 #| msgid ""
 #| "Could not create symlink %1.\n"
@@ -69,7 +69,7 @@ msgstr ""
 "Dji n' sai fé li loyén simbolike %1.\n"
 "Waitîz si vs avoz l' droet."
 
-#: core/copyjob.cpp:179
+#: core/copyjob.cpp:202
 #, kde-format
 msgid ""
 "Could not create \"%1\".\n"
@@ -79,7 +79,7 @@ msgid ""
 "folder name) with an underscore \"_\"."
 msgstr ""
 
-#: core/copyjob.cpp:187
+#: core/copyjob.cpp:210
 #, kde-format
 msgid ""
 "Could not create \"%1\".\n"
@@ -89,23 +89,23 @@ msgid ""
 "file name) with an underscore \"_\"."
 msgstr ""
 
-#: core/copyjob.cpp:1403 core/job_error.cpp:588
+#: core/copyjob.cpp:1426 core/job_error.cpp:588
 #, kde-format
 msgid "Folder Already Exists"
 msgstr "Li ridant egzistêye dedja"
 
-#: core/copyjob.cpp:1736 core/copyjob.cpp:2441 core/filecopyjob.cpp:371
+#: core/copyjob.cpp:1760 core/copyjob.cpp:2463 core/filecopyjob.cpp:371
 #: core/job_error.cpp:577 widgets/paste.cpp:49
 #, kde-format
 msgid "File Already Exists"
 msgstr "Ci fitchî la egzistêye dedja"
 
-#: core/copyjob.cpp:1736 core/copyjob.cpp:2441
+#: core/copyjob.cpp:1760 core/copyjob.cpp:2463
 #, kde-format
 msgid "Already Exists as Folder"
 msgstr "Egzistêye dedja come ridant"
 
-#: core/copyjob.cpp:1890 kioworkers/trash/kio_trash.cpp:295
+#: core/copyjob.cpp:1914 kioworkers/trash/kio_trash.cpp:295
 #, fuzzy, kde-format
 #| msgid "Trash"
 msgid "Trash"
