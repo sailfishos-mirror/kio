@@ -60,7 +60,7 @@ Query[ca@valencia]=https://ca.wikipedia.org/wiki/Special:Search?search=\\{@}&go=
 Query[cs]=https://en.wikipedia.org/wiki/Special:Search?search=\\{@}&go=Go
 Query[cy]=https://en.wikipedia.org/wiki/Special:Search?search=\\{@}&go=Go
 Query[da]=https://en.wikipedia.org/wiki/Special:Search?search=\\{@}&go=Go
-Query[de]=https://de.wikipedia.org/wiki/Spezial:Suche?search=\\{@}&go=Go
+Query[de]=https://en.wikipedia.org/wiki/Special:Search?search=\\{@}&go=Go
 Query[el]=https://en.wikipedia.org/wiki/Special:Search?search=\\{@}&go=Go
 Query[en_GB]=https://en.wikipedia.org/wiki/Special:Search?search=\\{@}&go=Go
 Query[eo]=https://eo.wikipedia.org/wiki/Special:Search?search=\\{@}&go=Go
