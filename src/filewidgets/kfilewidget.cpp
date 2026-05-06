@@ -2274,13 +2274,11 @@ void KFileWidgetPrivate::activateUrlNavigator()
 
 void KFileWidgetPrivate::slotDirOpIconSizeChanged(int size)
 {
-    auto beginIt = m_stdIconSizes.cbegin();
-    auto endIt = m_stdIconSizes.cend();
-    auto it = std::lower_bound(beginIt, endIt, size);
-    const int sliderStep = it != endIt ? it - beginIt : 0;
-    m_iconSizeSlider->setValue(sliderStep);
-    m_zoomOutAction->setDisabled(it == beginIt);
-    m_zoomInAction->setDisabled(it == (endIt - 1));
+    if (size == m_stdIconSizes[m_iconSizeSlider->value()])
+        return;
+    m_iconSizeSlider->triggerAction(size < m_stdIconSizes[m_iconSizeSlider->value()] ? QSlider::SliderSingleStepSub : QSlider::SliderSingleStepAdd);
+    m_zoomOutAction->setDisabled(m_iconSizeSlider->value() == m_iconSizeSlider->minimum());
+    m_zoomInAction->setDisabled(m_iconSizeSlider->value() == m_iconSizeSlider->maximum());
 }
 
 void KFileWidgetPrivate::changeIconsSize(ZoomState zoom)
