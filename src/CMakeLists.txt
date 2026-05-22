@@ -41,3 +41,9 @@ ecm_qt_install_logging_categories(
     FILE kio.categories
     DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
 )
+
+# Temporary experimental: testing CI
+add_test(
+    NAME installed_library_check
+    COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --parallel 12 --target all_installed_library_check
+)
