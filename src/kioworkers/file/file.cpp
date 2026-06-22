@@ -23,6 +23,8 @@
 #include <cerrno>
 #ifndef Q_OS_WIN
 #include <fcntl.h>
+#include <sys/stat.h>
+#include <unistd.h>
 #include <utime.h>
 #endif
 
@@ -789,6 +791,8 @@ WorkerResult FileProtocol::special(const QByteArray &data)
         stream >> point;
         return unmount(point);
     }
+    case 3: // batch copy a list of local files in one command (platform-specific: see batchCopy())
+        return batchCopy(stream);
     default:
         break;
     }
