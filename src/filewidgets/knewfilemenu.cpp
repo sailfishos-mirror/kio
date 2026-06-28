@@ -117,11 +117,11 @@ public:
     std::unique_ptr<KDirWatch> dirWatch;
 
     struct Entry {
-        QString url; /// URL of the file read from .desktop file URL field
+        QUrl url; /// URL of the file read from .desktop file URL field
         QString key; /// The key used for sorting the files in the menu
         QString text; /// Text shown on the new file submenu
         QString comment; /// The prompt label asking for filename
-        QString filePath; /// URL of a file received from getTemplateFilePaths and the suggested basename for a new file
+        QFileInfo sourceFileInfo; /// URL of a file received from getTemplateFilePaths and the suggested basename for a new file
         QString templatePath; /// Where the file is copied from, the suggested file extension and whether the menu entries have a separator around them.
         QMimeType mimeType; /// Mimetype that the icon and comment are derived from
         QIcon icon; /// The icon displayed in the context menu
@@ -150,7 +150,7 @@ QDebug operator<<(QDebug debug, const KNewFileMenuSingleton::Entry &Entry)
     debug.nospace() << "url\t\t" << Entry.url << "\n";
     debug.nospace() << "key\t\t" << Entry.key << "\n";
     debug.nospace() << "text\t\t" << Entry.text << "\n";
-    debug.nospace() << "filepath\t" << Entry.filePath << "\n";
+    debug.nospace() << "filepath\t" << Entry.sourceFileInfo << "\n";
     debug.nospace() << "templatepath\t" << Entry.templatePath << "\n";
     debug.nospace() << "comment\t\t" << Entry.comment << "\n";
     debug.nospace() << "mimetype\t" << Entry.mimeType << "\n";
@@ -170,37 +170,35 @@ bool KNewFileMenuSingleton::Entry::parseFile(QString file)
             return false;
         }
 
-        url = desktopFile.readUrl();
+        url = QUrl(desktopFile.readUrl());
         key = desktopFile.readName();
         text = desktopFile.readName();
         comment = desktopFile.readComment();
         icon = QIcon::fromTheme(desktopFile.readIcon());
 
-        filePath = file;
+        sourceFileInfo = QFileInfo(file);
 
         if (desktopFile.readType() == QLatin1String("Link") && !url.isEmpty()) {
-            if (!QUrl(url).isLocalFile() && !QUrl(url).isRelative()) {
-                templatePath = url;
-            } else if (url.startsWith(QLatin1String("file:/"))) {
-                templatePath = QUrl(url).toLocalFile();
-            } else if (!url.startsWith(QLatin1Char('/')) && !url.startsWith(QLatin1String("__"))) {
+            if (!url.isLocalFile() && !url.isRelative()) {
+                templatePath = url.toString();
+            } else if (url.scheme() == QLatin1String("file")) {
+                templatePath = url.toLocalFile();
+            } else if (!url.toString().startsWith(QLatin1Char('/')) && !url.toString().startsWith(QLatin1String("__"))) {
                 // A relative path, then (that's the default in the files we ship)
-                const QStringView linkDir = QStringView(filePath).left(filePath.lastIndexOf(QLatin1Char('/')) + 1 /*keep / */);
-                // qDebug() << "linkDir=" << linkDir;
-                templatePath = linkDir + url;
+                templatePath = QDir(sourceFileInfo.path()).filePath(url.toString());
             } else {
-                templatePath = url;
+                templatePath = url.toString();
             }
         } else {
-            templatePath = filePath;
+            templatePath = sourceFileInfo.filePath();
         }
 
         if (text.isEmpty()) {
-            text = QFileInfo(filePath).baseName();
+            text = QFileInfo(sourceFileInfo).baseName();
         }
 
         // TODO: Allow external files through non-local urls
-        if (!QFileInfo(templatePath).isReadable() && QFileInfo(filePath).isNativePath()) {
+        if (!QFileInfo(templatePath).isReadable() && QFileInfo(sourceFileInfo).isNativePath()) {
             return false;
         }
         mimeType = db.mimeTypeForFile(file);
@@ -211,10 +209,10 @@ bool KNewFileMenuSingleton::Entry::parseFile(QString file)
         if (!fileinfo.isReadable()) {
             return false;
         }
-        url = file;
+        url = QUrl(file);
         key = fileinfo.fileName();
         text = fileinfo.baseName();
-        filePath = file;
+        sourceFileInfo = QFileInfo(file);
         templatePath = file;
         mimeType = db.mimeTypeForFile(file);
         icon = QIcon::fromTheme(mimeType.iconName());
@@ -607,7 +605,7 @@ void KNewFileMenuPrivate::executeOtherDesktopFile(const KNewFileMenuSingleton::E
 
 void KNewFileMenuPrivate::executeRealFileOrDir(const KNewFileMenuSingleton::Entry &entry)
 {
-    Q_EMIT q->fileCreationStarted(QUrl(entry.filePath));
+    Q_EMIT q->fileCreationStarted(QUrl(entry.sourceFileInfo.filePath()));
 
     initDialog();
 
@@ -824,13 +822,13 @@ void KNewFileMenuPrivate::fillMenu()
                 act->setText(i18nc("@item:inmenu Create New", "%1", entry.text));
                 act->setActionGroup(m_newMenuGroup);
 
-                // qDebug() << templatePath << entry.filePath;
+                // qDebug() << templatePath << entry.sourceFileInfo;
 
                 if (templatePath.endsWith(QLatin1String("/URL.desktop"))) {
                     linkURL = act;
                 } else if (templatePath.endsWith(QLatin1String("/Program.desktop"))) {
                     linkApp = act;
-                } else if (entry.filePath.endsWith(QLatin1String("/linkPath.desktop"))) {
+                } else if (entry.sourceFileInfo.fileName() == QLatin1String("linkPath.desktop")) {
                     linkPath = act;
                 } else if (KDesktopFile::isDesktopFile(templatePath)) {
                     KDesktopFile df(templatePath);
