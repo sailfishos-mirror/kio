@@ -23,6 +23,7 @@
 
 #include <QDir>
 #include <QFile>
+#include <QFileInfo>
 #include <QMimeDatabase>
 #include <QScopeGuard>
 #include <QStandardPaths>
@@ -1071,6 +1072,35 @@ WorkerResult FileProtocol::batchCopy(QDataStream &stream)
         const int kioError = (abortErr == ENOSPC || abortErr == EDQUOT) ? KIO::ERR_DISK_FULL : KIO::ERR_CANNOT_WRITE;
         return WorkerResult::fail(kioError, QString::fromLocal8Bit(strerror(abortErr)));
     }
+    return WorkerResult::pass();
+}
+
+WorkerResult FileProtocol::batchStat(QDataStream &stream)
+{
+    // Request: qint32 flags (reserved), qint32 count, count x QString(local path).
+    // Reply: the UDS entries (in request order) pushed over the native listEntries() channel (the
+    // caller dispatches a small SimpleJob that captures the worker's listEntries signal, like
+    // ListJob), so the entries are framework-marshalled with no manual (de)serialization. A path
+    // that cannot be stat'd yields an empty UDSEntry, keeping positional alignment: the caller
+    // re-stats it on its per-file path, where the proper error is produced.
+    qint32 flags = 0;
+    qint32 count = 0;
+    stream >> flags >> count;
+    Q_UNUSED(flags)
+
+    const KIO::StatDetails details = getStatDetails();
+
+    UDSEntryList entries;
+    entries.reserve(count);
+    for (qint32 i = 0; i < count; ++i) {
+        QString path;
+        stream >> path;
+        UDSEntry entry;
+        const QByteArray _path = QFile::encodeName(path);
+        createUDSEntry(QFileInfo(path).fileName(), _path, entry, details, path);
+        entries.append(entry); // empty entry (count() == 0) on stat failure keeps positional alignment
+    }
+    listEntries(entries);
     return WorkerResult::pass();
 }
 

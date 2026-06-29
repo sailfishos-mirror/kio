@@ -10,6 +10,7 @@
 
 #include "copyjob.h"
 #include "../utils_p.h"
+#include "commands_p.h" // CMD_SPECIAL for the batch-stat job
 #include "deletejob.h"
 #include "filecopyjob.h"
 #include "global.h"
@@ -48,6 +49,7 @@
 #include <QDateTime>
 #include <QFile>
 #include <QFileInfo>
+#include <QHash>
 #include <QPointer>
 #include <QQueue>
 #include <QTemporaryFile>
@@ -109,6 +111,7 @@ enum DestinationState {
 enum CopyJobState {
     STATE_INITIAL,
     STATE_STATING,
+    STATE_STATING_BATCH,
     STATE_RENAMING,
     STATE_LISTING,
     STATE_CREATING_DIRS,
@@ -355,6 +358,23 @@ public:
     // only the rest per-file.
     QSet<int> m_batchReported;
 
+    // Optimistic fast path for the stat phase: stat a run of local-file sources in one worker
+    // command instead of one KIO::stat sub-job each. The entries come back cached in
+    // m_batchStatResults and are consumed by statCurrentSrc via the same fast path KCoreDirLister
+    // uses, so each source after the first skips its stat round-trip. Disabled (per job) if the
+    // command ever fails, after which everything falls back to per-source KIO::stat.
+    bool m_useBatchStat = true;
+    QList<QUrl> m_batchStatUrls; // sources in the in-flight batch-stat command, in request order
+    QHash<QUrl, UDSEntry> m_batchStatResults; // entries prefetched by a batch, keyed by source URL
+    // The worker stats a chunk synchronously and is not killable mid-command, so a chunk is the
+    // worst-case stall. m_batchStatChunk adapts each chunk toward a ~200 ms budget (resized from the
+    // measured round-trip in slotResultStatingBatch). m_batchStatedTo is the index in m_srcList up to
+    // which a batch has been dispatched, so a source left uncached by its chunk falls back to a
+    // per-source stat instead of re-triggering the same batch.
+    int m_batchStatChunk = 128;
+    qsizetype m_batchStatedTo = 0;
+    QElapsedTimer m_batchStatTimer;
+
     enum SkipType {
         // No skip dialog is involved
         NoSkipType = 0,
@@ -386,9 +406,11 @@ public:
 
     void statCurrentSrc();
     void statNextSrc();
+    bool tryBatchStatSources(); // returns true if it dispatched a batch-stat (caller should return)
 
     // Those aren't slots but submethods for slotResult.
     void slotResultStating(KJob *job);
+    void slotResultStatingBatch(KJob *job);
     void startListing(const QUrl &src);
 
     void slotResultCreatingDirs(KJob *job);
@@ -863,6 +885,7 @@ void CopyJobPrivate::slotReport()
         break;
 
     case STATE_STATING:
+    case STATE_STATING_BATCH:
     case STATE_LISTING:
         if (m_bURLDirty) {
             m_bURLDirty = false;
@@ -1051,6 +1074,160 @@ void CopyJobPrivate::statNextSrc()
     statCurrentSrc();
 }
 
+// A minimal SimpleJob for the file worker's batch-stat command. Unlike a plain KIO::special() job,
+// its private overrides start() to capture the UDS entries the worker pushes over the native
+// listEntries() channel (exactly as ListJob does), so the entries are framework-marshalled with no
+// manual (de)serialization. The collected entries are read back via entries() when the job finishes.
+namespace KIO
+{
+class BatchStatJobPrivate;
+class BatchStatJob : public SimpleJob
+{
+public:
+    explicit BatchStatJob(BatchStatJobPrivate &dd);
+    const UDSEntryList &entries() const;
+
+private:
+    Q_DECLARE_PRIVATE(BatchStatJob)
+};
+
+class BatchStatJobPrivate : public SimpleJobPrivate
+{
+public:
+    BatchStatJobPrivate(const QUrl &url, const QByteArray &packedArgs)
+        : SimpleJobPrivate(url, CMD_SPECIAL, packedArgs)
+    {
+    }
+    UDSEntryList m_entries;
+    void start(Worker *worker) override;
+
+    Q_DECLARE_PUBLIC(BatchStatJob)
+    static BatchStatJob *newJob(const QUrl &url, const QByteArray &packedArgs)
+    {
+        return new BatchStatJob(*new BatchStatJobPrivate(url, packedArgs));
+    }
+};
+
+BatchStatJob::BatchStatJob(BatchStatJobPrivate &dd)
+    : SimpleJob(dd)
+{
+}
+
+const UDSEntryList &BatchStatJob::entries() const
+{
+    return d_func()->m_entries;
+}
+
+void BatchStatJobPrivate::start(Worker *worker)
+{
+    Q_Q(BatchStatJob);
+    QObject::connect(worker, &Worker::listEntries, q, [this](const UDSEntryList &list) {
+        m_entries += list;
+    });
+    SimpleJobPrivate::start(worker);
+}
+} // namespace KIO
+
+bool CopyJobPrivate::tryBatchStatSources()
+{
+    Q_Q(CopyJob);
+    if (!m_useBatchStat || m_mode == CopyJob::Link) {
+        return false;
+    }
+
+    // Loop guard: never re-dispatch a run already batched. A source still uncached after its chunk
+    // (its stat failed, or an old worker ignored the command) must fall through to per-source
+    // KIO::stat below, not trigger another identical batch.
+    const qsizetype curIdx = m_currentStatSrc - m_srcList.constBegin();
+    if (curIdx < m_batchStatedTo) {
+        return false;
+    }
+
+    // Gather a run of consecutive local-file sources from the current position. The chunk size
+    // adapts to a ~200 ms budget per worker command (see slotResultStatingBatch); the clamp bounds
+    // the request/metadata size and the worst-case stall. A longer list becomes several chunks.
+    const int chunk = qBound(16, m_batchStatChunk, 2048);
+    QList<QUrl> run;
+    for (auto it = m_currentStatSrc; it != m_srcList.constEnd() && (*it).isLocalFile() && run.size() < chunk; ++it) {
+        run.append(*it);
+    }
+    if (run.size() < 2) {
+        return false; // a single stat is not worth a batch command
+    }
+
+    QByteArray payload;
+    QDataStream stream(&payload, QIODevice::WriteOnly);
+    stream << qint32(4) /* batch-stat sub-command */ << qint32(0) /* flags, reserved */ << qint32(run.size());
+    for (const QUrl &u : std::as_const(run)) {
+        stream << u.adjusted(QUrl::StripTrailingSlash).toLocalFile();
+    }
+
+    BatchStatJob *job = BatchStatJobPrivate::newJob(run.first(), payload);
+    job->setParentJob(q);
+    m_batchStatUrls = run;
+    m_batchStatedTo = curIdx + run.size();
+    m_batchStatTimer.start();
+    state = STATE_STATING_BATCH;
+    q->addSubjob(job);
+    return true;
+}
+
+void CopyJobPrivate::slotResultStatingBatch(KJob *job)
+{
+    Q_Q(CopyJob);
+    KIO::Job *kiojob = qobject_cast<KIO::Job *>(job);
+    const qint64 elapsedMs = m_batchStatTimer.isValid() ? m_batchStatTimer.elapsed() : -1;
+    const int sent = int(m_batchStatUrls.size());
+
+    if (job->error()) {
+        // The command failed (e.g. an old file worker that does not know sub-command 4, or the URL
+        // turned out not to be served by a file worker): give up on batching for this job and let
+        // the per-source KIO::stat path handle everything from here.
+        m_useBatchStat = false;
+        m_batchStatUrls.clear();
+        if (kiojob) {
+            m_incomingMetaData += kiojob->metaData();
+        }
+        q->removeSubjob(job);
+        Q_ASSERT(!q->hasSubjobs());
+        state = STATE_STATING;
+        statCurrentSrc();
+        return;
+    }
+
+    // The worker pushed the UDS entries (request order) over the native listEntries() channel;
+    // BatchStatJob accumulated them. Cache them keyed by source URL; statCurrentSrc picks them up
+    // via the fast path. A source the worker could not stat comes back as an empty entry and is
+    // left uncached, so it is re-stated individually and the proper error surfaces there.
+    const UDSEntryList entries = static_cast<BatchStatJob *>(job)->entries();
+    int cached = 0;
+    for (int i = 0; i < entries.size() && i < m_batchStatUrls.size(); ++i) {
+        const UDSEntry &entry = entries.at(i);
+        if (entry.count() > 0) {
+            m_batchStatResults.insert(m_batchStatUrls.at(i), entry);
+            ++cached;
+        }
+    }
+    m_batchStatUrls.clear();
+
+    if (cached == 0) {
+        // The chunk yielded nothing usable: most likely an old worker that does not implement the
+        // command (it returns pass with no metadata). Stop batching so later runs do not pay a
+        // useless round-trip; m_batchStatedTo already prevents re-batching this run.
+        m_useBatchStat = false;
+    } else if (elapsedMs <= 0) {
+        m_batchStatChunk = 2048; // too fast to measure: grow toward the cap
+    } else {
+        // Resize the next chunk toward the 200 ms budget from this command's measured wall time.
+        m_batchStatChunk = int(qBound(qint64(16), qint64(sent) * 200 / elapsedMs, qint64(2048)));
+    }
+
+    q->removeSubjob(job);
+    Q_ASSERT(!q->hasSubjobs());
+    state = STATE_STATING;
+    statCurrentSrc();
+}
+
 void CopyJobPrivate::statCurrentSrc()
 {
     Q_Q(CopyJob);
@@ -1099,6 +1276,20 @@ void CopyJobPrivate::statCurrentSrc()
                 && m_currentSrcURL.scheme() != QStringLiteral("trash")) { // only resolve src if we could resolve dest (#218719)
 
                 m_currentSrcURL = cachedItem.mostLocalUrl(); // #183585
+            }
+        }
+
+        // Batched stat: if a directory view did not already hand us the info, see whether this
+        // source belongs to a run of local files we can stat in one worker command. The first such
+        // source dispatches the batch and returns; once it completes, the entries are served from
+        // m_batchStatResults here, so every source in the run after the first skips its own stat
+        // round-trip. Mirrors tryBatchCopyFiles, but for the stat phase.
+        if (entry.count() == 0 && m_useBatchStat && m_mode != CopyJob::Link) {
+            const auto cached = m_batchStatResults.constFind(m_currentSrcURL);
+            if (cached != m_batchStatResults.constEnd()) {
+                entry = *cached;
+            } else if (tryBatchStatSources()) {
+                return; // batch dispatched; statCurrentSrc() runs again from slotResultStatingBatch
             }
         }
 
@@ -2936,6 +3127,9 @@ void CopyJob::slotResult(KJob *job)
     switch (d->state) {
     case STATE_STATING: // We were trying to stat a src url or the dest
         d->slotResultStating(job);
+        break;
+    case STATE_STATING_BATCH: // a batch-stat command over a run of local sources finished
+        d->slotResultStatingBatch(job);
         break;
     case STATE_RENAMING: { // We were trying to do a direct renaming, before even stat'ing
         d->slotResultRenaming(job);
