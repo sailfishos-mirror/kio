@@ -20,7 +20,7 @@
 #include "kioglobal_p.h"
 #include "listjob.h"
 #include "mkdirjob.h"
-#include "simplejob.h" // KIO::special for batch copy
+#include "specialjob.h" // the batch copy command
 #include "statjob.h"
 #include <cerrno>
 
@@ -341,6 +341,10 @@ public:
     // the normal path.
     bool m_useBatchCopy = true;
     int m_batchCount = 0; // number of front entries of 'files' sent in the in-flight batch
+
+    // Batch indices the worker has reported as copied, as its progress packets arrive. Tracked so
+    // the disk-full fallback can drop the already-copied files and retry only the rest per-file.
+    QSet<int> m_batchReported;
 
     enum SkipType {
         // No skip dialog is involved
@@ -819,6 +823,26 @@ void CopyJobPrivate::slotReport()
             }
         }
         break;
+
+    case STATE_COPYING_FILES_BATCH: {
+        // A batch runs as one worker command for many seconds; without this the byte/file/percent
+        // amounts would freeze for its whole duration and jump only at batch boundaries. The worker
+        // streams bytes via processedSize (m_fileProcessedSize) and completed indices in its progress
+        // packets (m_batchReported), so both can advance live here. The current-file copying() signal
+        // is emitted as those packets arrive, not from here.
+        const int filesDone = m_processedFiles + int(m_batchReported.size());
+        const bool bytesTotalUnknown = (m_totalSize == 0);
+        const bool noByteProgress = ((m_processedSize + m_fileProcessedSize) == 0);
+        const int totalFiles = m_processedFiles + files.count() + m_filesHandledByDirectRename;
+        if ((bytesTotalUnknown || noByteProgress) && totalFiles > 0) {
+            q->setProgressUnit(KJob::Files);
+        } else {
+            q->setProgressUnit(KJob::Bytes);
+        }
+        q->setProcessedAmount(KJob::Files, filesDone);
+        q->setProcessedAmount(KJob::Bytes, m_processedSize + m_fileProcessedSize);
+        break;
+    }
 
     case STATE_CREATING_DIRS:
         q->setProcessedAmount(KJob::Directories, m_processedDirs);
@@ -2107,16 +2131,48 @@ bool CopyJobPrivate::tryBatchCopyFiles()
         stream << files.at(i).uSource.toLocalFile() << files.at(i).uDest.toLocalFile();
     }
 
-    KIO::SimpleJob *job = KIO::special(m_globalDest, payload, KIO::HideProgressInfo);
+    // A SpecialJob carries the command, so the worker's progress reports come back on the data
+    // channel.
+    KIO::SpecialJob *job = new KIO::SpecialJob(m_globalDest, payload);
     job->setParentJob(q);
     m_currentSrcURL = files.at(0).uSource;
     m_currentDestURL = files.at(0).uDest;
     m_bURLDirty = true;
     m_batchCount = k;
+    m_batchReported.clear();
     state = STATE_COPYING_FILES_BATCH;
+
     q->addSubjob(job);
     q->connect(job, &Job::processedSize, q, [this](KJob *j, qulonglong processedSize) {
         slotProcessedSize(j, processedSize);
+    });
+    // The worker streams progress batched on its ~100ms gate: one packet holds the index of the file
+    // it is about to copy, or -1 when there is none, followed by the indices of the files it
+    // finished since the previous packet. So every file gets a copyingDone, batched rather than
+    // live, and it is emitted here rather than in slotResultCopyingBatch. A packet that does not
+    // decode is dropped: the batch result still accounts for every file.
+    q->connect(job, &KIO::TransferJob::data, q, [this, q](KJob *, const QByteArray &payload) {
+        QDataStream in(payload);
+        qint32 current = -1;
+        QList<qint32> done;
+        in >> current >> done;
+        if (in.status() != QDataStream::Ok) {
+            return;
+        }
+        for (const qint32 idx : std::as_const(done)) {
+            if (idx >= 0 && idx < files.size() && !m_batchReported.contains(idx)) {
+                m_batchReported.insert(idx);
+                const CopyInfo &ci = files.at(idx);
+                Q_EMIT q->copyingDone(q, ci.uSource, finalDestUrl(ci.uSource, ci.uDest), ci.mtime, false /*directory*/, false /*renamed*/);
+            }
+        }
+        if (current >= 0 && current < files.size()) {
+            const CopyInfo &ci = files.at(current);
+            m_currentSrcURL = ci.uSource; // the file about to be copied (not yet copied)
+            m_currentDestURL = ci.uDest;
+            emitCopying(q, m_currentSrcURL, m_currentDestURL);
+            Q_EMIT q->copying(q, m_currentSrcURL, m_currentDestURL);
+        }
     });
     return true;
 }
@@ -2129,16 +2185,61 @@ void CopyJobPrivate::slotResultCopyingBatch(KJob *job)
     KIO::Job *kiojob = qobject_cast<KIO::Job *>(job);
 
     if (job->error()) {
-        // The whole command failed (e.g. disk full). Fall back: disable batching and let the
-        // per-file path re-attempt these files, so the error or conflict is reported precisely.
+        if (job->error() == ERR_USER_CANCELED) {
+            // A cancel must abort the whole job, not silently resume copying the rest per-file.
+            // Mirror the per-file path (slotResultErrorCopyingFiles): propagate the error from the
+            // subjob, drop it and emit result().
+            q->Job::slotResult(job);
+            return;
+        }
+        // The whole command failed (e.g. disk full). Fall back to the per-file path - but files the
+        // worker already streamed as copied (copyingDone emitted) are done: account them and drop
+        // them so only the rest is retried.
         m_useBatchCopy = false;
         if (kiojob) {
             m_incomingMetaData += kiojob->metaData();
         }
+        QList<CopyInfo> retry;
+        for (int i = 0; i < k && i < files.size(); ++i) {
+            if (m_batchReported.contains(i)) {
+                const CopyInfo &ci = files.at(i);
+                m_successSrcList.append(ci.uSource);
+                if (ci.size != KIO::invalidFilesize) {
+                    m_processedSize += ci.size;
+                    if (m_freeSpace != KIO::invalidFilesize) {
+                        m_freeSpace -= ci.size;
+                    }
+                }
+                ++m_processedFiles;
+            } else {
+                retry.append(files.at(i));
+            }
+        }
+        m_fileProcessedSize = 0;
+        files = retry + files.mid(k);
+        m_batchReported.clear();
         q->removeSubjob(job);
         Q_ASSERT(!q->hasSubjobs());
         state = STATE_COPYING_FILES;
         copyNextFile();
+        return;
+    }
+
+    // A worker that implements the batch command always answers with the "batchDeferred" metadata
+    // (possibly empty). Its absence means the worker does not support the command (e.g. a mismatched
+    // or older kio_file): its special() returned success without copying. Treat the whole run as
+    // uncopied and fall back to the per-file path, otherwise the files would be silently skipped.
+    if (!kiojob || !kiojob->metaData().contains(QStringLiteral("batchDeferred"))) {
+        m_useBatchCopy = false;
+        if (kiojob) {
+            m_incomingMetaData += kiojob->metaData();
+        }
+        m_fileProcessedSize = 0;
+        m_batchReported.clear();
+        q->removeSubjob(job);
+        Q_ASSERT(!q->hasSubjobs());
+        state = STATE_COPYING_FILES;
+        copyNextFile(); // 'files' is untouched: the per-file path copies the whole run
         return;
     }
 
@@ -2162,9 +2263,8 @@ void CopyJobPrivate::slotResultCopyingBatch(KJob *job)
         if (deferred.contains(i)) {
             requeued.append(ci); // hand back to the per-file path (conflict dialog / error / skip)
         } else {
-            // Copied: emit the same per-file signal and accounting the single path would have.
-            const QUrl finalUrl = finalDestUrl(ci.uSource, ci.uDest);
-            Q_EMIT q->copyingDone(q, ci.uSource, finalUrl, ci.mtime, false /*directory*/, false /*renamed*/);
+            // copyingDone for this file was already streamed via the worker's index reports; here we
+            // only do the accounting the single-file path would have done.
             m_successSrcList.append(ci.uSource);
             if (ci.size != KIO::invalidFilesize) {
                 m_processedSize += ci.size; // account bytes per copied file (not via the coalesced
@@ -2177,6 +2277,7 @@ void CopyJobPrivate::slotResultCopyingBatch(KJob *job)
         }
     }
     m_fileProcessedSize = 0; // the live per-file estimate is superseded by the exact sizes above
+    m_batchReported.clear();
 
     if (!deferred.isEmpty()) {
         m_useBatchCopy = false; // once anything needs individual attention, stay on the per-file path
