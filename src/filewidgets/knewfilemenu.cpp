@@ -162,6 +162,7 @@ QDebug operator<<(QDebug debug, const KNewFileMenuSingleton::Entry &Entry)
 bool KNewFileMenuSingleton::Entry::parseFile(QString file)
 {
     QMimeDatabase db;
+    sourceFileInfo = QFileInfo(file);
     // Parse .desktop files
     if (KDesktopFile::isDesktopFile(file)) {
         const KDesktopFile desktopFile(file);
@@ -175,8 +176,6 @@ bool KNewFileMenuSingleton::Entry::parseFile(QString file)
         text = desktopFile.readName();
         comment = desktopFile.readComment();
         icon = QIcon::fromTheme(desktopFile.readIcon());
-
-        sourceFileInfo = QFileInfo(file);
 
         if (desktopFile.readType() == QLatin1String("Link") && !url.isEmpty()) {
             if (!url.isLocalFile() && !url.isRelative()) {
@@ -193,31 +192,35 @@ bool KNewFileMenuSingleton::Entry::parseFile(QString file)
             templatePath = sourceFileInfo.filePath();
         }
 
-        if (text.isEmpty()) {
-            text = QFileInfo(sourceFileInfo).baseName();
-        }
-
         // TODO: Allow external files through non-local urls
         if (!QFileInfo(templatePath).isReadable() && QFileInfo(sourceFileInfo).isNativePath()) {
             return false;
         }
-        mimeType = db.mimeTypeForFile(file);
+        mimeType = db.mimeTypeForFile(templatePath);
     }
     // Parse non-.desktop files
     else {
-        QFileInfo fileinfo(file);
-        if (!fileinfo.isReadable()) {
+        if (!sourceFileInfo.isReadable()) {
             return false;
         }
         url = QUrl(file);
-        key = fileinfo.fileName();
-        text = fileinfo.baseName();
-        sourceFileInfo = QFileInfo(file);
         templatePath = file;
         mimeType = db.mimeTypeForFile(file);
-        icon = QIcon::fromTheme(mimeType.iconName());
+    }
+
+    if (key.isEmpty()) {
+        key = sourceFileInfo.fileName();
+    }
+    if (text.isEmpty()) {
+        text = sourceFileInfo.baseName();
+    }
+    if (comment.isEmpty()) {
         comment = i18nc("@label:textbox Prompt for new file of type", "Enter %1 filename:", mimeType.comment());
     }
+    if (icon.isNull()) {
+        icon = QIcon::fromTheme(mimeType.iconName());
+    }
+
     // Put Directory first in the list (a bit hacky),
     // and TextFile before others because it's the most used one.
     // This also sorts by user-visible name.
