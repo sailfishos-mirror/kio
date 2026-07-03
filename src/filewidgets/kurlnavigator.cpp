@@ -415,7 +415,7 @@ void KUrlNavigatorPrivate::applyUncommittedUrl(ApplyUrlMethod method)
 
     // Treat absolute paths as absolute paths.
     // Relative paths get appended to the current path, if protocol supports it.
-    if (text.startsWith(QLatin1Char('/'))) {
+    if (text.startsWith(QLatin1Char('/')) || !QUrl(text).isRelative()) {
         url.setPath(text);
     } else {
         url.setPath(Utils::concatPaths(url.path(), text));
