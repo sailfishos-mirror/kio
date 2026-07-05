@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: kcmkio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-29 00:40+0000\n"
-"PO-Revision-Date: 2026-06-14 20:16+0400\n"
+"PO-Revision-Date: 2026-07-04 21:41+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -3656,7 +3656,7 @@ msgstr "أنشئ مجلدًّا جديدًا في %1:"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Enter folder name"
-msgstr "أَدْخِل اسم المجلد"
+msgstr "أدخِل اسم المجلد"
 
 #: filewidgets/knewfilemenu.cpp:1571
 #, kde-format
@@ -3668,19 +3668,19 @@ msgstr "المبدئيّ"
 #, kde-format
 msgctxt "@title:window"
 msgid "Create New File"
-msgstr "أنشئ ملفا جديدا"
+msgstr "أنشئ ملفًا جديدًا"
 
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
 #: filewidgets/knewfilemenu_newfiledialog.ui:57
 #, kde-format
 msgid "Enter file name"
-msgstr "أَدْخِل اسم المَلَف"
+msgstr "أدخل اسم الملف"
 
 #. i18n: ectx: property (title), widget (KCollapsibleGroupBox, chooseIconBox)
 #: filewidgets/knewfilemenu_newfiledialog.ui:79
 #, kde-format
 msgid "Choose custom icon or color"
-msgstr "اختر أيقونة مخصصة أو لون"
+msgstr "اختر أيقونة مخصّصة أو لون"
 
 #. i18n: ectx: property (text), widget (QPushButton, chooseIconButton)
 #: filewidgets/knewfilemenu_newfiledialog.ui:129
@@ -3710,7 +3710,7 @@ msgstr "انسخ"
 #: filewidgets/kurlnavigator.cpp:614 widgets/checksumswidget.ui:42
 #, kde-format
 msgid "Paste"
-msgstr "ألصق"
+msgstr "ألصِق"
 
 #: filewidgets/kurlnavigator.cpp:634
 #, kde-format
@@ -5997,7 +5997,7 @@ msgstr "&عامّ"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Enter file name"
-msgstr "أَدْخِل اسم المَلَف"
+msgstr "أدخِل اسم الملف"
 
 #: widgets/kpropertiesdialogbuiltin_p.cpp:428
 #, kde-format
@@ -6015,7 +6015,7 @@ msgstr "أنعِش"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Enter target location"
-msgstr "أدخل مكان الهدف"
+msgstr "أدخِل مكان الهدف"
 
 #: widgets/kpropertiesdialogbuiltin_p.cpp:452
 #: widgets/kpropertiesdialogbuiltin_p.cpp:455
