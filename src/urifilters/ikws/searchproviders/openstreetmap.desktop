@@ -28,6 +28,7 @@ Name[pt_BR]=OpenStreetMap
 Name[ru]=OpenStreetMap
 Name[sk]=OpenStreetMap
 Name[sl]=OpenStreetMap
+Name[sv]=OpenStreetMap
 Name[tr]=OpenStreetMap
 Name[ug]=OpenStreetMap ئوچۇق كوچا خەرىتىسى
 Name[uk]=OpenStreetMap
@@ -59,6 +60,7 @@ Query[pt_BR]=https://www.openstreetmap.org/search?query=\\{@}
 Query[ru]=https://www.openstreetmap.org/search?query=\\{@}
 Query[sk]=https://www.openstreetmap.org/search?query=\\{@}
 Query[sl]=https://www.openstreetmap.org/search?query=\\{@}
+Query[sv]=https://www.openstreetmap.org/search?query=\\{@}
 Query[tr]=https://www.openstreetmap.org/search?query=\\{@}
 Query[uk]=https://www.openstreetmap.org/search?query=\\{@}
 Query[zh_CN]=https://www.openstreetmap.org/search?query=\\{@}
