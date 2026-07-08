@@ -6866,7 +6866,7 @@ msgstr "ficheiro colado"
 #| msgid "Paste Clipboard Contents…"
 msgctxt "@title:dialog"
 msgid "Paste Clipboard Content"
-msgstr "Colar conteúdo da Área de Transferência…"
+msgstr "Colar da área de transferência…"
 
 #: widgets/paste.cpp:122
 #, kde-format
@@ -6902,7 +6902,7 @@ msgstr[1] "Colar %1 Itens"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Paste Clipboard Contents…"
-msgstr "Colar conteúdo da Área de Transferência…"
+msgstr "Colar da área de transferência…"
 
 #: widgets/paste.cpp:258
 #, kde-format
