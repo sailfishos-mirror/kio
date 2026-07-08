@@ -56,22 +56,23 @@ void SocketConnectionBackend::setSuspended(bool enable)
         socket->setReadBufferSize(1);
     } else {
         // qCDebug(KIO_CORE) << socket << "resuming";
-        // Calling setReadBufferSize from a readyRead slot leads to a bug in Qt, fixed in 13c246ee119
+        // On Unix, growing the read buffer re-enables the read notifier by itself,
+        // so data that arrived while suspended is picked up again.
         socket->setReadBufferSize(StandardBufferSize);
-        if (socket->bytesAvailable() >= HeaderSize) {
-            // there are bytes available
-            QMetaObject::invokeMethod(this, &SocketConnectionBackend::socketReadyRead, Qt::QueuedConnection);
-        }
-
-        // We read all bytes here, but we don't use readAll() because we need
-        // to read at least one byte (even if there isn't any) so that the
-        // socket notifier is re-enabled
+#ifdef Q_OS_WIN
+        // A Windows local socket is a named pipe. While suspended its reader fills
+        // the one-byte buffer and then stops, and only a read() call makes it start
+        // reading again; growing the read buffer does not. So read one byte, even
+        // when none is waiting, and put it straight back to get the reader going
+        // again for the data that arrived while suspended.
         QByteArray data = socket->read(socket->bytesAvailable() + 1);
         for (int i = data.size(); --i >= 0;) {
             socket->ungetChar(data[i]);
         }
-        // Workaround Qt5 bug, readyRead isn't always emitted here...
+        // readyRead only fires for bytes that arrive from now on, not for the ones
+        // just put back, so process whatever is already buffered by hand.
         QMetaObject::invokeMethod(this, &SocketConnectionBackend::socketReadyRead, Qt::QueuedConnection);
+#endif
     }
 }
 
