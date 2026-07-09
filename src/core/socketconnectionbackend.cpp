@@ -60,6 +60,12 @@ void SocketConnectionBackend::setSuspended(bool enable)
         // so data that arrived while suspended is picked up again.
         socket->setReadBufferSize(StandardBufferSize);
 #ifdef Q_OS_WIN
+        // close() shuts the socket without clearing our tracked state, so a resume can still
+        // reach this point with the socket already closed. Reading from it then would only warn
+        // that the device is not open, so leave a socket that is no longer connected alone.
+        if (socket->state() != QLocalSocket::LocalSocketState::ConnectedState) {
+            return;
+        }
         // A Windows local socket is a named pipe. While suspended its reader fills
         // the one-byte buffer and then stops, and only a read() call makes it start
         // reading again; growing the read buffer does not. So read one byte, even

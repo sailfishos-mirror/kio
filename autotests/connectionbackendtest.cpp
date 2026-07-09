@@ -4,7 +4,9 @@
 #include <cstdlib>
 #include <functional>
 
+#include <QRegularExpression>
 #include <QSignalSpy>
+#include <QStandardPaths>
 #include <QTest>
 #include <QThread>
 
@@ -40,6 +42,30 @@ private Q_SLOTS:
 
         auto task = spy->at(0).at(0).value<KIO::Task>();
         QCOMPARE(task.data.size(), data.size());
+    }
+
+    // Resuming a backend whose socket is not open must stay quiet. connectToRemote sets the
+    // backend to Connected and returns at once, but if no server is listening the socket never
+    // opens. On Windows the resume path reads one byte to kick the named pipe reader; doing that
+    // on a socket that is not open would print "QIODevice::read (QLocalSocket): device not open".
+    void testResumeDoesNotReadUnopenedSocket()
+    {
+        QTest::failOnWarning(QRegularExpression(QStringLiteral("device not open")));
+
+        KIO::SocketConnectionBackend backend;
+
+        const QString prefix = QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation);
+        QUrl address;
+        address.setScheme(QStringLiteral("local"));
+        address.setPath(prefix + QStringLiteral("/connectionbackendtest-no-such-server.socket"));
+
+        QVERIFY(backend.connectToRemote(address));
+
+        // Resume right away, while the socket is still trying to connect, and again after the
+        // connection has had a chance to fail. Neither must touch the not-open socket.
+        backend.setSuspended(false);
+        QTest::qWait(50);
+        backend.setSuspended(false);
     }
 
     // A command sent around a suspend/resume cycle is delivered intact. On Unix
