@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-29 00:40+0000\n"
+"POT-Creation-Date: 2026-07-10 00:40+0000\n"
 "PO-Revision-Date: 2009-01-09 21:08-0800\n"
 "Last-Translator: Deepayan Sarkar <deepayan.sarkar@gmail.com>\n"
 "Language-Team: en_US <kde-translation@bengalinux.org>\n"
@@ -48,12 +48,6 @@ msgid ""
 msgstr ""
 "<qt><b>%1</b> ফাইলটির মালিকানা পাল্টানো যায়নি, কারণ তার জন্য প্রয়োজনীয় অনুমতি "
 "আপনার নেই।</qt>"
-
-#: core/connectionbackend.cpp:114
-#, fuzzy, kde-format
-#| msgid "Unable to Enter Folder"
-msgid "Unable to create KIO worker: %1"
-msgstr "ফোল্ডারে ঢোকা যায়নি"
 
 #: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
 #, fuzzy, kde-format
@@ -2126,92 +2120,98 @@ msgid ""
 "executable program."
 msgstr ""
 
-#: core/slavebase.cpp:813
+#: core/slavebase.cpp:791
 #, kde-format
 msgid "Opening connections is not supported with the protocol %1."
 msgstr "প্রোটোকল %1 কানেকশন খোলা সমর্থন করে না।"
 
-#: core/slavebase.cpp:815
+#: core/slavebase.cpp:793
 #, kde-format
 msgid "Closing connections is not supported with the protocol %1."
 msgstr "প্রোটোকল %1 কানেকশন বন্ধ করা সমর্থন করে না।"
 
-#: core/slavebase.cpp:817
+#: core/slavebase.cpp:795
 #, kde-format
 msgid "Accessing files is not supported with the protocol %1."
 msgstr ""
 
-#: core/slavebase.cpp:819
+#: core/slavebase.cpp:797
 #, kde-format
 msgid "Writing to %1 is not supported."
 msgstr "%1-তে লেখা সমর্থিত নয়।"
 
-#: core/slavebase.cpp:821
+#: core/slavebase.cpp:799
 #, kde-format
 msgid "There are no special actions available for protocol %1."
 msgstr "প্রোটোকল %1-এ কোন বিশেষ ক্রিয়া (special actions) নেই।"
 
-#: core/slavebase.cpp:823
+#: core/slavebase.cpp:801
 #, kde-format
 msgid "Listing folders is not supported for protocol %1."
 msgstr ""
 
-#: core/slavebase.cpp:825
+#: core/slavebase.cpp:803
 #, kde-format
 msgid "Retrieving data from %1 is not supported."
 msgstr ""
 
-#: core/slavebase.cpp:827
+#: core/slavebase.cpp:805
 #, kde-format
 msgid "Retrieving mime type information from %1 is not supported."
 msgstr ""
 
-#: core/slavebase.cpp:829
+#: core/slavebase.cpp:807
 #, kde-format
 msgid "Renaming or moving files within %1 is not supported."
 msgstr ""
 
-#: core/slavebase.cpp:831
+#: core/slavebase.cpp:809
 #, kde-format
 msgid "Creating symlinks is not supported with protocol %1."
 msgstr "প্রোটোকল %1 সিমলিঙ্ক তৈরি করা সমর্থন করে না।"
 
-#: core/slavebase.cpp:833
+#: core/slavebase.cpp:811
 #, kde-format
 msgid "Copying files within %1 is not supported."
 msgstr "%1-এর মধ্যে ফাইল কপি করা সমর্থিত নয়।"
 
-#: core/slavebase.cpp:835
+#: core/slavebase.cpp:813
 #, kde-format
 msgid "Deleting files from %1 is not supported."
 msgstr "%1 থেকে ফাইল মুছে ফেলা সমর্থিত নয়।"
 
-#: core/slavebase.cpp:837
+#: core/slavebase.cpp:815
 #, kde-format
 msgid "Creating folders is not supported with protocol %1."
 msgstr "প্রোটোকল %1 ফোল্ডার তৈরি করা সমর্থন করে না।"
 
-#: core/slavebase.cpp:839
+#: core/slavebase.cpp:817
 #, kde-format
 msgid "Changing the attributes of files is not supported with protocol %1."
 msgstr "প্রোটোকল %1 ফাইলের অ্যাট্রিবিউট পরিবর্তন করা সমর্থন করে না।"
 
-#: core/slavebase.cpp:841
+#: core/slavebase.cpp:819
 #, fuzzy, kde-format
 msgid "Changing the ownership of files is not supported with protocol %1."
 msgstr "প্রোটোকল %1 ফাইলের অ্যাট্রিবিউট পরিবর্তন করা সমর্থন করে না।"
 
-#: core/slavebase.cpp:843
+#: core/slavebase.cpp:821
 #, fuzzy, kde-format
 msgid "Opening files is not supported with protocol %1."
 msgstr "প্রোটোকল %1 ফোল্ডার তৈরি করা সমর্থন করে না।"
 
-#: core/slavebase.cpp:845
+#: core/slavebase.cpp:823
 #, kde-format
 msgid "Protocol %1 does not support action %2."
 msgstr "প্রোটোকল %1 ক্রিয়া %2 সমর্থন করে না।"
 
-#: core/worker.cpp:309
+#: core/socketconnectionbackend.cpp:120
+#, fuzzy, kde-format
+#| msgid "Unable to Enter Folder"
+msgid "Unable to create KIO worker: %1"
+msgstr "ফোল্ডারে ঢোকা যায়নি"
+
+#: core/worker.cpp:398
 #, kde-format
 msgctxt "@info %2 is a path"
 msgid ""
@@ -2220,17 +2220,17 @@ msgid ""
 "have permission to modify it at %2."
 msgstr ""
 
-#: core/worker.cpp:347
+#: core/worker.cpp:435
 #, kde-format
 msgid "Unknown protocol '%1'."
 msgstr "অজ্ঞাত প্রোটোকল '%1'।"
 
-#: core/worker.cpp:358
+#: core/worker.cpp:446
 #, kde-format
 msgid "Can not find a KIO worker for protocol '%1'."
 msgstr ""
 
-#: core/worker.cpp:365
+#: core/worker.cpp:453
 #, kde-format
 msgctxt "@info %2 and %3 are paths"
 msgid ""
@@ -2239,12 +2239,12 @@ msgid ""
 "considered insecure."
 msgstr ""
 
-#: core/worker.cpp:377
+#: core/worker.cpp:493
 #, kde-format
 msgid "Can not create a socket for launching a KIO worker for protocol '%1'."
 msgstr ""
 
-#: core/worker.cpp:423
+#: core/worker.cpp:513
 #, kde-format
 msgid "Can not find 'kioworker' executable at '%1'"
 msgstr ""
@@ -2273,13 +2273,13 @@ msgstr "চালিয়ে যা&ও"
 msgid "&Current Session only"
 msgstr "শুধু &এই সেশনের জন্য"
 
-#: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:53
+#: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:54
 #, fuzzy, kde-format
 msgctxt "@action:inmenu Context menu shown when files are dragged"
 msgid "Move Into New Folder"
 msgstr "ফোল্ডার তৈরি করা যায়নি"
 
-#: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:70
+#: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:71
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Create New Folder for These Items"
@@ -3543,7 +3543,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, sha1CopyButton)
 #. i18n: ectx: property (text), widget (QPushButton, sha256CopyButton)
 #. i18n: ectx: property (text), widget (QPushButton, sha512CopyButton)
-#: filewidgets/kurlnavigator.cpp:610 widgets/checksumswidget.ui:145
+#: filewidgets/kurlnavigator.cpp:611 widgets/checksumswidget.ui:145
 #: widgets/checksumswidget.ui:192 widgets/checksumswidget.ui:239
 #: widgets/checksumswidget.ui:286
 #, fuzzy, kde-format
@@ -3551,41 +3551,41 @@ msgid "Copy"
 msgstr "কপি করা হচ্ছে"
 
 #. i18n: ectx: property (text), widget (QPushButton, pasteButton)
-#: filewidgets/kurlnavigator.cpp:614 widgets/checksumswidget.ui:42
+#: filewidgets/kurlnavigator.cpp:615 widgets/checksumswidget.ui:42
 #, fuzzy, kde-format
 msgid "Paste"
 msgstr "তারিখ"
 
-#: filewidgets/kurlnavigator.cpp:634
+#: filewidgets/kurlnavigator.cpp:635
 #, fuzzy, kde-format
 #| msgid "Open With"
 msgctxt "@item:inmenu"
 msgid "Open \"%1\" in New Tab"
 msgstr "খুলতে ব্যবহার করো"
 
-#: filewidgets/kurlnavigator.cpp:642
+#: filewidgets/kurlnavigator.cpp:643
 #, fuzzy, kde-format
 #| msgid "Open With"
 msgctxt "@item:inmenu"
 msgid "Open \"%1\" in New Window"
 msgstr "খুলতে ব্যবহার করো"
 
-#: filewidgets/kurlnavigator.cpp:651
+#: filewidgets/kurlnavigator.cpp:652
 #, fuzzy, kde-format
 msgid "Edit"
 msgstr "&সম্পাদন করো..."
 
-#: filewidgets/kurlnavigator.cpp:654
+#: filewidgets/kurlnavigator.cpp:655
 #, kde-format
 msgid "Navigate"
 msgstr ""
 
-#: filewidgets/kurlnavigator.cpp:669
+#: filewidgets/kurlnavigator.cpp:670
 #, kde-format
 msgid "Show Full Path"
 msgstr ""
 
-#: filewidgets/kurlnavigator.cpp:839
+#: filewidgets/kurlnavigator.cpp:840
 #, fuzzy, kde-kuit-format
 msgctxt "@info:tooltip for button. 1 is path"
 msgid "Go to any location on the path <filename>%1</filename>"
@@ -3938,7 +3938,7 @@ msgstr "যে কমান্ড চালানো হবে"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr ""
 
-#: kioworkers/file/file.cpp:689
+#: kioworkers/file/file.cpp:692
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -3947,7 +3947,7 @@ msgstr ""
 "%1-র\n"
 "জন্য অনুমতি বদলানো যায়নি"
 
-#: kioworkers/file/file.cpp:697
+#: kioworkers/file/file.cpp:700
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid ""
@@ -3955,18 +3955,18 @@ msgid ""
 "%1"
 msgstr "%1-এর অনুমতি বদলানো যায়নি।"
 
-#: kioworkers/file/file.cpp:777 kioworkers/file/file.cpp:869
+#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
 #, fuzzy, kde-format
 #| msgid "Could Not Delete Temporary File"
 msgid "Could not open temporary file"
 msgstr "অস্থায়ী ফাইল মোছা যায়নি"
 
-#: kioworkers/file/file.cpp:801
+#: kioworkers/file/file.cpp:804
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "\"mount\" প্রোগ্রামটি পাওয়া যায়নি"
 
-#: kioworkers/file/file.cpp:878
+#: kioworkers/file/file.cpp:881
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "\"umount\" প্রোগ্রামটি পাওয়া যায়নি"

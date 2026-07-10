@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio 0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-29 00:40+0000\n"
+"POT-Creation-Date: 2026-07-10 00:40+0000\n"
 "PO-Revision-Date: 2026-06-21 23:22+0200\n"
 "Last-Translator: Igor Dobrača <igor.dobraca@skole.hr>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -50,11 +50,6 @@ msgid ""
 msgstr ""
 "Nije bilo moguće mijenjati vlasništvo nad datotekom <filename>%1</filename>. "
 "Nemate dovoljan pristupa datoteci da biste izvršili promjenu."
-
-#: core/connectionbackend.cpp:114
-#, kde-format
-msgid "Unable to create KIO worker: %1"
-msgstr "Nije moguće stvoriti KIO worker: %1"
 
 #: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
 #, kde-format
@@ -2320,92 +2315,97 @@ msgstr ""
 "<filename>%1</filename> nije pronađen; molimo unesite valjanu putanju do "
 "izvršnog programa."
 
-#: core/slavebase.cpp:813
+#: core/slavebase.cpp:791
 #, kde-format
 msgid "Opening connections is not supported with the protocol %1."
 msgstr "Otvaranje veza nije podržano s protokolom %1."
 
-#: core/slavebase.cpp:815
+#: core/slavebase.cpp:793
 #, kde-format
 msgid "Closing connections is not supported with the protocol %1."
 msgstr "Zatvaranje veza nije podržano protokolom %1."
 
-#: core/slavebase.cpp:817
+#: core/slavebase.cpp:795
 #, kde-format
 msgid "Accessing files is not supported with the protocol %1."
 msgstr "Pristupanje datotekama nije podržano protokolom %1."
 
-#: core/slavebase.cpp:819
+#: core/slavebase.cpp:797
 #, kde-format
 msgid "Writing to %1 is not supported."
 msgstr "Pisanje u %1 nije podržano."
 
-#: core/slavebase.cpp:821
+#: core/slavebase.cpp:799
 #, kde-format
 msgid "There are no special actions available for protocol %1."
 msgstr "Nema dostupnih posebnih akcija za protokol %1."
 
-#: core/slavebase.cpp:823
+#: core/slavebase.cpp:801
 #, kde-format
 msgid "Listing folders is not supported for protocol %1."
 msgstr "Listanje mapa nije podržano protokolom %1."
 
-#: core/slavebase.cpp:825
+#: core/slavebase.cpp:803
 #, kde-format
 msgid "Retrieving data from %1 is not supported."
 msgstr "Dohvaćanje podataka iz %1 nije podržano."
 
-#: core/slavebase.cpp:827
+#: core/slavebase.cpp:805
 #, kde-format
 msgid "Retrieving mime type information from %1 is not supported."
 msgstr "Dohvaćanje informacija o MIME vrstama iz %1 nije podržano."
 
-#: core/slavebase.cpp:829
+#: core/slavebase.cpp:807
 #, kde-format
 msgid "Renaming or moving files within %1 is not supported."
 msgstr "Preimenovanje ili premještanje datoteka unutar %1 nije podržano."
 
-#: core/slavebase.cpp:831
+#: core/slavebase.cpp:809
 #, kde-format
 msgid "Creating symlinks is not supported with protocol %1."
 msgstr "Stvaranje simboličkih linkove nije podržano protokolom %1."
 
-#: core/slavebase.cpp:833
+#: core/slavebase.cpp:811
 #, kde-format
 msgid "Copying files within %1 is not supported."
 msgstr "Kopiranje datoteka unutar %1 nije podržano."
 
-#: core/slavebase.cpp:835
+#: core/slavebase.cpp:813
 #, kde-format
 msgid "Deleting files from %1 is not supported."
 msgstr "Brisanje datoteka iz %1 nije podržano."
 
-#: core/slavebase.cpp:837
+#: core/slavebase.cpp:815
 #, kde-format
 msgid "Creating folders is not supported with protocol %1."
 msgstr "Stvaranje mapa nije podržano protokolom %1."
 
-#: core/slavebase.cpp:839
+#: core/slavebase.cpp:817
 #, kde-format
 msgid "Changing the attributes of files is not supported with protocol %1."
 msgstr "Mijenjanje atributa datoteka nije podržano protokolom %1."
 
-#: core/slavebase.cpp:841
+#: core/slavebase.cpp:819
 #, kde-format
 msgid "Changing the ownership of files is not supported with protocol %1."
 msgstr "Mijenjanje vlasništva datoteka nije podržano protokolom %1."
 
-#: core/slavebase.cpp:843
+#: core/slavebase.cpp:821
 #, kde-format
 msgid "Opening files is not supported with protocol %1."
 msgstr "Otvaranje datoteka nije podržano protokolom %1."
 
-#: core/slavebase.cpp:845
+#: core/slavebase.cpp:823
 #, kde-format
 msgid "Protocol %1 does not support action %2."
 msgstr "Protokol %1 ne podržava akciju %2."
 
-#: core/worker.cpp:309
+#: core/socketconnectionbackend.cpp:120
+#, kde-format
+msgid "Unable to create KIO worker: %1"
+msgstr "Nije moguće stvoriti KIO worker: %1"
+
+#: core/worker.cpp:398
 #, kde-format
 msgctxt "@info %2 is a path"
 msgid ""
@@ -2417,17 +2417,17 @@ msgstr ""
 "ne može se jamčiti jer korisnici osim roota imaju dopuštenje mijenjati ga na "
 "%2."
 
-#: core/worker.cpp:347
+#: core/worker.cpp:435
 #, kde-format
 msgid "Unknown protocol '%1'."
 msgstr "Nepoznati protokol '%1'."
 
-#: core/worker.cpp:358
+#: core/worker.cpp:446
 #, kde-format
 msgid "Can not find a KIO worker for protocol '%1'."
 msgstr "Ne mogu pronaći KIO worker za protokol '%1'."
 
-#: core/worker.cpp:365
+#: core/worker.cpp:453
 #, kde-format
 msgctxt "@info %2 and %3 are paths"
 msgid ""
@@ -2438,13 +2438,13 @@ msgstr ""
 "KIO worker za protokol \"%1\" u %2 nije bio učitan jer se svi KIO worker "
 "koji se nalaze izvan %3 i traže povišene privilegije smatraju nesigurnima."
 
-#: core/worker.cpp:377
+#: core/worker.cpp:493
 #, kde-format
 msgid "Can not create a socket for launching a KIO worker for protocol '%1'."
 msgstr ""
 "Ne može se stvoriti socket za pokretanje KIO worker-a za protokol '%1'."
 
-#: core/worker.cpp:423
+#: core/worker.cpp:513
 #, kde-format
 msgid "Can not find 'kioworker' executable at '%1'"
 msgstr "Ne mogu pronaći izvršnu datoteku 'kioworker' na '%1'"
@@ -2472,13 +2472,13 @@ msgstr "&Nastavi"
 msgid "&Current Session only"
 msgstr "Samo trenutna s&jednica"
 
-#: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:53
+#: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:54
 #, kde-format
 msgctxt "@action:inmenu Context menu shown when files are dragged"
 msgid "Move Into New Folder"
 msgstr "Premjesti u novu mapu"
 
-#: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:70
+#: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:71
 #, kde-format
 msgctxt "@title:window"
 msgid "Create New Folder for These Items"
@@ -3750,7 +3750,7 @@ msgstr "Ikonu možeš promijeniti kasnije u svojstvima mape."
 #. i18n: ectx: property (text), widget (QPushButton, sha1CopyButton)
 #. i18n: ectx: property (text), widget (QPushButton, sha256CopyButton)
 #. i18n: ectx: property (text), widget (QPushButton, sha512CopyButton)
-#: filewidgets/kurlnavigator.cpp:610 widgets/checksumswidget.ui:145
+#: filewidgets/kurlnavigator.cpp:611 widgets/checksumswidget.ui:145
 #: widgets/checksumswidget.ui:192 widgets/checksumswidget.ui:239
 #: widgets/checksumswidget.ui:286
 #, kde-format
@@ -3758,39 +3758,39 @@ msgid "Copy"
 msgstr "Kopiraj"
 
 #. i18n: ectx: property (text), widget (QPushButton, pasteButton)
-#: filewidgets/kurlnavigator.cpp:614 widgets/checksumswidget.ui:42
+#: filewidgets/kurlnavigator.cpp:615 widgets/checksumswidget.ui:42
 #, kde-format
 msgid "Paste"
 msgstr "Zalijepi"
 
-#: filewidgets/kurlnavigator.cpp:634
+#: filewidgets/kurlnavigator.cpp:635
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Open \"%1\" in New Tab"
 msgstr "Otvori \"%1\" u novoj kartici"
 
-#: filewidgets/kurlnavigator.cpp:642
+#: filewidgets/kurlnavigator.cpp:643
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Open \"%1\" in New Window"
 msgstr "Otvorite \"%1\" u novom prozoru"
 
-#: filewidgets/kurlnavigator.cpp:651
+#: filewidgets/kurlnavigator.cpp:652
 #, kde-format
 msgid "Edit"
 msgstr "Uređuj"
 
-#: filewidgets/kurlnavigator.cpp:654
+#: filewidgets/kurlnavigator.cpp:655
 #, kde-format
 msgid "Navigate"
 msgstr "Navigiraj"
 
-#: filewidgets/kurlnavigator.cpp:669
+#: filewidgets/kurlnavigator.cpp:670
 #, kde-format
 msgid "Show Full Path"
 msgstr "Prikaži cijelu putanju"
 
-#: filewidgets/kurlnavigator.cpp:839
+#: filewidgets/kurlnavigator.cpp:840
 #, kde-kuit-format
 msgctxt "@info:tooltip for button. 1 is path"
 msgid "Go to any location on the path <filename>%1</filename>"
@@ -4162,7 +4162,7 @@ msgstr "Naredba koju treba izvršiti"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "URL(i) ili lokalna(e) datoteka(e) koje se koriste za 'naredbu'"
 
-#: kioworkers/file/file.cpp:689
+#: kioworkers/file/file.cpp:692
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4171,7 +4171,7 @@ msgstr ""
 "Ne mogu promijeniti ovlasti za\n"
 "%1"
 
-#: kioworkers/file/file.cpp:697
+#: kioworkers/file/file.cpp:700
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4181,17 +4181,17 @@ msgstr ""
 "Nisam mogao promijeniti vlasnika i grupu za\n"
 "%1"
 
-#: kioworkers/file/file.cpp:777 kioworkers/file/file.cpp:869
+#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
 #, kde-format
 msgid "Could not open temporary file"
 msgstr "Ne mogu otvoriti privremenu datoteku"
 
-#: kioworkers/file/file.cpp:801
+#: kioworkers/file/file.cpp:804
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "Nije moguće pronaći program \"mount\""
 
-#: kioworkers/file/file.cpp:878
+#: kioworkers/file/file.cpp:881
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "Nije moguće pronaći program \"umount\""

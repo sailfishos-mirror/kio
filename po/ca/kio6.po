@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-29 00:40+0000\n"
+"POT-Creation-Date: 2026-07-10 00:40+0000\n"
 "PO-Revision-Date: 2026-06-14 09:42+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -47,11 +47,6 @@ msgid ""
 msgstr ""
 "No s'ha pogut modificar el propietari del fitxer <filename>%1</filename>. No "
 "teniu accés suficient al fitxer per a realitzar el canvi."
-
-#: core/connectionbackend.cpp:114
-#, kde-format
-msgid "Unable to create KIO worker: %1"
-msgstr "No s'ha pogut crear el procés de treball KIO: %1"
 
 #: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
 #, kde-format
@@ -2360,92 +2355,97 @@ msgstr ""
 "No s'ha trobat <filename>%1</filename>. Si us plau, introduïu un camí vàlid "
 "a un programa executable."
 
-#: core/slavebase.cpp:813
+#: core/slavebase.cpp:791
 #, kde-format
 msgid "Opening connections is not supported with the protocol %1."
 msgstr "No s'accepta l'obertura de connexions amb el protocol %1."
 
-#: core/slavebase.cpp:815
+#: core/slavebase.cpp:793
 #, kde-format
 msgid "Closing connections is not supported with the protocol %1."
 msgstr "No s'accepta el tancament de connexions amb el protocol %1."
 
-#: core/slavebase.cpp:817
+#: core/slavebase.cpp:795
 #, kde-format
 msgid "Accessing files is not supported with the protocol %1."
 msgstr "No s'accepta l'accés a fitxers amb el protocol %1."
 
-#: core/slavebase.cpp:819
+#: core/slavebase.cpp:797
 #, kde-format
 msgid "Writing to %1 is not supported."
 msgstr "No s'accepta l'escriptura a %1."
 
-#: core/slavebase.cpp:821
+#: core/slavebase.cpp:799
 #, kde-format
 msgid "There are no special actions available for protocol %1."
 msgstr "No hi ha accions especials disponibles per al protocol %1."
 
-#: core/slavebase.cpp:823
+#: core/slavebase.cpp:801
 #, kde-format
 msgid "Listing folders is not supported for protocol %1."
 msgstr "No s'accepta el llistat de carpetes per al protocol %1."
 
-#: core/slavebase.cpp:825
+#: core/slavebase.cpp:803
 #, kde-format
 msgid "Retrieving data from %1 is not supported."
 msgstr "No s'accepta la recuperació de dades des de %1."
 
-#: core/slavebase.cpp:827
+#: core/slavebase.cpp:805
 #, kde-format
 msgid "Retrieving mime type information from %1 is not supported."
 msgstr "No s'accepta la recuperació d'informació del tipus MIME des de %1."
 
-#: core/slavebase.cpp:829
+#: core/slavebase.cpp:807
 #, kde-format
 msgid "Renaming or moving files within %1 is not supported."
 msgstr "No s'accepta el canvi de nom o el moviment de fitxers dins de %1."
 
-#: core/slavebase.cpp:831
+#: core/slavebase.cpp:809
 #, kde-format
 msgid "Creating symlinks is not supported with protocol %1."
 msgstr "El protocol %1 no accepta la creació d'enllaços simbòlics."
 
-#: core/slavebase.cpp:833
+#: core/slavebase.cpp:811
 #, kde-format
 msgid "Copying files within %1 is not supported."
 msgstr "No s'accepta la còpia de fitxers dins de %1."
 
-#: core/slavebase.cpp:835
+#: core/slavebase.cpp:813
 #, kde-format
 msgid "Deleting files from %1 is not supported."
 msgstr "No s'accepta la supressió de fitxers des de %1."
 
-#: core/slavebase.cpp:837
+#: core/slavebase.cpp:815
 #, kde-format
 msgid "Creating folders is not supported with protocol %1."
 msgstr "No s'accepta la creació de carpetes amb el protocol %1."
 
-#: core/slavebase.cpp:839
+#: core/slavebase.cpp:817
 #, kde-format
 msgid "Changing the attributes of files is not supported with protocol %1."
 msgstr "No s'accepta el canvi dels atributs als fitxers amb el protocol %1."
 
-#: core/slavebase.cpp:841
+#: core/slavebase.cpp:819
 #, kde-format
 msgid "Changing the ownership of files is not supported with protocol %1."
 msgstr "No s'accepta el canvi del propietari als fitxers amb el protocol %1."
 
-#: core/slavebase.cpp:843
+#: core/slavebase.cpp:821
 #, kde-format
 msgid "Opening files is not supported with protocol %1."
 msgstr "No s'accepta l'obertura de fitxers amb el protocol %1."
 
-#: core/slavebase.cpp:845
+#: core/slavebase.cpp:823
 #, kde-format
 msgid "Protocol %1 does not support action %2."
 msgstr "El protocol %1 no accepta l'acció %2."
 
-#: core/worker.cpp:309
+#: core/socketconnectionbackend.cpp:120
+#, kde-format
+msgid "Unable to create KIO worker: %1"
+msgstr "No s'ha pogut crear el procés de treball KIO: %1"
+
+#: core/worker.cpp:398
 #, kde-format
 msgctxt "@info %2 is a path"
 msgid ""
@@ -2457,17 +2457,17 @@ msgstr ""
 "permisos elevats, no es pot garantir perquè els usuaris que no siguin "
 "administrador tenen permís per modificar-lo a %2."
 
-#: core/worker.cpp:347
+#: core/worker.cpp:435
 #, kde-format
 msgid "Unknown protocol '%1'."
 msgstr "Protocol desconegut «%1»."
 
-#: core/worker.cpp:358
+#: core/worker.cpp:446
 #, kde-format
 msgid "Can not find a KIO worker for protocol '%1'."
 msgstr "No s'ha pogut trobar un procés de treball KIO per al protocol «%1»."
 
-#: core/worker.cpp:365
+#: core/worker.cpp:453
 #, kde-format
 msgctxt "@info %2 and %3 are paths"
 msgid ""
@@ -2479,14 +2479,14 @@ msgstr ""
 "tots els processos de treball KIO que es troben fora de %3 i demanen "
 "privilegis elevats es consideren insegurs."
 
-#: core/worker.cpp:377
+#: core/worker.cpp:493
 #, kde-format
 msgid "Can not create a socket for launching a KIO worker for protocol '%1'."
 msgstr ""
 "No s'ha pogut crear el sòcol per a llançar un procés de treball KIO per al "
 "protocol «%1»."
 
-#: core/worker.cpp:423
+#: core/worker.cpp:513
 #, kde-format
 msgid "Can not find 'kioworker' executable at '%1'"
 msgstr "No s'ha pogut trobar l'executable «kioworker» a «%1»"
@@ -2514,13 +2514,13 @@ msgstr "Co&ntinua"
 msgid "&Current Session only"
 msgstr "Només durant la sessió a&ctual"
 
-#: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:53
+#: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:54
 #, kde-format
 msgctxt "@action:inmenu Context menu shown when files are dragged"
 msgid "Move Into New Folder"
 msgstr "Mou a una carpeta nova"
 
-#: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:70
+#: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:71
 #, kde-format
 msgctxt "@title:window"
 msgid "Create New Folder for These Items"
@@ -3792,7 +3792,7 @@ msgstr "Després podreu canviar la icona a les propietats de la carpeta."
 #. i18n: ectx: property (text), widget (QPushButton, sha1CopyButton)
 #. i18n: ectx: property (text), widget (QPushButton, sha256CopyButton)
 #. i18n: ectx: property (text), widget (QPushButton, sha512CopyButton)
-#: filewidgets/kurlnavigator.cpp:610 widgets/checksumswidget.ui:145
+#: filewidgets/kurlnavigator.cpp:611 widgets/checksumswidget.ui:145
 #: widgets/checksumswidget.ui:192 widgets/checksumswidget.ui:239
 #: widgets/checksumswidget.ui:286
 #, kde-format
@@ -3800,39 +3800,39 @@ msgid "Copy"
 msgstr "Copia"
 
 #. i18n: ectx: property (text), widget (QPushButton, pasteButton)
-#: filewidgets/kurlnavigator.cpp:614 widgets/checksumswidget.ui:42
+#: filewidgets/kurlnavigator.cpp:615 widgets/checksumswidget.ui:42
 #, kde-format
 msgid "Paste"
 msgstr "Enganxa"
 
-#: filewidgets/kurlnavigator.cpp:634
+#: filewidgets/kurlnavigator.cpp:635
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Open \"%1\" in New Tab"
 msgstr "Obre «%1» en una pestanya nova"
 
-#: filewidgets/kurlnavigator.cpp:642
+#: filewidgets/kurlnavigator.cpp:643
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Open \"%1\" in New Window"
 msgstr "Obre «%1» en una finestra nova"
 
-#: filewidgets/kurlnavigator.cpp:651
+#: filewidgets/kurlnavigator.cpp:652
 #, kde-format
 msgid "Edit"
 msgstr "Edita"
 
-#: filewidgets/kurlnavigator.cpp:654
+#: filewidgets/kurlnavigator.cpp:655
 #, kde-format
 msgid "Navigate"
 msgstr "Navega"
 
-#: filewidgets/kurlnavigator.cpp:669
+#: filewidgets/kurlnavigator.cpp:670
 #, kde-format
 msgid "Show Full Path"
 msgstr "Mostra el camí sencer"
 
-#: filewidgets/kurlnavigator.cpp:839
+#: filewidgets/kurlnavigator.cpp:840
 #, kde-kuit-format
 msgctxt "@info:tooltip for button. 1 is path"
 msgid "Go to any location on the path <filename>%1</filename>"
@@ -4206,7 +4206,7 @@ msgstr "Ordre a executar"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "El/s URL o fitxer/s local/s usat/s per l'«ordre»"
 
-#: kioworkers/file/file.cpp:689
+#: kioworkers/file/file.cpp:692
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4215,7 +4215,7 @@ msgstr ""
 "No s'han pogut canviar els permisos per a\n"
 "%1"
 
-#: kioworkers/file/file.cpp:697
+#: kioworkers/file/file.cpp:700
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4225,17 +4225,17 @@ msgstr ""
 "No s'ha pogut canviar el propietari ni el grup per a\n"
 "%1"
 
-#: kioworkers/file/file.cpp:777 kioworkers/file/file.cpp:869
+#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
 #, kde-format
 msgid "Could not open temporary file"
 msgstr "No s'ha pogut obrir un fitxer temporal"
 
-#: kioworkers/file/file.cpp:801
+#: kioworkers/file/file.cpp:804
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "No s'ha pogut trobar el programa «mount»"
 
-#: kioworkers/file/file.cpp:878
+#: kioworkers/file/file.cpp:881
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "No s'ha pogut trobar el programa «umount»"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-29 00:40+0000\n"
+"POT-Creation-Date: 2026-07-10 00:40+0000\n"
 "PO-Revision-Date: 2026-05-09 16:23+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
@@ -44,11 +44,6 @@ msgid ""
 msgstr ""
 "Nie można zmienić właściciela pliku <filename>%1</filename>. "
 "Niewystarczające uprawnienia do pliku."
-
-#: core/connectionbackend.cpp:114
-#, kde-format
-msgid "Unable to create KIO worker: %1"
-msgstr "Nie można utworzyć pracownika KIO: %1"
 
 #: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
 #, kde-format
@@ -2308,94 +2303,99 @@ msgstr ""
 "Nie znaleziono <filename>%1</filename>; wpisz poprawną ścieżkę do pliku "
 "wykonywalnego."
 
-#: core/slavebase.cpp:813
+#: core/slavebase.cpp:791
 #, kde-format
 msgid "Opening connections is not supported with the protocol %1."
 msgstr "Nawiązywanie połączeń nie jest obsługiwane przez protokół %1."
 
-#: core/slavebase.cpp:815
+#: core/slavebase.cpp:793
 #, kde-format
 msgid "Closing connections is not supported with the protocol %1."
 msgstr "Zamykanie połączeń nie jest obsługiwane przez protokół %1."
 
-#: core/slavebase.cpp:817
+#: core/slavebase.cpp:795
 #, kde-format
 msgid "Accessing files is not supported with the protocol %1."
 msgstr "Protokół %1 nie pozwala na dostęp do plików."
 
-#: core/slavebase.cpp:819
+#: core/slavebase.cpp:797
 #, kde-format
 msgid "Writing to %1 is not supported."
 msgstr "Zapisywanie do %1 nie jest obsługiwane."
 
-#: core/slavebase.cpp:821
+#: core/slavebase.cpp:799
 #, kde-format
 msgid "There are no special actions available for protocol %1."
 msgstr "Nie ma dostępnych żadnych szczególnych działań dla protokołu %1."
 
-#: core/slavebase.cpp:823
+#: core/slavebase.cpp:801
 #, kde-format
 msgid "Listing folders is not supported for protocol %1."
 msgstr ""
 "Wyświetlanie zawartości katalogów nie jest obsługiwane przez protokół %1."
 
-#: core/slavebase.cpp:825
+#: core/slavebase.cpp:803
 #, kde-format
 msgid "Retrieving data from %1 is not supported."
 msgstr "Pobieranie danych z %1 nie jest obsługiwane."
 
-#: core/slavebase.cpp:827
+#: core/slavebase.cpp:805
 #, kde-format
 msgid "Retrieving mime type information from %1 is not supported."
 msgstr "Pobieranie informacji o typie MIME z %1 nie jest obsługiwane."
 
-#: core/slavebase.cpp:829
+#: core/slavebase.cpp:807
 #, kde-format
 msgid "Renaming or moving files within %1 is not supported."
 msgstr "Zmiana nazwy lub przenoszenie plików w %1 nie jest obsługiwane."
 
-#: core/slavebase.cpp:831
+#: core/slavebase.cpp:809
 #, kde-format
 msgid "Creating symlinks is not supported with protocol %1."
 msgstr ""
 "Tworzenie dowiązań symbolicznych nie jest obsługiwane przez protokół %1."
 
-#: core/slavebase.cpp:833
+#: core/slavebase.cpp:811
 #, kde-format
 msgid "Copying files within %1 is not supported."
 msgstr "Kopiowanie plików w %1 nie jest obsługiwane."
 
-#: core/slavebase.cpp:835
+#: core/slavebase.cpp:813
 #, kde-format
 msgid "Deleting files from %1 is not supported."
 msgstr "Usuwanie plików z %1 nie jest obsługiwane."
 
-#: core/slavebase.cpp:837
+#: core/slavebase.cpp:815
 #, kde-format
 msgid "Creating folders is not supported with protocol %1."
 msgstr "Tworzenie katalogów nie jest obsługiwane przez protokół %1."
 
-#: core/slavebase.cpp:839
+#: core/slavebase.cpp:817
 #, kde-format
 msgid "Changing the attributes of files is not supported with protocol %1."
 msgstr "Zmiana atrybutów plików nie jest obsługiwana przez protokół %1."
 
-#: core/slavebase.cpp:841
+#: core/slavebase.cpp:819
 #, kde-format
 msgid "Changing the ownership of files is not supported with protocol %1."
 msgstr "Zmiana właściciela plików nie jest obsługiwana przez protokół %1."
 
-#: core/slavebase.cpp:843
+#: core/slavebase.cpp:821
 #, kde-format
 msgid "Opening files is not supported with protocol %1."
 msgstr "Otwieranie plików nie jest obsługiwane przez protokół %1."
 
-#: core/slavebase.cpp:845
+#: core/slavebase.cpp:823
 #, kde-format
 msgid "Protocol %1 does not support action %2."
 msgstr "Protokół %1 nie obsługuje działania %2."
 
-#: core/worker.cpp:309
+#: core/socketconnectionbackend.cpp:120
+#, kde-format
+msgid "Unable to create KIO worker: %1"
+msgstr "Nie można utworzyć pracownika KIO: %1"
+
+#: core/worker.cpp:398
 #, kde-format
 msgctxt "@info %2 is a path"
 msgid ""
@@ -2407,17 +2407,17 @@ msgstr ""
 "większe uprawnienia, nie może zostać zagwarantowane, bo użytkownicy inni niż "
 "administrator mają możliwość jego zmiany w %2."
 
-#: core/worker.cpp:347
+#: core/worker.cpp:435
 #, kde-format
 msgid "Unknown protocol '%1'."
 msgstr "Nieznany protokół '%1'."
 
-#: core/worker.cpp:358
+#: core/worker.cpp:446
 #, kde-format
 msgid "Can not find a KIO worker for protocol '%1'."
 msgstr "Nie można znaleźć pracownika KIO dla protokołu '%1'."
 
-#: core/worker.cpp:365
+#: core/worker.cpp:453
 #, kde-format
 msgctxt "@info %2 and %3 are paths"
 msgid ""
@@ -2429,13 +2429,13 @@ msgstr ""
 "pracownicy KIO, którzy znajdują się poza %3 i proszą o rozszerzone "
 "uprawnienia są uznawani za niebezpiecznych."
 
-#: core/worker.cpp:377
+#: core/worker.cpp:493
 #, kde-format
 msgid "Can not create a socket for launching a KIO worker for protocol '%1'."
 msgstr ""
 "Nie można utworzyć gniazda do uruchomienia pracownika KIO dla protokołu '%1'."
 
-#: core/worker.cpp:423
+#: core/worker.cpp:513
 #, kde-format
 msgid "Can not find 'kioworker' executable at '%1'"
 msgstr "Nie można znaleźć pliku wykonywalnego 'kioworker' w '%1'"
@@ -2463,13 +2463,13 @@ msgstr "Ko&ntynuuj"
 msgid "&Current Session only"
 msgstr "Tylko na &bieżącą sesję"
 
-#: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:53
+#: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:54
 #, kde-format
 msgctxt "@action:inmenu Context menu shown when files are dragged"
 msgid "Move Into New Folder"
 msgstr "Przenieś do nowego katalogu"
 
-#: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:70
+#: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:71
 #, kde-format
 msgctxt "@title:window"
 msgid "Create New Folder for These Items"
@@ -3743,7 +3743,7 @@ msgstr "Możesz zmienić ikonę później we właściwościach katalogu."
 #. i18n: ectx: property (text), widget (QPushButton, sha1CopyButton)
 #. i18n: ectx: property (text), widget (QPushButton, sha256CopyButton)
 #. i18n: ectx: property (text), widget (QPushButton, sha512CopyButton)
-#: filewidgets/kurlnavigator.cpp:610 widgets/checksumswidget.ui:145
+#: filewidgets/kurlnavigator.cpp:611 widgets/checksumswidget.ui:145
 #: widgets/checksumswidget.ui:192 widgets/checksumswidget.ui:239
 #: widgets/checksumswidget.ui:286
 #, kde-format
@@ -3751,39 +3751,39 @@ msgid "Copy"
 msgstr "Skopiuj"
 
 #. i18n: ectx: property (text), widget (QPushButton, pasteButton)
-#: filewidgets/kurlnavigator.cpp:614 widgets/checksumswidget.ui:42
+#: filewidgets/kurlnavigator.cpp:615 widgets/checksumswidget.ui:42
 #, kde-format
 msgid "Paste"
 msgstr "Wklej"
 
-#: filewidgets/kurlnavigator.cpp:634
+#: filewidgets/kurlnavigator.cpp:635
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Open \"%1\" in New Tab"
 msgstr "Otwórz \"%1\" w nowej karcie"
 
-#: filewidgets/kurlnavigator.cpp:642
+#: filewidgets/kurlnavigator.cpp:643
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Open \"%1\" in New Window"
 msgstr "Otwórz \"%1\" w nowym oknie"
 
-#: filewidgets/kurlnavigator.cpp:651
+#: filewidgets/kurlnavigator.cpp:652
 #, kde-format
 msgid "Edit"
 msgstr "Edytuj"
 
-#: filewidgets/kurlnavigator.cpp:654
+#: filewidgets/kurlnavigator.cpp:655
 #, kde-format
 msgid "Navigate"
 msgstr "Przechodzenie"
 
-#: filewidgets/kurlnavigator.cpp:669
+#: filewidgets/kurlnavigator.cpp:670
 #, kde-format
 msgid "Show Full Path"
 msgstr "Pokaż pełną ścieżkę"
 
-#: filewidgets/kurlnavigator.cpp:839
+#: filewidgets/kurlnavigator.cpp:840
 #, kde-kuit-format
 msgctxt "@info:tooltip for button. 1 is path"
 msgid "Go to any location on the path <filename>%1</filename>"
@@ -4155,7 +4155,7 @@ msgstr "Polecenie do wykonania"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "Adresy URL lub lokalny plik(i) używany dla 'polecenia'"
 
-#: kioworkers/file/file.cpp:689
+#: kioworkers/file/file.cpp:692
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4164,7 +4164,7 @@ msgstr ""
 "Nie można zmienić praw do\n"
 "%1"
 
-#: kioworkers/file/file.cpp:697
+#: kioworkers/file/file.cpp:700
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4174,17 +4174,17 @@ msgstr ""
 "Nie można zmienić właściciela i grupy dla\n"
 "%1"
 
-#: kioworkers/file/file.cpp:777 kioworkers/file/file.cpp:869
+#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
 #, kde-format
 msgid "Could not open temporary file"
 msgstr "Nie można otworzyć pliku tymczasowego"
 
-#: kioworkers/file/file.cpp:801
+#: kioworkers/file/file.cpp:804
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "Nie można znaleźć programu \"mount\""
 
-#: kioworkers/file/file.cpp:878
+#: kioworkers/file/file.cpp:881
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "Nie można znaleźć programu \"umount\""

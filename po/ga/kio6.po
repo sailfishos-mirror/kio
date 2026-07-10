@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-29 00:40+0000\n"
+"POT-Creation-Date: 2026-07-10 00:40+0000\n"
 "PO-Revision-Date: 2026-07-03 22:06+0100\n"
 "Last-Translator: deck <altronic25@protonmail.com>\n"
 "Language-Team: English <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -42,11 +42,6 @@ msgid ""
 msgstr ""
 "Níorbh fhéidir úinéireacht an chomhaid <filename>%1</filename> a athrú. Níl "
 "rochtain leordhóthanach agat ar an gcomhad chun an t-athrú a dhéanamh."
-
-#: core/connectionbackend.cpp:114
-#, kde-format
-msgid "Unable to create KIO worker: %1"
-msgstr "Ní féidir oibrí KIO a chruthú: %1"
 
 #: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
 #, kde-format
@@ -2357,92 +2352,97 @@ msgstr ""
 "Níor aimsíodh <filename>%1</filename>; cuir isteach cosán bailí chuig clár "
 "inrite le do thoil."
 
-#: core/slavebase.cpp:813
+#: core/slavebase.cpp:791
 #, kde-format
 msgid "Opening connections is not supported with the protocol %1."
 msgstr "Ní thacaítear le hoscailt ceangal le prótacal %1."
 
-#: core/slavebase.cpp:815
+#: core/slavebase.cpp:793
 #, kde-format
 msgid "Closing connections is not supported with the protocol %1."
 msgstr "Ní thacaítear le dúnadh ceangal le prótacal %1."
 
-#: core/slavebase.cpp:817
+#: core/slavebase.cpp:795
 #, kde-format
 msgid "Accessing files is not supported with the protocol %1."
 msgstr "Ní thacaítear le rochtain comhad le prótacal %1."
 
-#: core/slavebase.cpp:819
+#: core/slavebase.cpp:797
 #, kde-format
 msgid "Writing to %1 is not supported."
 msgstr "Ní thacaítear le scríobh chuig %1."
 
-#: core/slavebase.cpp:821
+#: core/slavebase.cpp:799
 #, kde-format
 msgid "There are no special actions available for protocol %1."
 msgstr "Níl aon ghníomhartha speisialta ar fáil le haghaidh phrótacal %1."
 
-#: core/slavebase.cpp:823
+#: core/slavebase.cpp:801
 #, kde-format
 msgid "Listing folders is not supported for protocol %1."
 msgstr "Ní thacaítear le taispeáint fillteán le prótacal %1."
 
-#: core/slavebase.cpp:825
+#: core/slavebase.cpp:803
 #, kde-format
 msgid "Retrieving data from %1 is not supported."
 msgstr "Ní féidir sonraí a fháil ó %1."
 
-#: core/slavebase.cpp:827
+#: core/slavebase.cpp:805
 #, kde-format
 msgid "Retrieving mime type information from %1 is not supported."
 msgstr "Ní féidir faisnéis faoi chineálacha MIME a fháil ó %1."
 
-#: core/slavebase.cpp:829
+#: core/slavebase.cpp:807
 #, kde-format
 msgid "Renaming or moving files within %1 is not supported."
 msgstr "Ní thacaítear le hathainmniú nó bogadh comhad i %1."
 
-#: core/slavebase.cpp:831
+#: core/slavebase.cpp:809
 #, kde-format
 msgid "Creating symlinks is not supported with protocol %1."
 msgstr "Ní féidir naisc shiombalacha a chruthú le prótacal %1."
 
-#: core/slavebase.cpp:833
+#: core/slavebase.cpp:811
 #, kde-format
 msgid "Copying files within %1 is not supported."
 msgstr "Ní féidir comhaid a oscailt i %1."
 
-#: core/slavebase.cpp:835
+#: core/slavebase.cpp:813
 #, kde-format
 msgid "Deleting files from %1 is not supported."
 msgstr "Ní féidir comhaid a scriosadh ó %1."
 
-#: core/slavebase.cpp:837
+#: core/slavebase.cpp:815
 #, kde-format
 msgid "Creating folders is not supported with protocol %1."
 msgstr "Ní féidir fillteáin a chruthú le prótacal %1."
 
-#: core/slavebase.cpp:839
+#: core/slavebase.cpp:817
 #, kde-format
 msgid "Changing the attributes of files is not supported with protocol %1."
 msgstr "Ní féidir tréithe comhad a athrú le prótacal %1."
 
-#: core/slavebase.cpp:841
+#: core/slavebase.cpp:819
 #, kde-format
 msgid "Changing the ownership of files is not supported with protocol %1."
 msgstr "Ní féidir úinéir comhaid a athrú le prótacal %1."
 
-#: core/slavebase.cpp:843
+#: core/slavebase.cpp:821
 #, kde-format
 msgid "Opening files is not supported with protocol %1."
 msgstr "Ní féidir comhaid a oscailt le prótacal %1."
 
-#: core/slavebase.cpp:845
+#: core/slavebase.cpp:823
 #, kde-format
 msgid "Protocol %1 does not support action %2."
 msgstr "Ní thacaíonn prótacal %1 le gníomh %2."
 
-#: core/worker.cpp:309
+#: core/socketconnectionbackend.cpp:120
+#, kde-format
+msgid "Unable to create KIO worker: %1"
+msgstr "Ní féidir oibrí KIO a chruthú: %1"
+
+#: core/worker.cpp:398
 #, kde-format
 msgctxt "@info %2 is a path"
 msgid ""
@@ -2454,17 +2454,17 @@ msgstr ""
 "ardaithe de ghnáth, a ráthú mar go bhfuil cead ag úsáideoirí seachas an root "
 "é a mhodhnú ag %2."
 
-#: core/worker.cpp:347
+#: core/worker.cpp:435
 #, kde-format
 msgid "Unknown protocol '%1'."
 msgstr "Prótacal anaithnid '%1'."
 
-#: core/worker.cpp:358
+#: core/worker.cpp:446
 #, kde-format
 msgid "Can not find a KIO worker for protocol '%1'."
 msgstr "Ní féidir oibrí KIO a aimsiú don phrótacal '%1'."
 
-#: core/worker.cpp:365
+#: core/worker.cpp:453
 #, kde-format
 msgctxt "@info %2 and %3 are paths"
 msgid ""
@@ -2476,13 +2476,13 @@ msgstr ""
 "bhfuil slán aon oibrí KIO atá suite lasmuigh de %3 agus a iarrann pribhléidí "
 "ardaithe."
 
-#: core/worker.cpp:377
+#: core/worker.cpp:493
 #, kde-format
 msgid "Can not create a socket for launching a KIO worker for protocol '%1'."
 msgstr ""
 "Ní féidir soicéad a chruthú chun oibrí KIO a sheoladh don phrótacal '%1'."
 
-#: core/worker.cpp:423
+#: core/worker.cpp:513
 #, kde-format
 msgid "Can not find 'kioworker' executable at '%1'"
 msgstr "Ní féidir an comhad inrite 'kioworker' a aimsiú ag '%1'"
@@ -2510,13 +2510,13 @@ msgstr "Lea&n ar Aghaidh"
 msgid "&Current Session only"
 msgstr "Seisiúin &Reatha Amháin"
 
-#: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:53
+#: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:54
 #, kde-format
 msgctxt "@action:inmenu Context menu shown when files are dragged"
 msgid "Move Into New Folder"
 msgstr "Bog go Fillteán Nua"
 
-#: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:70
+#: filewidgets/dropIntoNewFolder/dropintonewfolderPlugin.cpp:71
 #, kde-format
 msgctxt "@title:window"
 msgid "Create New Folder for These Items"
@@ -3810,7 +3810,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QPushButton, sha1CopyButton)
 #. i18n: ectx: property (text), widget (QPushButton, sha256CopyButton)
 #. i18n: ectx: property (text), widget (QPushButton, sha512CopyButton)
-#: filewidgets/kurlnavigator.cpp:610 widgets/checksumswidget.ui:145
+#: filewidgets/kurlnavigator.cpp:611 widgets/checksumswidget.ui:145
 #: widgets/checksumswidget.ui:192 widgets/checksumswidget.ui:239
 #: widgets/checksumswidget.ui:286
 #, kde-format
@@ -3818,39 +3818,39 @@ msgid "Copy"
 msgstr "Cóipeáil"
 
 #. i18n: ectx: property (text), widget (QPushButton, pasteButton)
-#: filewidgets/kurlnavigator.cpp:614 widgets/checksumswidget.ui:42
+#: filewidgets/kurlnavigator.cpp:615 widgets/checksumswidget.ui:42
 #, kde-format
 msgid "Paste"
 msgstr "Greamaigh"
 
-#: filewidgets/kurlnavigator.cpp:634
+#: filewidgets/kurlnavigator.cpp:635
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Open \"%1\" in New Tab"
 msgstr "Oscail \"%1\" i gCluaisín Nua"
 
-#: filewidgets/kurlnavigator.cpp:642
+#: filewidgets/kurlnavigator.cpp:643
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Open \"%1\" in New Window"
 msgstr "Oscail \"%1\" i bhFuinneog Nua"
 
-#: filewidgets/kurlnavigator.cpp:651
+#: filewidgets/kurlnavigator.cpp:652
 #, kde-format
 msgid "Edit"
 msgstr "Eagar"
 
-#: filewidgets/kurlnavigator.cpp:654
+#: filewidgets/kurlnavigator.cpp:655
 #, kde-format
 msgid "Navigate"
 msgstr "Nascleanúint"
 
-#: filewidgets/kurlnavigator.cpp:669
+#: filewidgets/kurlnavigator.cpp:670
 #, kde-format
 msgid "Show Full Path"
 msgstr "Taispeáin an Chonair Iomlán"
 
-#: filewidgets/kurlnavigator.cpp:839
+#: filewidgets/kurlnavigator.cpp:840
 #, kde-kuit-format
 msgctxt "@info:tooltip for button. 1 is path"
 msgid "Go to any location on the path <filename>%1</filename>"
@@ -4224,7 +4224,7 @@ msgstr "Ordú le rith"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "URL(anna) nó comhad(anna) áitiúil a úsáidtear le haghaidh 'ordú'"
 
-#: kioworkers/file/file.cpp:689
+#: kioworkers/file/file.cpp:692
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4233,7 +4233,7 @@ msgstr ""
 "Níorbh fhéidir ceadanna a athrú le haghaidh\n"
 "%1"
 
-#: kioworkers/file/file.cpp:697
+#: kioworkers/file/file.cpp:700
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4243,17 +4243,17 @@ msgstr ""
 "Níorbh fhéidir úinéir agus grúpa a athrú do\n"
 "%1"
 
-#: kioworkers/file/file.cpp:777 kioworkers/file/file.cpp:869
+#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
 #, kde-format
 msgid "Could not open temporary file"
 msgstr "Níorbh fhéidir an comhad neamhbhuan a oscailt"
 
-#: kioworkers/file/file.cpp:801
+#: kioworkers/file/file.cpp:804
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "Níorbh fhéidir clár \"mount\" a aimsiú"
 
-#: kioworkers/file/file.cpp:878
+#: kioworkers/file/file.cpp:881
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "Níorbh fhéidir clár \"umount\" a aimsiú"
