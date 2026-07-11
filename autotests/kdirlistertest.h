@@ -115,6 +115,7 @@ private Q_SLOTS:
     void testUnreadableParentDirectory();
     void testPathWithSquareBrackets();
     void testSFTPRedirect();
+    void testDuplicatedEntries();
     void testDeleteCurrentDir(); // must be just before last!
     void testForgetDir(); // must be last!
 

@@ -24,6 +24,7 @@
 #include <QFileInfo>
 #include <QMimeDatabase>
 #include <QRegularExpression>
+#include <QSet>
 #include <QTextStream>
 #include <QThreadStorage>
 
@@ -1129,6 +1130,7 @@ void KCoreDirListerCache::slotEntries(KIO::Job *job, const KIO::UDSEntryList &en
     CacheHiddenFile *cachedHidden = nullptr;
     bool dotHiddenChecked = false;
     KFileItemList newItems;
+    QSet<QString> newItemNames;
     for (const auto &entry : entries) {
         const QString name = entry.stringValue(KIO::UDSEntry::UDS_NAME);
 
@@ -1157,6 +1159,17 @@ void KCoreDirListerCache::slotEntries(KIO::Job *job, const KIO::UDSEntryList &en
             }
         } else if (name != QLatin1String("..")) {
             KFileItem item(entry, url, delayedMimeTypes, true);
+
+            // A directory that is modified while it is being listed may produce
+            // the same entry more than once: POSIX allows readdir() to return an
+            // entry twice if the directory changed between reads, and a later
+            // batch of the same job can repeat an entry from an earlier batch.
+            // Adopting the duplicate would permanently corrupt the cache.
+            if (newItemNames.contains(name) || std::binary_search(dir->lstItems.cbegin(), dir->lstItems.cend(), item)) {
+                qCDebug(KIO_CORE_DIRLISTER) << "Skipping duplicated entry" << item.url();
+                continue;
+            }
+            newItemNames.insert(name);
 
             // get the names of the files listed in ".hidden", if it exists and is a local file
             if (!dotHiddenChecked) {
@@ -1700,6 +1713,7 @@ void KCoreDirListerCache::slotUpdateResult(KJob *j)
     bool dotHiddenChecked = false;
     const KIO::UDSEntryList &buf = runningListJobs.value(job);
     KFileItemList newItems;
+    QSet<QString> seenNames;
     for (const auto &entry : buf) {
         // Form the complete url
         KFileItem item(entry, jobUrl, delayedMimeTypes, true);
@@ -1712,6 +1726,14 @@ void KCoreDirListerCache::slotUpdateResult(KJob *j)
         if (name.isEmpty() || name == QLatin1String("..")) {
             continue;
         }
+
+        // A changing directory may repeat an entry within one listing (see
+        // slotEntries()); the second occurrence would no longer find its name
+        // in fileItems and would wrongly be adopted as a new file.
+        if (seenNames.contains(name)) {
+            continue;
+        }
+        seenNames.insert(name);
 
         if (name == QLatin1Char('.')) {
             // if the update was started before finishing the original listing

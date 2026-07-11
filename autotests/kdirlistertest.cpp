@@ -1885,4 +1885,86 @@ void KDirListerTest::testSFTPRedirect()
     QCOMPARE(dirLister.items().count(), 0);
 }
 
+void KDirListerTest::testDuplicatedEntries()
+{
+    // A directory that changes while it is being listed may deliver the same
+    // entry more than once: POSIX allows readdir() to return an entry twice
+    // if the directory was modified between reads, and e.g. the kernel ntfs3
+    // driver does so at scale during mass file creation. Neither the initial
+    // listing nor the update path may adopt such duplicates into the cache.
+    class Factory : public KIO::WorkerFactory
+    {
+    public:
+        using KIO::WorkerFactory::WorkerFactory;
+        std::unique_ptr<KIO::WorkerBase> createWorker(const QByteArray &pool, const QByteArray &app) override
+        {
+            class DuplicatingWorker : public KIO::WorkerBase
+            {
+            public:
+                DuplicatingWorker(const QByteArray &pool, const QByteArray &app, int *listCount)
+                    : WorkerBase(QByteArrayLiteral("kio-test-dupes"), pool, app)
+                    , m_listCount(listCount)
+                {
+                }
+
+                Q_REQUIRED_RESULT KIO::WorkerResult listDir(const QUrl &url) override
+                {
+                    Q_UNUSED(url)
+                    auto fakeEntry = [](const QString &name) {
+                        KIO::UDSEntry entry;
+                        entry.fastInsert(KIO::UDSEntry::UDS_NAME, name);
+                        entry.fastInsert(KIO::UDSEntry::UDS_SIZE, 10);
+                        entry.fastInsert(KIO::UDSEntry::UDS_MODIFICATION_TIME, 123456);
+                        return entry;
+                    };
+                    listEntry(fakeEntry(QStringLiteral(".")));
+                    listEntry(fakeEntry(QStringLiteral("file1.txt")));
+                    listEntry(fakeEntry(QStringLiteral("file2.txt")));
+                    if ((*m_listCount)++ > 0) {
+                        // On updates a new file has appeared, listed twice...
+                        listEntry(fakeEntry(QStringLiteral("file3.txt")));
+                        listEntry(fakeEntry(QStringLiteral("file3.txt")));
+                    }
+                    // ...and the directory changed mid-listing, so file1 shows up again.
+                    listEntry(fakeEntry(QStringLiteral("file1.txt")));
+                    return KIO::WorkerResult::pass();
+                }
+
+            private:
+                int *m_listCount;
+            };
+
+            return std::unique_ptr<KIO::WorkerBase>(new DuplicatingWorker(pool, app, &m_listCount));
+        }
+
+        int m_listCount = 0;
+    };
+    auto factory = std::make_shared<Factory>();
+    KIO::Worker::setTestWorkerFactory(factory);
+
+    const QUrl testUrl(u"kio-test-dupes://changing/dir"_s);
+    MyDirLister dirLister;
+    dirLister.openUrl(testUrl);
+    QVERIFY(dirLister.spyCompleted.wait(500));
+    QVERIFY(dirLister.isFinished());
+    // The initial listing delivered file1.txt twice; only one may survive.
+    QCOMPARE(dirLister.items().count(), 2);
+
+    // Now an update runs (as KDirWatch or F5 would trigger): file3.txt has
+    // appeared, listed twice, and file1.txt is delivered again as well.
+    dirLister.clearSpies();
+    dirLister.updateDirectory(testUrl);
+    QVERIFY(dirLister.spyCompleted.wait(500));
+    const KFileItemList items = dirLister.items();
+    QCOMPARE(items.count(), 3);
+    QVERIFY(std::none_of(items.cbegin(), items.cend(), [&items](const KFileItem &item) {
+        return std::count_if(items.cbegin(),
+                             items.cend(),
+                             [&item](const KFileItem &other) {
+                                 return other.name() == item.name();
+                             })
+            > 1;
+    }));
+}
+
 #include "moc_kdirlistertest.cpp"
