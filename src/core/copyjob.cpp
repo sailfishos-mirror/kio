@@ -247,6 +247,10 @@ struct CopyInfo {
     KIO::filesize_t size; // 0 for dirs
     bool isRegularFile = false; // source is a regular file (only these are eligible for batch copy)
 };
+// All members are relocatable (QUrl/QString/QDateTime + PODs), so QList<CopyInfo> can grow and shift
+// with memmove instead of per-element move+destroy - it matters because the batch paths drop copied
+// runs off the front of a large list.
+Q_DECLARE_TYPEINFO(CopyInfo, Q_RELOCATABLE_TYPE);
 
 class KIO::CopyJobPrivate : public KIO::JobPrivate
 {
@@ -2453,7 +2457,13 @@ void CopyJobPrivate::slotResultCopyingBatch(KJob *job)
             }
         }
         m_fileProcessedSize = 0;
-        files = retry + files.mid(k);
+        // Drop the accounted-for front in place (moves/memmoves the tail, no CopyInfo/QUrl copies);
+        // any to-retry entries are re-added at the front (rare: only on the disk-full fallback).
+        if (retry.isEmpty()) {
+            files.remove(0, qMin<qsizetype>(k, files.size()));
+        } else {
+            files = retry + files.mid(k);
+        }
         m_batchReported.clear();
         q->removeSubjob(job);
         Q_ASSERT(!q->hasSubjobs());
@@ -2521,7 +2531,13 @@ void CopyJobPrivate::slotResultCopyingBatch(KJob *job)
         m_useBatchCopy = false; // once anything needs individual attention, stay on the per-file path
     }
 
-    files = requeued + files.mid(k); // deferred entries stay at the front; copied ones are dropped
+    // Drop the copied front in place (moves/memmoves the tail, no CopyInfo/QUrl copies). Deferred
+    // entries, when present, are re-added at the front so they go through the per-file path next.
+    if (requeued.isEmpty()) {
+        files.remove(0, qMin<qsizetype>(k, files.size()));
+    } else {
+        files = requeued + files.mid(k);
+    }
     if (kiojob) {
         m_incomingMetaData += kiojob->metaData();
     }
