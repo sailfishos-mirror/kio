@@ -1094,17 +1094,19 @@ private:
 class BatchStatJobPrivate : public SimpleJobPrivate
 {
 public:
-    BatchStatJobPrivate(const QUrl &url, const QByteArray &packedArgs)
-        : SimpleJobPrivate(url, CMD_SPECIAL, packedArgs)
+    BatchStatJobPrivate(const QUrl &url, std::shared_ptr<QList<QString>> paths)
+        : SimpleJobPrivate(url, CMD_SPECIAL, QByteArray()) // real payload built in start(), see below
+        , m_paths(std::move(paths))
     {
     }
+    std::shared_ptr<QList<QString>> m_paths; // request paths, kept alive until the worker consumes them
     UDSEntryList m_entries;
     void start(Worker *worker) override;
 
     Q_DECLARE_PUBLIC(BatchStatJob)
-    static BatchStatJob *newJob(const QUrl &url, const QByteArray &packedArgs)
+    static BatchStatJob *newJob(const QUrl &url, std::shared_ptr<QList<QString>> paths)
     {
-        return new BatchStatJob(*new BatchStatJobPrivate(url, packedArgs));
+        return new BatchStatJob(*new BatchStatJobPrivate(url, std::move(paths)));
     }
 };
 
@@ -1121,9 +1123,31 @@ const UDSEntryList &BatchStatJob::entries() const
 void BatchStatJobPrivate::start(Worker *worker)
 {
     Q_Q(BatchStatJob);
-    QObject::connect(worker, &Worker::listEntries, q, [this](const UDSEntryList &list) {
-        m_entries += list;
+    // The reply always arrives via batchListEntries() (MSG_BATCH_REPLY), accumulated into m_entries in
+    // request order: in-process the worker hands the UDSEntryList over live, out-of-process
+    // WorkerInterface deserializes it. Either way it is delivered as one shared list.
+    QObject::connect(worker, &Worker::batchListEntries, q, [this](std::shared_ptr<UDSEntryList> list) {
+        m_entries += *list;
     });
+
+    // Build the request now that the worker (and thus its in-process status) is known: [subCmd, flags],
+    // then, out-of-process only, the serialized paths. In-process the paths ride the transport object
+    // lane (m_commandObject) instead, so the command itself carries only the header.
+    QByteArray payload;
+    QDataStream stream(&payload, QIODevice::WriteOnly);
+    stream << qint32(4) /* batch-stat sub-command */ << qint32(0) /* flags, reserved */;
+    if (worker->isInProcess()) {
+        // Hand the paths over live via the transport object lane; the command carries only the header.
+        m_commandObject = m_paths;
+        m_commandObjectType = &typeid(QList<QString>);
+    } else {
+        // No object lane across a process: serialize the paths into the command after the header.
+        stream << qint32(m_paths->size());
+        for (const QString &path : std::as_const(*m_paths)) {
+            stream << path;
+        }
+    }
+    m_packedArgs = payload;
     SimpleJobPrivate::start(worker);
 }
 } // namespace KIO
@@ -1155,14 +1179,15 @@ bool CopyJobPrivate::tryBatchStatSources()
         return false; // a single stat is not worth a batch command
     }
 
-    QByteArray payload;
-    QDataStream stream(&payload, QIODevice::WriteOnly);
-    stream << qint32(4) /* batch-stat sub-command */ << qint32(0) /* flags, reserved */ << qint32(run.size());
+    // The request payload (pointer vs inline) is built in BatchStatJobPrivate::start(), once the
+    // worker's in-process status is known; here we just hand over the local paths in request order.
+    auto paths = std::make_shared<QList<QString>>();
+    paths->reserve(run.size());
     for (const QUrl &u : std::as_const(run)) {
-        stream << u.adjusted(QUrl::StripTrailingSlash).toLocalFile();
+        paths->append(u.adjusted(QUrl::StripTrailingSlash).toLocalFile());
     }
 
-    BatchStatJob *job = BatchStatJobPrivate::newJob(run.first(), payload);
+    BatchStatJob *job = BatchStatJobPrivate::newJob(run.first(), std::move(paths));
     job->setParentJob(q);
     m_batchStatUrls = run;
     m_batchStatedTo = curIdx + run.size();

@@ -1077,30 +1077,46 @@ WorkerResult FileProtocol::batchCopy(QDataStream &stream)
 
 WorkerResult FileProtocol::batchStat(QDataStream &stream)
 {
-    // Request: qint32 flags (reserved), qint32 count, count x QString(local path).
-    // Reply: the UDS entries (in request order) pushed over the native listEntries() channel (the
-    // caller dispatches a small SimpleJob that captures the worker's listEntries signal, like
-    // ListJob), so the entries are framework-marshalled with no manual (de)serialization. A path
-    // that cannot be stat'd yields an empty UDSEntry, keeping positional alignment: the caller
-    // re-stats it on its per-file path, where the proper error is produced.
+    // Request: qint32 flags (reserved), then the paths - handed over live as a QList<QString> via the
+    // transport object lane in-process (takeCommandObject), or serialized as count x QString(local
+    // path) out-of-process. Reply: the UDS entries as a shared list via batchReply() (MSG_BATCH_REPLY),
+    // again handed over live in-process or serialized out-of-process. A path that cannot be stat'd
+    // yields an empty UDSEntry, keeping positional alignment: the caller re-stats it on its per-file
+    // path, where the proper error is produced.
     qint32 flags = 0;
-    qint32 count = 0;
-    stream >> flags >> count;
+    stream >> flags;
     Q_UNUSED(flags)
+
+    // In-process the paths came over the transport object lane (takeCommandObject); out-of-process
+    // they were serialized into the command after the header. The object's presence is the mode.
+    auto paths = takeCommandObject<QList<QString>>();
+    if (!paths) {
+        paths = std::make_shared<QList<QString>>();
+        qint32 count = 0;
+        stream >> count;
+        // Clamp the reserve: a corrupt or version-mismatched payload must not drive a huge up-front
+        // allocation off an untrusted count. The loop also stops as soon as the stream is exhausted.
+        paths->reserve(qBound(0, count, 4096));
+        for (qint32 i = 0; i < count && !stream.atEnd(); ++i) {
+            QString path;
+            stream >> path;
+            paths->append(path);
+        }
+    }
 
     const KIO::StatDetails details = getStatDetails();
 
-    UDSEntryList entries;
-    entries.reserve(count);
-    for (qint32 i = 0; i < count; ++i) {
-        QString path;
-        stream >> path;
+    auto entries = std::make_shared<UDSEntryList>();
+    entries->reserve(paths->size());
+    for (const QString &path : std::as_const(*paths)) {
         UDSEntry entry;
         const QByteArray _path = QFile::encodeName(path);
         createUDSEntry(QFileInfo(path).fileName(), _path, entry, details, path);
-        entries.append(entry); // empty entry (count() == 0) on stat failure keeps positional alignment
+        entries->append(entry); // empty entry (count() == 0) on stat failure keeps positional alignment
     }
-    listEntries(entries);
+
+    // The reply carrier (live object in-process, serialized out-of-process) is chosen by batchReply().
+    batchReply(entries);
     return WorkerResult::pass();
 }
 
