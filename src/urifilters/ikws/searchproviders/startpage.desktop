@@ -23,6 +23,7 @@ Name[nan_TW]=Startpage
 Name[nan_TW@latin]=Startpage
 Name[nl]=Startpagina
 Name[nn]=Startpage
+Name[pl]=Strona początkowa
 Name[pt_BR]=Startpage
 Name[ru]=Startpage
 Name[sk]=Úvodná stránka
@@ -56,6 +57,7 @@ Query[nan_TW]=https://www.startpage.com/sp/search?query=\\{@}
 Query[nan_TW@latin]=https://www.startpage.com/sp/search?query=\\{@}
 Query[nl]=https://www.startpage.com/sp/search?query=\\{@}
 Query[nn]=https://www.startpage.com/sp/search?query=\\{@}
+Query[pl]=https://www.startpage.com/sp/search?query=\\{@}
 Query[pt_BR]=https://www.startpage.com/sp/search?query=\\{@}
 Query[ru]=https://www.startpage.com/sp/search?query=\\{@}
 Query[sk]=https://www.startpage.com/sp/search?query=\\{@}
