@@ -116,7 +116,7 @@ void ThreadConnectionBackendTest::testWorkerReceivesFromApplication()
     // The worker side has no event loop: commandReceived() is emitted inline from
     // waitForIncomingTask(), on the worker thread. Connect without a context so it stays
     // a direct connection delivered on that thread.
-    connect(workerBackend.get(), &ConnectionBackend::commandReceived, [&sink](const Task &task) {
+    connect(workerBackend.get(), &ConnectionBackend::commandReceived, this, [&sink](const Task &task) {
         sink.add(task);
     });
 
