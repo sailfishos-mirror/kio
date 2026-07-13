@@ -54,6 +54,8 @@ private Q_SLOTS:
     void copyManyFilesBatchedWithUnreadableSource();
     void copyManyFilesBatchedCancelled();
     void copyLargeFilesBatched();
+    void copyManyFilesBatchedStatSizes();
+    void copyManyFilesBatchedSeveralDeferred();
     void testCopyFilePermissionsToSamePartition();
     void testMkdirPermissionsAndOwnership();
     void copyDirectoryToSamePartition();
