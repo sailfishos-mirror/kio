@@ -20,11 +20,14 @@
 #include "transferjob.h"
 #include "worker_p.h"
 #include <KJobTrackerInterface>
+
 #include <QDataStream>
 #include <QPointer>
 #include <QUrl>
 #include <kio/jobuidelegateextension.h>
 #include <kio/jobuidelegatefactory.h>
+#include <memory>
+#include <typeinfo>
 
 /* clang-format off */
 #define KIO_ARGS \
@@ -119,6 +122,12 @@ public:
 
     QPointer<Worker> m_worker;
     QByteArray m_packedArgs;
+    // Optional live payload sent alongside m_command (in-process only, via the transport object lane).
+    // Null for ordinary jobs, which are sent serialized as before. Set by jobs that hand a big
+    // payload over without serializing (e.g. the batch-stat command). m_commandObjectType records its
+    // concrete type so the worker can Q_ASSERT the lane before casting. See Connection/Task.
+    std::shared_ptr<void> m_commandObject;
+    const std::type_info *m_commandObjectType = nullptr;
     QUrl m_url;
     int m_command;
 

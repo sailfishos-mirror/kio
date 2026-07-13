@@ -180,8 +180,10 @@ bool SocketConnectionBackend::waitForIncomingTask(int ms)
     return false;
 }
 
-bool SocketConnectionBackend::sendCommand(int cmd, const QByteArray &data)
+bool SocketConnectionBackend::sendCommand(int cmd, Payload payload)
 {
+    // payload.object (a live pointer) cannot cross a process; the caller serialized into payload.data.
+    const QByteArray &data = payload.data;
     Q_ASSERT(state == Connected);
     Q_ASSERT(socket);
 

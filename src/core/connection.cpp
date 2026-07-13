@@ -24,8 +24,8 @@ void ConnectionPrivate::dequeue()
         return;
     }
 
-    for (const Task &task : std::as_const(outgoingTasks)) {
-        q->sendnow(task.cmd, task.data);
+    for (Task &task : outgoingTasks) {
+        q->sendnow(task.cmd, Payload{std::move(task.data), std::move(task.object), task.type});
     }
     outgoingTasks.clear();
 
@@ -163,7 +163,7 @@ void Connection::connectToRemote(const QUrl &address)
     d->dequeue();
 }
 
-bool Connection::send(int cmd, const QByteArray &data)
+bool Connection::send(int cmd, Payload payload)
 {
     // Remember that a Connection instance exists in the Application and the Worker. If the application terminates
     // we potentially get disconnected while looping on data to send in the worker, terminate the worker when this
@@ -174,24 +174,21 @@ bool Connection::send(int cmd, const QByteArray &data)
         return false;
     }
     if (!inited() || !d->outgoingTasks.isEmpty()) {
-        Task task;
-        task.cmd = cmd;
-        task.data = data;
-        d->outgoingTasks.append(std::move(task));
+        d->outgoingTasks.append(Task{.cmd = cmd, .data = std::move(payload.data), .object = std::move(payload.object), .type = payload.type});
         return true;
     } else {
-        return sendnow(cmd, data);
+        return sendnow(cmd, std::move(payload));
     }
 }
 
-bool Connection::sendnow(int cmd, const QByteArray &data)
+bool Connection::sendnow(int cmd, Payload payload)
 {
     if (!d->backend) {
         qCWarning(KIO_CORE) << "Connection::sendnow has no backend";
         return false;
     }
 
-    if (data.size() > 0xffffff) {
+    if (payload.data.size() > 0xffffff) {
         qCWarning(KIO_CORE) << "Connection::sendnow too much data";
         return false;
     }
@@ -201,8 +198,23 @@ bool Connection::sendnow(int cmd, const QByteArray &data)
         return false;
     }
 
-    // qDebug() << this << "Sending command" << cmd << "of size" << data.size();
-    return d->backend->sendCommand(cmd, data);
+    // qDebug() << this << "Sending command" << cmd << "of size" << payload.data.size();
+    return d->backend->sendCommand(cmd, std::move(payload));
+}
+
+bool Connection::isInProcess() const
+{
+    return d->backend && d->backend->isInProcess();
+}
+
+bool Connection::sendObjectErased(int cmd, std::shared_ptr<void> object, const std::type_info *type, const std::function<QByteArray()> &serialize)
+{
+    // In-process: hand the object over live, no serialization. Out-of-process: serialize into bytes,
+    // the object cannot cross the socket. Either way the receiver gets exactly one of the two.
+    if (isInProcess()) {
+        return send(cmd, Payload{QByteArray(), std::move(object), type});
+    }
+    return send(cmd, serialize());
 }
 
 bool Connection::hasTaskAvailable() const
@@ -222,7 +234,7 @@ bool Connection::waitForIncomingTask(int ms)
     return false;
 }
 
-int Connection::read(int *_cmd, QByteArray &data)
+int Connection::read(int *_cmd, Payload &payload)
 {
     // if it's still empty, then it's an error
     if (d->incomingTasks.isEmpty()) {
@@ -232,7 +244,9 @@ int Connection::read(int *_cmd, QByteArray &data)
     const Task &task = d->incomingTasks.constFirst();
     // qDebug() << this << "Command" << task.cmd << "removed from the queue (size" << task.data.size() << ")";
     *_cmd = task.cmd;
-    data = task.data;
+    payload.data = task.data;
+    payload.object = task.object; // in-process live payload (null on the socket transport)
+    payload.type = task.type; // the object's concrete type, for the receiver's debug type check
 
     d->incomingTasks.removeFirst();
 
@@ -244,7 +258,7 @@ int Connection::read(int *_cmd, QByteArray &data)
         QMetaObject::invokeMethod(this, dequeueFunc, Qt::QueuedConnection);
     }
 
-    return data.size();
+    return payload.data.size();
 }
 
 void Connection::setReadMode(ReadMode readMode)

@@ -16,7 +16,9 @@
 #include <QString>
 #include <QUrl>
 
+#include <functional>
 #include <memory>
+#include <typeinfo>
 
 namespace KIO
 {
@@ -70,20 +72,52 @@ public:
     bool inited() const;
 
     /*!
-     * Sends/queues the given command to be sent.
-     * \a cmd the command to set
-     * \a arr the bytes to send
+     * Sends/queues the given command to be sent, with its Payload (bytes and/or an in-process object).
      * Returns true if successful, false otherwise
      */
-    bool send(int cmd, const QByteArray &arr = QByteArray());
+    bool send(int cmd, Payload payload);
 
     /*!
-     * Sends the given command immediately.
-     * \a _cmd the command to set
-     * \a data the bytes to send
+     * Shim: the common bytes-only send. Wraps the bytes in a Payload.
+     */
+    bool send(int cmd, const QByteArray &bytes = QByteArray())
+    {
+        return send(cmd, Payload{bytes, {}});
+    }
+
+    /*!
+     * Sends the given command immediately, with its Payload.
      * Returns true if successful, false otherwise
      */
-    bool sendnow(int _cmd, const QByteArray &data);
+    bool sendnow(int cmd, Payload payload);
+
+    /*!
+     * Shim: the common bytes-only immediate send.
+     */
+    bool sendnow(int cmd, const QByteArray &data)
+    {
+        return sendnow(cmd, Payload{data, {}});
+    }
+
+    /*!
+     * Sends a command whose payload is an object, choosing the cheapest carrier for the transport:
+     * in-process the object is handed over live (no serialization); out-of-process \a serialize is
+     * called to produce the bytes. The receiver gets the object (in-process) or the bytes.
+     */
+    template<class T>
+    bool sendObject(int cmd, std::shared_ptr<T> object, std::function<QByteArray()> serialize)
+    {
+        return sendObjectErased(cmd, std::static_pointer_cast<void>(std::move(object)), &typeid(T), std::move(serialize));
+    }
+
+    // Type-erased worker behind the sendObject() template. \a type records T so the receiver can
+    // Q_ASSERT the lane before casting.
+    bool sendObjectErased(int cmd, std::shared_ptr<void> object, const std::type_info *type, const std::function<QByteArray()> &serialize);
+
+    /*!
+     * Returns true if the transport is in-process (a thread), so sendObject() can pass a live object.
+     */
+    bool isInProcess() const;
 
     /*!
      * Returns true if there are packets to be read immediately,
@@ -109,7 +143,7 @@ public:
      * Returns >=0 indicates the received data size upon success
      *         -1  indicates error
      */
-    int read(int *_cmd, QByteArray &data);
+    int read(int *_cmd, Payload &payload);
 
     /*!
      * Don't handle incoming data until resumed.

@@ -15,6 +15,7 @@
 #include <QByteArray>
 // Std
 #include <memory>
+#include <typeinfo>
 
 class KConfigGroup;
 class KRemoteEncoding;
@@ -165,6 +166,31 @@ public:
      * \a _entry The UDSEntry containing all of the object attributes.
      */
     void listEntries(const UDSEntryList &_entry);
+
+    /*!
+     * Hands a batch-command result (list of UDS entries) back to the application (MSG_BATCH_REPLY).
+     * In-process the list is handed over live via the transport's object lane, so no per-element
+     * serialization is done; out-of-process it is serialized like listEntries().
+     */
+    void batchReply(std::shared_ptr<UDSEntryList> entries);
+
+    /*!
+     * Returns (and clears) the live payload the current command was sent with, cast to \c T, or null.
+     * Non-null only in-process, where a command (e.g. batch-stat) hands its payload over via the
+     * transport object lane instead of serializing it. In debug builds the stored type is asserted to
+     * match \c T, so a mis-paired command is caught rather than reinterpreting a wrong-typed pointer.
+     */
+    template<class T>
+    std::shared_ptr<T> takeCommandObject()
+    {
+        return std::static_pointer_cast<T>(takeCommandObjectErased(typeid(T)));
+    }
+
+    /*!
+     * \internal
+     * Type-erased backing for the takeCommandObject() template.
+     */
+    std::shared_ptr<void> takeCommandObjectErased(const std::type_info &type);
 
     /*!
      * Call this at the beginning of put(), to give the size of the existing

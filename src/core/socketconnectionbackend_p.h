@@ -43,7 +43,7 @@ public:
     void setSuspended(bool enable) override;
     void close() override;
     bool waitForIncomingTask(int ms) override;
-    bool sendCommand(int command, const QByteArray &data) override;
+    bool sendCommand(int command, Payload payload) override;
 
     // Socket-specific: a paired transport (ThreadConnectionBackend) has no notion of connecting
     // to an address or listening/accepting, so these live only on the socket backend.

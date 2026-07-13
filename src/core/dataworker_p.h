@@ -45,7 +45,8 @@ public:
     void suspend() override;
     void resume() override;
     bool suspended() override;
-    void send(int cmd, const QByteArray &arr = QByteArray()) override;
+    using Worker::send; // keep the bytes-only send() shim visible alongside the override
+    void send(int cmd, Payload payload) override;
 
     // pure virtual methods that are defined by the actual protocol
     virtual void get(const QUrl &url) = 0;

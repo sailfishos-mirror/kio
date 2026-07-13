@@ -19,6 +19,9 @@
 #include "metadata.h"
 #include "udsentry.h"
 
+#include <memory>
+#include <typeinfo>
+
 class QUrl;
 
 namespace KIO
@@ -64,6 +67,7 @@ enum Message {
     MSG_OPENED,
     MSG_WRITTEN,
     MSG_PRIVILEGE_EXEC,
+    MSG_BATCH_REPLY, // worker -> app: a batch command reply (live via the object lane in-process, else serialized)
     // add new ones here once a release is done, to avoid breaking binary compatibility
 };
 
@@ -110,6 +114,12 @@ Q_SIGNALS:
     void connected();
     void finished();
     void listEntries(const KIO::UDSEntryList &);
+    // A batch command reply (e.g. batch-stat) delivered in-process as a shared list, with no
+    // per-entry (de)serialization. Emitted from the MSG_BATCH_REPLY handler; consumed by the batch
+    // job exactly like listEntries(). Delivery is same-thread (direct) today, but the shared_ptr is
+    // registered as a metatype in the constructor so a queued/cross-thread connection would marshal
+    // it rather than silently dropping the reply.
+    void batchListEntries(std::shared_ptr<KIO::UDSEntryList>);
     void statEntry(const KIO::UDSEntry &);
 
     void canResume(KIO::filesize_t);
@@ -142,7 +152,7 @@ protected:
     ////////////////
 
     virtual bool dispatch();
-    virtual bool dispatch(int _cmd, const QByteArray &data);
+    virtual bool dispatch(int _cmd, const QByteArray &data, std::shared_ptr<void> object = {}, const std::type_info *objectType = nullptr);
 
     void messageBox(int type, const QString &text, const QString &title, const QString &primaryActionText, const QString &secondaryActionText);
 

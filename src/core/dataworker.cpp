@@ -124,9 +124,10 @@ void DataWorker::dispatchNext()
     dispatchQueue.pop_front();
 }
 
-void DataWorker::send(int cmd, const QByteArray &arr)
+void DataWorker::send(int cmd, Payload payload)
 {
-    QDataStream stream(arr);
+    // the data:// worker has no batch commands with a live payload; it reads the serialized bytes
+    QDataStream stream(payload.data);
 
     QUrl url;
 

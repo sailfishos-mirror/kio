@@ -17,6 +17,7 @@
 
 #include <QDataStream>
 #include <QDateTime>
+#include <QMetaType>
 
 using namespace KIO;
 
@@ -25,6 +26,9 @@ Q_GLOBAL_STATIC(UserNotificationHandler, globalUserNotificationHandler)
 WorkerInterface::WorkerInterface(QObject *parent)
     : QObject(parent)
 {
+    // batchListEntries() carries a std::shared_ptr; register it so a queued or cross-thread connection
+    // can marshal it instead of silently dropping the reply (delivery is direct today).
+    qRegisterMetaType<std::shared_ptr<KIO::UDSEntryList>>();
     connect(&m_speed_timer, &QTimer::timeout, this, &WorkerInterface::calcSpeed);
 }
 
@@ -47,14 +51,13 @@ bool WorkerInterface::dispatch()
     Q_ASSERT(m_connection);
 
     int cmd;
-    QByteArray data;
-
-    int ret = m_connection->read(&cmd, data);
+    Payload payload;
+    int ret = m_connection->read(&cmd, payload);
     if (ret == -1) {
         return false;
     }
 
-    return dispatch(cmd, data);
+    return dispatch(cmd, payload.data, std::move(payload.object), payload.type);
 }
 
 void WorkerInterface::calcSpeed()
@@ -98,7 +101,7 @@ void WorkerInterface::calcSpeed()
     }
 }
 
-bool WorkerInterface::dispatch(int _cmd, const QByteArray &rawdata)
+bool WorkerInterface::dispatch(int _cmd, const QByteArray &rawdata, std::shared_ptr<void> object, [[maybe_unused]] const std::type_info *objectType)
 {
     // qDebug() << "dispatch " << _cmd;
 
@@ -140,6 +143,26 @@ bool WorkerInterface::dispatch(int _cmd, const QByteArray &rawdata)
         }
 
         Q_EMIT listEntries(list);
+        break;
+    }
+    case MSG_BATCH_REPLY: {
+        // Batch reply. In-process the worker handed the UDSEntryList over live via the transport's
+        // object lane (no serialization); out-of-process it arrived serialized in rawdata. Deliver
+        // either the same way, as a shared list.
+        if (object) {
+            // Debug-only guard: a mis-paired command trips here rather than casting a wrong-typed
+            // pointer. Release trusts the single-sender-per-command invariant.
+            Q_ASSERT(!objectType || *objectType == typeid(UDSEntryList));
+            Q_EMIT batchListEntries(std::static_pointer_cast<UDSEntryList>(std::move(object)));
+        } else {
+            auto entries = std::make_shared<UDSEntryList>();
+            UDSEntry entry;
+            while (!stream.atEnd()) {
+                stream >> entry;
+                entries->append(entry);
+            }
+            Q_EMIT batchListEntries(std::move(entries));
+        }
         break;
     }
     case MSG_RESUME: { // From the put job

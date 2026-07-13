@@ -292,9 +292,9 @@ bool Worker::suspended()
     return m_connection->suspended();
 }
 
-void Worker::send(int cmd, const QByteArray &arr)
+void Worker::send(int cmd, Payload payload)
 {
-    m_connection->send(cmd, arr);
+    m_connection->send(cmd, std::move(payload));
 }
 
 void Worker::gotInput()

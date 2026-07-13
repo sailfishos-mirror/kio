@@ -110,6 +110,24 @@ public:
     UDSEntryList pendingListEntries;
     QElapsedTimer m_timeSinceLastBatch;
     Connection appConnection{Connection::Type::Worker};
+    // The live payload of the command currently being dispatched (in-process only; null otherwise).
+    // Set by every read of the app connection, consumed via takeCommandObject() by a command that
+    // was sent with an object (e.g. batch-stat). m_commandObjectType records its concrete type for the
+    // consumer's debug type check. See Connection/Task.
+    std::shared_ptr<void> m_commandObject;
+    const std::type_info *m_commandObjectType = nullptr;
+
+    // Reads one command from the app connection, splitting its Payload into the bytes (returned in
+    // data) and the live object (stashed in m_commandObject for takeCommandObject()).
+    int readCommand(int *cmd, QByteArray &data)
+    {
+        Payload payload;
+        const int ret = appConnection.read(cmd, payload);
+        data = std::move(payload.data);
+        m_commandObject = std::move(payload.object);
+        m_commandObjectType = payload.type;
+        return ret;
+    }
     bool isConnectedToApp;
 
     QString slaveid;
@@ -320,7 +338,7 @@ void SlaveBase::dispatchLoop()
             // dispatch application messages
             int cmd;
             QByteArray data;
-            ret = d->appConnection.read(&cmd, data);
+            ret = d->readCommand(&cmd, data);
 
             if (ret != -1) {
                 if (d->inOpenLoop) {
@@ -667,7 +685,7 @@ void SlaveBase::mimeType(const QString &_type)
             cmd = 0;
             int ret = -1;
             if (d->appConnection.hasTaskAvailable() || d->appConnection.waitForIncomingTask(-1)) {
-                ret = d->appConnection.read(&cmd, data);
+                ret = d->readCommand(&cmd, data);
             }
             if (ret == -1) {
                 qCDebug(KIO_CORE) << "read error on app connection while sending mimetype";
@@ -762,6 +780,32 @@ void SlaveBase::listEntries(const UDSEntryList &list)
     }
 
     send(MSG_LIST_ENTRIES, data);
+}
+
+void SlaveBase::batchReply(std::shared_ptr<UDSEntryList> entries)
+{
+    // In-process the list rides the transport's object lane untouched; out-of-process this serializer
+    // produces the bytes (same wire form as listEntries()). Only one is used per call.
+    auto serialize = [entries] {
+        QByteArray data;
+        QDataStream stream(&data, QIODevice::WriteOnly);
+        for (const UDSEntry &entry : std::as_const(*entries)) {
+            stream << entry;
+        }
+        return data;
+    };
+    if (!d->appConnection.sendObject(MSG_BATCH_REPLY, entries, serialize)) {
+        exit();
+    }
+}
+
+std::shared_ptr<void> SlaveBase::takeCommandObjectErased([[maybe_unused]] const std::type_info &type)
+{
+    // Debug-only guard: the object lane carries exactly one type per command, so a mis-paired command
+    // (a future reuse bug) trips here instead of casting a wrong-typed pointer. Release trusts it.
+    Q_ASSERT(!d->m_commandObjectType || *d->m_commandObjectType == type);
+    d->m_commandObjectType = nullptr;
+    return std::move(d->m_commandObject);
 }
 
 static void sigpipe_handler(int)
@@ -1013,7 +1057,7 @@ int SlaveBase::waitForAnswer(int expected1, int expected2, QByteArray &data, int
     int result = -1;
     for (;;) {
         if (d->appConnection.hasTaskAvailable() || d->appConnection.waitForIncomingTask(-1)) {
-            result = d->appConnection.read(&cmd, data);
+            result = d->readCommand(&cmd, data);
         }
         if (result == -1) {
             // qDebug() << "read error.";

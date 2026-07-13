@@ -167,7 +167,7 @@ void SimpleJobPrivate::start(Worker *worker)
         worker->send(CMD_META_DATA, packedArgs);
     }
 
-    worker->send(m_command, m_packedArgs);
+    worker->send(m_command, Payload{m_packedArgs, m_commandObject, m_commandObjectType});
     if (q->isSuspended()) {
         worker->suspend();
     }

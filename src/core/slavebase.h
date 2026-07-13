@@ -17,6 +17,7 @@
 #include <QSsl>
 
 #include <memory>
+#include <typeinfo>
 
 class KConfigGroup;
 class KRemoteEncoding;
@@ -153,6 +154,21 @@ public:
      * \a _entry The UDSEntry containing all of the object attributes.
      */
     void listEntries(const UDSEntryList &_entry);
+
+    /*
+     * Hands a batch-command result (a list of UDS entries) back to the application (MSG_BATCH_REPLY).
+     * In-process the list is handed over live via the transport's object lane (no serialization);
+     * out-of-process it is serialized like listEntries(). Used by batch commands (e.g. batch-stat).
+     */
+    void batchReply(std::shared_ptr<UDSEntryList> entries);
+
+    /*
+     * Returns (and clears) the live payload the current command was sent with, or null. Non-null only
+     * in-process, where a command (e.g. batch-stat) hands a big payload over via the transport object
+     * lane instead of serializing it into the command's byte payload. \a type is the expected concrete
+     * type, asserted against the stored one in debug builds. See Connection/Task.
+     */
+    std::shared_ptr<void> takeCommandObjectErased(const std::type_info &type);
 
     /*
      * Call this at the beginning of put(), to give the size of the existing

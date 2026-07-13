@@ -184,6 +184,16 @@ void WorkerBase::listEntries(const UDSEntryList &list)
     d->bridge.listEntries(list);
 }
 
+void WorkerBase::batchReply(std::shared_ptr<UDSEntryList> entries)
+{
+    d->bridge.batchReply(std::move(entries));
+}
+
+std::shared_ptr<void> WorkerBase::takeCommandObjectErased(const std::type_info &type)
+{
+    return d->bridge.takeCommandObjectErased(type);
+}
+
 void WorkerBase::appConnectionMade()
 {
 } // No response!

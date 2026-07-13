@@ -92,7 +92,7 @@ void ThreadConnectionBackend::drainIncoming()
     }
 }
 
-bool ThreadConnectionBackend::sendCommand(int cmd, const QByteArray &data)
+bool ThreadConnectionBackend::sendCommand(int cmd, Payload payload)
 {
     if (!m_channel) {
         return false;
@@ -116,7 +116,7 @@ bool ThreadConnectionBackend::sendCommand(int cmd, const QByteArray &data)
     // Share the payload (no copy): in-process workers must hand us an owned QByteArray,
     // since we deliver it to the application asynchronously (after the worker has moved
     // on). Its refcount keeps the bytes alive until the application has consumed them.
-    out.queue.append(Task{.cmd = cmd, .data = data});
+    out.queue.append(Task{.cmd = cmd, .data = std::move(payload.data), .object = std::move(payload.object), .type = payload.type});
     out.dataAvailable.wakeOne(); // one consumer per direction
 
     // Post the wakeup to the event-loop consumer while still holding the mutex: the application

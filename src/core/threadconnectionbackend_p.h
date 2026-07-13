@@ -60,7 +60,13 @@ public:
     void setSuspended(bool suspended) override;
     void close() override;
     bool waitForIncomingTask(int ms) override;
-    bool sendCommand(int command, const QByteArray &data) override;
+    bool sendCommand(int command, Payload payload) override;
+
+    // Same process: a command can hand its payload over live (Task::object) with no serialization.
+    bool isInProcess() const override
+    {
+        return true;
+    }
 
 private Q_SLOTS:
     /// Emit commandReceived() for every queued task (drives the event-loop side).

@@ -49,7 +49,13 @@ public:
      * \a cmd command id
      * \a arr byte array containing data
      */
-    virtual void send(int cmd, const QByteArray &arr = QByteArray());
+    virtual void send(int cmd, Payload payload);
+
+    // Shim: the common bytes-only send (builds a Payload). Non-virtual; forwards to the virtual above.
+    void send(int cmd, const QByteArray &arr = QByteArray())
+    {
+        send(cmd, Payload{arr, {}});
+    }
 
     /*!
      * Returns Host this worker is (was?) connected to
@@ -198,6 +204,14 @@ private:
      * (empty on failure). Not used by in-process workers, which never create a socket.
      */
     QUrl createConnectionServer();
+
+public:
+    // True when the worker runs as a thread in this process (no socket, shared address space), so a
+    // command can hand its payload over live via the transport object lane instead of serializing it.
+    bool isInProcess() const
+    {
+        return m_workerThread != nullptr;
+    }
 
 public Q_SLOTS: // TODO KF6: make all three slots private
     void accept();
