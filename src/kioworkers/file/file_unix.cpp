@@ -1106,13 +1106,15 @@ WorkerResult FileProtocol::batchStat(QDataStream &stream)
 
     const KIO::StatDetails details = getStatDetails();
 
+    // Pre-allocate all entry slots and fill each in place, so there is no per-file local UDSEntry
+    // copied into the list. A slot the worker cannot stat stays empty (count() == 0), keeping
+    // positional alignment with the request.
     auto entries = std::make_shared<UDSEntryList>();
-    entries->reserve(paths->size());
-    for (const QString &path : std::as_const(*paths)) {
-        UDSEntry entry;
+    entries->resize(paths->size());
+    for (qsizetype i = 0; i < paths->size(); ++i) {
+        const QString &path = paths->at(i);
         const QByteArray _path = QFile::encodeName(path);
-        createUDSEntry(QFileInfo(path).fileName(), _path, entry, details, path);
-        entries->append(entry); // empty entry (count() == 0) on stat failure keeps positional alignment
+        createUDSEntry(QFileInfo(path).fileName(), _path, (*entries)[i], details, path);
     }
 
     // The reply carrier (live object in-process, serialized out-of-process) is chosen by batchReply().

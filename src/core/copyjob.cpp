@@ -365,7 +365,10 @@ public:
     // command ever fails, after which everything falls back to per-source KIO::stat.
     bool m_useBatchStat = true;
     QList<QUrl> m_batchStatUrls; // sources in the in-flight batch-stat command, in request order
-    QHash<QUrl, UDSEntry> m_batchStatResults; // entries prefetched by a batch, keyed by source URL
+    // Entries prefetched by a batch, keyed by the source's index in m_srcList. A positional key
+    // avoids hashing/comparing QUrls (the entries come back in request order, and statCurrentSrc
+    // walks m_srcList in order), which showed up as a measurable qHash(QUrl) cost in profiles.
+    QHash<qsizetype, UDSEntry> m_batchStatResults;
     // The worker stats a chunk synchronously and is not killable mid-command, so a chunk is the
     // worst-case stall. m_batchStatChunk adapts each chunk toward a ~200 ms budget (resized from the
     // measured round-trip in slotResultStatingBatch). m_batchStatedTo is the index in m_srcList up to
@@ -1221,15 +1224,17 @@ void CopyJobPrivate::slotResultStatingBatch(KJob *job)
     }
 
     // The worker pushed the UDS entries (request order) over the native listEntries() channel;
-    // BatchStatJob accumulated them. Cache them keyed by source URL; statCurrentSrc picks them up
-    // via the fast path. A source the worker could not stat comes back as an empty entry and is
-    // left uncached, so it is re-stated individually and the proper error surfaces there.
+    // BatchStatJob accumulated them. Cache them keyed by the source's index in m_srcList;
+    // statCurrentSrc picks them up via the fast path. A source the worker could not stat comes back
+    // as an empty entry and is left uncached, so it is re-stated individually and the proper error
+    // surfaces there. The run occupied a contiguous slice of m_srcList ending at m_batchStatedTo.
     const UDSEntryList entries = static_cast<BatchStatJob *>(job)->entries();
+    const qsizetype runStart = m_batchStatedTo - m_batchStatUrls.size();
     int cached = 0;
     for (int i = 0; i < entries.size() && i < m_batchStatUrls.size(); ++i) {
         const UDSEntry &entry = entries.at(i);
         if (entry.count() > 0) {
-            m_batchStatResults.insert(m_batchStatUrls.at(i), entry);
+            m_batchStatResults.insert(runStart + i, entry);
             ++cached;
         }
     }
@@ -1310,7 +1315,7 @@ void CopyJobPrivate::statCurrentSrc()
         // m_batchStatResults here, so every source in the run after the first skips its own stat
         // round-trip. Mirrors tryBatchCopyFiles, but for the stat phase.
         if (entry.count() == 0 && m_useBatchStat && m_mode != CopyJob::Link) {
-            const auto cached = m_batchStatResults.constFind(m_currentSrcURL);
+            const auto cached = m_batchStatResults.constFind(m_currentStatSrc - m_srcList.constBegin());
             if (cached != m_batchStatResults.constEnd()) {
                 entry = *cached;
             } else if (tryBatchStatSources()) {
