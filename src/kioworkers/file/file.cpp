@@ -40,6 +40,7 @@
 #include <KShell>
 #include <QDataStream>
 #include <QDebug>
+#include <QHostInfo>
 #include <QMimeDatabase>
 #include <QStandardPaths>
 #include <kmountpoint.h>
@@ -136,8 +137,37 @@ FileProtocol::~FileProtocol()
 {
 }
 
-WorkerResult FileProtocol::chmod(const QUrl &url, int permissions)
+bool FileProtocol::isLocalFileSameHost(const QUrl &url)
 {
+    if (!url.isLocalFile()) {
+        return false;
+    }
+
+    const QString host = url.host();
+    if (host.isEmpty() || host.compare(QLatin1String("localhost"), Qt::CaseInsensitive) == 0) {
+        return true;
+    }
+
+    return host.compare(QHostInfo::localHostName(), Qt::CaseInsensitive) == 0;
+}
+
+QUrl FileProtocol::localFileWithoutHostname(const QUrl &url)
+{
+#ifndef Q_OS_WIN
+    // On Unix a file:// URL never has a meaningful authority; a host, if present,
+    // only names the local machine (RFC 8089). Drop it so QUrl::toLocalFile()
+    // yields a plain local path instead of a UNC-style //host/path.
+    // On Windows file://host/share is a genuine UNC path, so leave it untouched.
+    if (isLocalFileSameHost(url)) {
+        return url.adjusted(QUrl::RemoveAuthority);
+    }
+#endif
+    return url;
+}
+
+WorkerResult FileProtocol::chmod(const QUrl &_url, int permissions)
+{
+    const QUrl url = localFileWithoutHostname(_url);
     const QString path(url.toLocalFile());
     const QByteArray _path(QFile::encodeName(path));
 #ifdef Q_OS_UNIX
@@ -153,8 +183,9 @@ WorkerResult FileProtocol::chmod(const QUrl &url, int permissions)
     return WorkerResult::pass();
 }
 
-WorkerResult FileProtocol::setModificationTime(const QUrl &url, const QDateTime &mtime)
+WorkerResult FileProtocol::setModificationTime(const QUrl &_url, const QDateTime &mtime)
 {
+    const QUrl url = localFileWithoutHostname(_url);
     const QString path(url.toLocalFile());
     QT_STATBUF statbuf;
     if (QT_LSTAT(QFile::encodeName(path).constData(), &statbuf) != 0) {
@@ -175,8 +206,9 @@ WorkerResult FileProtocol::setModificationTime(const QUrl &url, const QDateTime 
     return WorkerResult::pass();
 }
 
-WorkerResult FileProtocol::mkdir(const QUrl &url, int permissions)
+WorkerResult FileProtocol::mkdir(const QUrl &_url, int permissions)
 {
+    const QUrl url = localFileWithoutHostname(_url);
     const QString path(url.toLocalFile());
 
     // qDebug() << path << "permission=" << permissions;
@@ -266,12 +298,13 @@ WorkerResult FileProtocol::redirect(const QUrl &url)
     return WorkerResult::pass();
 }
 
-WorkerResult FileProtocol::get(const QUrl &url)
+WorkerResult FileProtocol::get(const QUrl &_url)
 {
-    if (!url.isLocalFile()) {
-        return redirect(url);
+    if (!isLocalFileSameHost(_url)) {
+        return redirect(_url);
     }
 
+    const QUrl url = localFileWithoutHostname(_url);
     const QString path(url.toLocalFile());
     QT_STATBUF buff;
     if (QT_STAT(QFile::encodeName(path).constData(), &buff) == -1) {
@@ -372,10 +405,11 @@ KIO::StatDetails FileProtocol::getStatDetails()
     return statDetails.isEmpty() ? KIO::StatDefaultDetails : static_cast<KIO::StatDetails>(statDetails.toInt());
 }
 
-WorkerResult FileProtocol::open(const QUrl &url, QIODevice::OpenMode mode)
+WorkerResult FileProtocol::open(const QUrl &_url, QIODevice::OpenMode mode)
 {
-    // qDebug() << url;
+    // qDebug() << _url;
 
+    const QUrl url = localFileWithoutHostname(_url);
     QString openPath = url.toLocalFile();
     QT_STATBUF buff;
     if (QT_STAT(QFile::encodeName(openPath).constData(), &buff) == -1) {
@@ -516,8 +550,9 @@ KIO::WorkerResult FileProtocol::close()
     return WorkerResult::pass();
 }
 
-KIO::WorkerResult FileProtocol::put(const QUrl &url, int _mode, KIO::JobFlags _flags)
+KIO::WorkerResult FileProtocol::put(const QUrl &_url, int _mode, KIO::JobFlags _flags)
 {
+    const QUrl url = localFileWithoutHostname(_url);
     const QString dest_orig = url.toLocalFile();
 
     // qDebug() << dest_orig << "mode=" << _mode;
@@ -947,9 +982,10 @@ WorkerResult FileProtocol::deleteRecursive(const QString &path)
     return WorkerResult::pass();
 }
 
-WorkerResult FileProtocol::fileSystemFreeSpace(const QUrl &url)
+WorkerResult FileProtocol::fileSystemFreeSpace(const QUrl &_url)
 {
-    if (url.isLocalFile()) {
+    if (isLocalFileSameHost(_url)) {
+        const QUrl url = localFileWithoutHostname(_url);
         QStorageInfo storageInfo(url.toLocalFile());
         if (storageInfo.isValid() && storageInfo.isReady()) {
             setMetaData(QStringLiteral("total"), QString::number(storageInfo.bytesTotal()));
@@ -957,10 +993,10 @@ WorkerResult FileProtocol::fileSystemFreeSpace(const QUrl &url)
 
             return WorkerResult::pass();
         } else {
-            return WorkerResult::fail(KIO::ERR_CANNOT_STAT, url.url());
+            return WorkerResult::fail(KIO::ERR_CANNOT_STAT, _url.url());
         }
     } else {
-        return WorkerResult::fail(KIO::ERR_UNSUPPORTED_PROTOCOL, url.url());
+        return WorkerResult::fail(KIO::ERR_UNSUPPORTED_PROTOCOL, _url.url());
     }
 }
 

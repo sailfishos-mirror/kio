@@ -91,6 +91,10 @@ private Q_SLOTS:
     void rmdirEmpty();
     void rmdirNotEmpty();
     void stat();
+    void statLocalhostHost_data();
+    void statLocalhostHost();
+    void listLocalhostHost_data();
+    void listLocalhostHost();
     void statDetailsBasic();
     void statDetailsBasicSetDetails();
     void statWithInode();

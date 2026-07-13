@@ -37,11 +37,35 @@
 // For unit test purposes, to test both code paths in externalBrowser()
 KIOGUI_EXPORT bool openurljob_force_use_browserapp_kdeglobals = false;
 
+// A file:// URL may carry a host that names the local machine (RFC 8089), e.g.
+// those produced by `ls --hyperlink` or Midnight Commander's OSC 8 sequences.
+// Strip such a host so the URL becomes a plain local path: QUrl::toLocalFile()
+// would otherwise keep the host as a bogus UNC path "//host/path", which breaks
+// launching the associated application and makes file managers treat the target
+// as an unreachable, read-only location. See https://bugs.kde.org/483297
+static QUrl normalizeLocalFileHost(const QUrl &url)
+{
+#ifndef Q_OS_WIN
+    // On Windows file://host/share is a genuine UNC path, so leave it untouched.
+    if (!url.isLocalFile() || url.host().isEmpty()) {
+        return url;
+    }
+
+    const QString host = url.host();
+    if (host.compare(QLatin1String("localhost"), Qt::CaseInsensitive) == 0 //
+        || host.compare(QHostInfo::localHostName(), Qt::CaseInsensitive) == 0) {
+        return url.adjusted(QUrl::RemoveAuthority);
+    }
+#endif
+
+    return url;
+}
+
 class KIO::OpenUrlJobPrivate
 {
 public:
     explicit OpenUrlJobPrivate(const QUrl &url, OpenUrlJob *qq)
-        : m_url(url)
+        : m_url(normalizeLocalFileHost(url))
         , q(qq)
     {
         q->setCapabilities(KJob::Killable);

@@ -85,6 +85,16 @@ private:
 
     KIO::WorkerResult redirect(const QUrl &url);
 
+    // Returns true if @p url is a file:// URL that refers to this machine, i.e.
+    // its host is empty, "localhost" or this host's name (RFC 8089). Such a host
+    // must be stripped before QUrl::toLocalFile(), which would otherwise keep it
+    // as a UNC-style "//host/path".
+    static bool isLocalFileSameHost(const QUrl &url);
+
+    // Returns @p url with the (local) host removed, so QUrl::toLocalFile() gives
+    // a plain local path. A no-op for URLs whose host isn't the local machine.
+    static QUrl localFileWithoutHostname(const QUrl &url);
+
     // Close without calling finish(). Use this to close after error.
     void closeWithoutFinish();
 

@@ -451,8 +451,11 @@ bool FileProtocol::copyXattrs(const int src_fd, const int dest_fd)
 }
 #endif // HAVE_SYS_XATTR_H || HAVE_SYS_EXTATTR_H
 
-WorkerResult FileProtocol::copy(const QUrl &srcUrl, const QUrl &destUrl, int _mode, JobFlags _flags)
+WorkerResult FileProtocol::copy(const QUrl &_srcUrl, const QUrl &_destUrl, int _mode, JobFlags _flags)
 {
+    const QUrl srcUrl = localFileWithoutHostname(_srcUrl);
+    const QUrl destUrl = localFileWithoutHostname(_destUrl);
+
     qCDebug(KIO_FILE) << "copy()" << srcUrl << "to" << destUrl << "mode=" << _mode;
 
     const QString src = srcUrl.toLocalFile();
@@ -746,25 +749,6 @@ WorkerResult FileProtocol::copy(const QUrl &srcUrl, const QUrl &destUrl, int _mo
     return WorkerResult::pass();
 }
 
-static bool isLocalFileSameHost(const QUrl &url)
-{
-    if (!url.isLocalFile()) {
-        return false;
-    }
-
-    if (url.host().isEmpty() || (url.host() == QLatin1String("localhost"))) {
-        return true;
-    }
-
-    char hostname[256];
-    hostname[0] = '\0';
-    if (!gethostname(hostname, 255)) {
-        hostname[sizeof(hostname) - 1] = '\0';
-    }
-
-    return (QString::compare(url.host(), QLatin1String(hostname), Qt::CaseInsensitive) == 0);
-}
-
 #if HAVE_SYS_XATTR_H
 static bool isNtfsHidden(const QString &filename)
 {
@@ -801,6 +785,14 @@ WorkerResult FileProtocol::listDir(const QUrl &url)
         redir.setScheme(configValue(QStringLiteral("DefaultRemoteProtocol"), QStringLiteral("smb")));
         redirection(redir);
         // qDebug() << "redirecting to " << redir;
+        return WorkerResult::pass();
+    }
+    if (!url.host().isEmpty()) {
+        // Canonicalize file://localhost/path (or file://<thishost>/path) to
+        // file:///path via a redirection, so the dir lister and the KFileItems
+        // it builds don't keep the host. Otherwise QUrl::toLocalFile() yields a
+        // bogus UNC path //host/path and files appear read-only. See BUG 483297.
+        redirection(url.adjusted(QUrl::RemoveAuthority));
         return WorkerResult::pass();
     }
     const QString path(url.toLocalFile());
@@ -905,10 +897,12 @@ WorkerResult FileProtocol::listDir(const QUrl &url)
     return WorkerResult::pass();
 }
 
-WorkerResult FileProtocol::rename(const QUrl &srcUrl, const QUrl &destUrl, KIO::JobFlags _flags)
+WorkerResult FileProtocol::rename(const QUrl &_srcUrl, const QUrl &_destUrl, KIO::JobFlags _flags)
 {
     char off_t_should_be_64_bits[sizeof(off_t) >= 8 ? 1 : -1];
     (void)off_t_should_be_64_bits;
+    const QUrl srcUrl = localFileWithoutHostname(_srcUrl);
+    const QUrl destUrl = localFileWithoutHostname(_destUrl);
     const QString src = srcUrl.toLocalFile();
     const QString dest = destUrl.toLocalFile();
     const QByteArray _src(QFile::encodeName(src));
@@ -971,9 +965,10 @@ WorkerResult FileProtocol::rename(const QUrl &srcUrl, const QUrl &destUrl, KIO::
     return WorkerResult::pass();
 }
 
-WorkerResult FileProtocol::symlink(const QString &target, const QUrl &destUrl, KIO::JobFlags flags)
+WorkerResult FileProtocol::symlink(const QString &target, const QUrl &_destUrl, KIO::JobFlags flags)
 {
     // Assume dest is local too (wouldn't be here otherwise)
+    const QUrl destUrl = localFileWithoutHostname(_destUrl);
     const QString dest = destUrl.toLocalFile();
     const QByteArray dest_c = QFile::encodeName(dest);
 
@@ -1024,8 +1019,9 @@ WorkerResult FileProtocol::symlink(const QString &target, const QUrl &destUrl, K
     return WorkerResult::fail(KIO::ERR_CANNOT_SYMLINK, dest);
 }
 
-WorkerResult FileProtocol::del(const QUrl &url, bool isfile)
+WorkerResult FileProtocol::del(const QUrl &_url, bool isfile)
 {
+    const QUrl url = localFileWithoutHostname(_url);
     const QString path = url.toLocalFile();
     const QByteArray _path(QFile::encodeName(path));
     /*!***
@@ -1071,8 +1067,9 @@ WorkerResult FileProtocol::del(const QUrl &url, bool isfile)
     return WorkerResult::pass();
 }
 
-WorkerResult FileProtocol::chown(const QUrl &url, const QString &owner, const QString &group)
+WorkerResult FileProtocol::chown(const QUrl &_url, const QString &owner, const QString &group)
 {
+    const QUrl url = localFileWithoutHostname(_url);
     const QString path = url.toLocalFile();
     const QByteArray _path(QFile::encodeName(path));
     uid_t uid;
@@ -1121,6 +1118,14 @@ WorkerResult FileProtocol::stat(const QUrl &url)
 {
     if (!isLocalFileSameHost(url)) {
         return redirect(url);
+    }
+
+    if (!url.host().isEmpty()) {
+        // Canonicalize file://localhost/path (or file://<thishost>/path) to
+        // file:///path via a redirection, so callers don't keep the host and
+        // mis-resolve it as a bogus UNC path //host/path. See BUG 483297.
+        redirection(url.adjusted(QUrl::RemoveAuthority));
+        return WorkerResult::pass();
     }
 
     /* directories may not have a slash at the end if

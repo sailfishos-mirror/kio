@@ -176,6 +176,30 @@ void OpenUrlJobTest::startProcess()
     QCoreApplication::sendPostedEvents(nullptr, QEvent::DeferredDelete);
 }
 
+void OpenUrlJobTest::startProcessLocalhostHost()
+{
+    // A file:// URL may name the local machine (RFC 8089), e.g. file://localhost/path
+    // as produced by `ls --hyperlink`. OpenUrlJob must open it as a plain local file,
+    // not hand the application a bogus "//localhost/path". See BUG 483297.
+    QTemporaryDir tempDir;
+    const QString srcFile = tempDir.path() + QLatin1String("/srcfile.txt");
+    createSrcFile(srcFile);
+    QVERIFY(QFile::exists(srcFile));
+
+    QUrl url = QUrl::fromLocalFile(srcFile);
+    url.setHost(QStringLiteral("localhost"));
+    QVERIFY2(!url.host().isEmpty(), qPrintable(url.toString()));
+
+    KIO::OpenUrlJob *job = new KIO::OpenUrlJob(url, QStringLiteral("text/plain"), this);
+    QVERIFY2(job->exec(), qPrintable(job->errorString()));
+
+    // The fake service is invoked with "echo %u"; the host must have been dropped,
+    // so it receives the local path and not "//localhost/...".
+    const QString dest = m_tempDir.path() + "/dest";
+    QTRY_VERIFY2(QFile::exists(dest), qPrintable(dest));
+    QTRY_COMPARE(readFile(dest), srcFile);
+}
+
 void OpenUrlJobTest::noServiceNoHandler()
 {
     QTemporaryFile tempFile;

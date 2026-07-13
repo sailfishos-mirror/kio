@@ -44,6 +44,7 @@
 #include <QEventLoop>
 #include <QFileInfo>
 #include <QHash>
+#include <QHostInfo>
 #include <QPointer>
 #include <QProcess>
 #include <QScopeGuard>
@@ -2024,6 +2025,99 @@ void JobTest::stat()
     QVERIFY(!entry.isLink());
     QCOMPARE(entry.stringValue(KIO::UDSEntry::UDS_NAME), QString());
 #endif
+}
+
+// Rows for the localhost-host tests below: every host here names the local
+// machine and must be resolved to a plain file:///path (RFC 8089).
+static void localMachineHost_data()
+{
+    QTest::addColumn<QString>("host");
+    QTest::newRow("localhost") << QStringLiteral("localhost");
+    const QString localHost = QHostInfo::localHostName();
+    if (!localHost.isEmpty()) {
+        QTest::newRow("hostname") << localHost;
+        // The match must be case-insensitive.
+        QTest::newRow("hostname uppercase") << localHost.toUpper();
+    } else {
+        qWarning("QHostInfo::localHostName() is empty; skipping the hostname-based rows");
+    }
+}
+
+void JobTest::statLocalhostHost_data()
+{
+    localMachineHost_data();
+}
+
+void JobTest::statLocalhostHost()
+{
+    // file:// URLs may carry a host that names the local machine (RFC 8089),
+    // e.g. those produced by `ls --hyperlink`. KIO's file worker must resolve
+    // such a host to a plain local path; otherwise QUrl::toLocalFile() keeps it
+    // as a non-existent UNC path "//host/path". See https://bugs.kde.org/483297
+    QFETCH(QString, host);
+
+    const QString filePath = homeTmpDir() + "fileFromHome";
+    createTestFile(filePath);
+
+    QUrl url = QUrl::fromLocalFile(filePath);
+    url.setHost(host);
+    QVERIFY2(!url.host().isEmpty(), qPrintable(url.toString()));
+
+    KIO::StatJob *job = KIO::stat(url, KIO::HideProgressInfo);
+    QVERIFY(job);
+    QVERIFY2(job->exec(), qPrintable(job->errorString()));
+
+    // The worker canonicalizes the URL, dropping the local host.
+    QCOMPARE(job->url().host(), QString());
+
+    const KIO::UDSEntry &entry = job->statResult();
+    QVERIFY(!entry.isDir());
+    QVERIFY(!entry.isLink());
+    QCOMPARE(entry.stringValue(KIO::UDSEntry::UDS_NAME), QStringLiteral("fileFromHome"));
+}
+
+void JobTest::listLocalhostHost_data()
+{
+    localMachineHost_data();
+}
+
+void JobTest::listLocalhostHost()
+{
+    // Listing file://localhost/<dir> must be canonicalized to file:///<dir> so
+    // the resulting items don't keep the host. Otherwise KFileItem::isWritable()
+    // resolves the item URL as a bogus "//host/path" and every file is shown as
+    // read-only (with a lock emblem) in the file manager. BUG 483297.
+    QFETCH(QString, host);
+
+    const QString dirPath = homeTmpDir();
+    const QString filePath = dirPath + "fileForListing";
+    createTestFile(filePath);
+
+    QUrl url = QUrl::fromLocalFile(dirPath);
+    url.setHost(host);
+    QVERIFY2(!url.host().isEmpty(), qPrintable(url.toString()));
+
+    KIO::ListJob *job = KIO::listDir(url, KIO::HideProgressInfo);
+    QVERIFY(job);
+    KIO::UDSEntryList entries;
+    connect(job, &KIO::ListJob::entries, this, [&entries](KIO::Job *, const KIO::UDSEntryList &list) {
+        entries << list;
+    });
+    QVERIFY2(job->exec(), qPrintable(job->errorString()));
+
+    // The worker canonicalizes the listed URL, dropping the local host.
+    QCOMPARE(job->url().host(), QString());
+
+    const auto it = std::find_if(entries.cbegin(), entries.cend(), [](const KIO::UDSEntry &entry) {
+        return entry.stringValue(KIO::UDSEntry::UDS_NAME) == QLatin1String("fileForListing");
+    });
+    QVERIFY(it != entries.cend());
+
+    // The item URL must be host-less, so writability is detected correctly.
+    const KFileItem item(*it, job->url(), false /*delayedMimeTypes*/, true /*urlIsDirectory*/);
+    QCOMPARE(item.url().host(), QString());
+    QCOMPARE(item.localPath(), filePath);
+    QVERIFY2(item.isWritable(), qPrintable(item.url().toString()));
 }
 
 void JobTest::statDetailsBasic()

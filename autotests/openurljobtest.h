@@ -23,6 +23,7 @@ private Q_SLOTS:
 
     void startProcess_data();
     void startProcess();
+    void startProcessLocalhostHost();
 
     void noServiceNoHandler();
     void invalidUrl();
