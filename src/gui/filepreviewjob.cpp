@@ -37,12 +37,13 @@
 
 #include <QCoreApplication>
 #include <QCryptographicHash>
+#include <QFutureWatcher>
 #include <QJsonArray>
 #include <QMimeDatabase>
 #include <QSaveFile>
 #include <QTemporaryDir>
 #include <QTimer>
-#include <QtConcurrent/QtConcurrent>
+#include <QtConcurrentRun>
 
 #ifdef WITH_QTDBUS
 #include <QDBusConnection>
