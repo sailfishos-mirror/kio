@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:40+0000\n"
+"POT-Creation-Date: 2026-07-14 00:39+0000\n"
 "PO-Revision-Date: 2026-06-14 21:13+0900\n"
 "Last-Translator: Mint <5602mint@gmail.com>\n"
 "Language-Team: Japanese <kde-i18n-doc@kde.org>\n"
@@ -55,7 +55,7 @@ msgstr ""
 "ファイル <filename>%1</filename> の所有者を変更できませんでした。変更する権限"
 "がありません。"
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
+#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
 #, kde-format
 msgctxt ""
 "The first arg is the path to the symlink that couldn't be created, the "
@@ -2248,7 +2248,7 @@ msgstr "(%1, %2 へのリンク)"
 msgid " (Points to %1)"
 msgstr " (リンク先: %1)"
 
-#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:150
+#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:174
 #: widgets/renamedialog.cpp:677
 #, kde-format
 msgid ""
@@ -3821,7 +3821,7 @@ msgstr ""
 "サービス “%1” を実行可能にできません。実行を中止します。\n"
 "%2。"
 
-#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:653
+#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:677
 #, kde-format
 msgid "You are not authorized to select an application to open this file."
 msgstr ""
@@ -3896,12 +3896,12 @@ msgstr "コマンド <command>%1</command> が見つかりませんでした。"
 msgid "No terminal emulator found"
 msgstr "ターミナルエミュレータが見つかりませんでした"
 
-#: gui/openurljob.cpp:163
+#: gui/openurljob.cpp:187
 #, kde-format
 msgid "Failed to open %1"
 msgstr "%1 を開けませんでした"
 
-#: gui/openurljob.cpp:301
+#: gui/openurljob.cpp:325
 #, kde-format
 msgid ""
 "The desktop entry file\n"
@@ -3912,7 +3912,7 @@ msgstr ""
 "%1\n"
 "はタイプがリンクですが、URL=... という行がありません。"
 
-#: gui/openurljob.cpp:379
+#: gui/openurljob.cpp:403
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt>The file <b>%1</b> is an executable program. For safety it will not "
@@ -3922,20 +3922,20 @@ msgid ""
 "reasons it will not be started."
 msgstr "<qt>‘%1’ は実行ファイルです。安全のため実行しません。</qt>"
 
-#: gui/openurljob.cpp:420
+#: gui/openurljob.cpp:444
 #, kde-format
 msgid ""
 "For security reasons, launching executables is not allowed in this context."
 msgstr ""
 
-#: gui/openurljob.cpp:450
+#: gui/openurljob.cpp:474
 #, kde-format
 msgid ""
 "The program \"%1\" needs to have executable permission before it can be "
 "launched."
 msgstr ""
 
-#: gui/openurljob.cpp:461
+#: gui/openurljob.cpp:485
 #, fuzzy, kde-format
 #| msgid "<qt>The template file <b>%1</b> does not exist.</qt>"
 msgid ""
@@ -3943,12 +3943,12 @@ msgid ""
 "%2."
 msgstr "<qt>テンプレートファイル ‘%1’ は存在しません。</qt>"
 
-#: gui/openurljob.cpp:547
+#: gui/openurljob.cpp:571
 #, kde-format
 msgid "The desktop entry file %1 has no Type=... entry."
 msgstr "デスクトップエントリファイル ‘%1’ には Type=... という行がありません。"
 
-#: gui/openurljob.cpp:639
+#: gui/openurljob.cpp:663
 #, kde-format
 msgid ""
 "This file is incomplete and should not be opened.\n"
@@ -3956,12 +3956,12 @@ msgid ""
 "or downloads."
 msgstr ""
 
-#: gui/openurljob.cpp:665
+#: gui/openurljob.cpp:689
 #, kde-format
 msgid "Failed to open the file."
 msgstr "ファイルを開けませんでした。"
 
-#: gui/openurljob.cpp:699
+#: gui/openurljob.cpp:723
 #, kde-format
 msgid "The program \"%1\" could not be launched."
 msgstr "プログラム \"%1\" を起動できませんでした。"
@@ -4114,7 +4114,7 @@ msgstr "実行するコマンド"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "'command' に使用する URL またはローカルファイル"
 
-#: kioworkers/file/file.cpp:692
+#: kioworkers/file/file.cpp:727
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4123,7 +4123,7 @@ msgstr ""
 "‘%1’\n"
 "のパーミッションを変更できませんでした"
 
-#: kioworkers/file/file.cpp:700
+#: kioworkers/file/file.cpp:735
 #, fuzzy, kde-format
 #| msgid "Could not change ownership for %1."
 msgctxt "@info"
@@ -4132,38 +4132,38 @@ msgid ""
 "%1"
 msgstr "‘%1’ の所有者を変更できませんでした。"
 
-#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
+#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
 #, fuzzy, kde-format
 #| msgid "Could Not Rename Temporary File"
 msgid "Could not open temporary file"
 msgstr "一時ファイルの名前を変更できませんでした"
 
-#: kioworkers/file/file.cpp:804
+#: kioworkers/file/file.cpp:839
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "プログラム mount が見つかりませんでした"
 
-#: kioworkers/file/file.cpp:881
+#: kioworkers/file/file.cpp:916
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "プログラム umount が見つかりませんでした"
 
-#: kioworkers/file/file_unix.cpp:602
+#: kioworkers/file/file_unix.cpp:605
 #, kde-format
 msgid "Cannot copy file from %1 to %2. (Errno: %3)"
 msgstr "%1 から %2 にファイルをコピーできませんでした。(Errno: %3)"
 
-#: kioworkers/file/file_unix.cpp:817
+#: kioworkers/file/file_unix.cpp:809
 #, kde-format
 msgid "No media in device for %1"
 msgstr "%1 用のデバイスにメディアがありません"
 
-#: kioworkers/file/file_unix.cpp:1086
+#: kioworkers/file/file_unix.cpp:1083
 #, kde-format
 msgid "Could not get user id for given user name %1"
 msgstr "ユーザ名 %1 のユーザ ID を取得できませんでした"
 
-#: kioworkers/file/file_unix.cpp:1097
+#: kioworkers/file/file_unix.cpp:1094
 #, kde-format
 msgid "Could not get group id for given group name %1"
 msgstr "グループ名 %1 のグループ ID を取得できませんでした"

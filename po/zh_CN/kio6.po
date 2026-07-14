@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:40+0000\n"
+"POT-Creation-Date: 2026-07-14 00:39+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -45,7 +45,7 @@ msgid ""
 msgstr ""
 "无法修改文件 <filename>%1</filename> 的所有者。您没有足够的权限执行此操作。"
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
+#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
 #, kde-format
 msgctxt ""
 "The first arg is the path to the symlink that couldn't be created, the "
@@ -2149,7 +2149,7 @@ msgstr "(%1，链接到 %2)"
 msgid " (Points to %1)"
 msgstr " (指向 %1)"
 
-#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:150
+#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:174
 #: widgets/renamedialog.cpp:677
 #, kde-format
 msgid ""
@@ -3695,7 +3695,7 @@ msgstr ""
 "无法将 %1 服务设置为可执行，放弃执行操作。\n"
 "%2。"
 
-#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:653
+#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:677
 #, kde-format
 msgid "You are not authorized to select an application to open this file."
 msgstr "您没有选择此文件的打开程序的权限。"
@@ -3765,12 +3765,12 @@ msgstr "命令 <command>%1</command> 无法找到。"
 msgid "No terminal emulator found"
 msgstr "找不到终端模拟器"
 
-#: gui/openurljob.cpp:163
+#: gui/openurljob.cpp:187
 #, kde-format
 msgid "Failed to open %1"
 msgstr "打开 %1 失败"
 
-#: gui/openurljob.cpp:301
+#: gui/openurljob.cpp:325
 #, kde-format
 msgid ""
 "The desktop entry file\n"
@@ -3781,27 +3781,27 @@ msgstr ""
 "%1\n"
 "的类型是链接，但它没有包含 URL=... 项。"
 
-#: gui/openurljob.cpp:379
+#: gui/openurljob.cpp:403
 #, kde-format
 msgid ""
 "The executable file \"%1\" is located on a remote filesystem. For safety "
 "reasons it will not be started."
 msgstr "可执行文件“%1”位于远程文件系统中。出于安全考虑，它将不会启动。"
 
-#: gui/openurljob.cpp:420
+#: gui/openurljob.cpp:444
 #, kde-format
 msgid ""
 "For security reasons, launching executables is not allowed in this context."
 msgstr "出于安全考虑，在这种情况下不允许启动可执行程序。"
 
-#: gui/openurljob.cpp:450
+#: gui/openurljob.cpp:474
 #, kde-format
 msgid ""
 "The program \"%1\" needs to have executable permission before it can be "
 "launched."
 msgstr "程序“%1”需要有可执行权限才能启动。"
 
-#: gui/openurljob.cpp:461
+#: gui/openurljob.cpp:485
 #, kde-format
 msgid ""
 "Unable to make file \"%1\" executable.\n"
@@ -3810,12 +3810,12 @@ msgstr ""
 "无法赋予文件“%1”可执行权限。\n"
 "%2。"
 
-#: gui/openurljob.cpp:547
+#: gui/openurljob.cpp:571
 #, kde-format
 msgid "The desktop entry file %1 has no Type=... entry."
 msgstr "桌面项目文件 %1 没有 Type=... 项。"
 
-#: gui/openurljob.cpp:639
+#: gui/openurljob.cpp:663
 #, kde-format
 msgid ""
 "This file is incomplete and should not be opened.\n"
@@ -3825,12 +3825,12 @@ msgstr ""
 "此文件不完整，不应打开。\n"
 "请检查您打开的应用程序和通知区域是否存在未完成的任务或下载进程。"
 
-#: gui/openurljob.cpp:665
+#: gui/openurljob.cpp:689
 #, kde-format
 msgid "Failed to open the file."
 msgstr "打开文件失败。"
 
-#: gui/openurljob.cpp:699
+#: gui/openurljob.cpp:723
 #, kde-format
 msgid "The program \"%1\" could not be launched."
 msgstr "程序“%1”无法启动。"
@@ -3978,7 +3978,7 @@ msgstr "要执行的命令"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "命令使用的 URL 或者本地文件"
 
-#: kioworkers/file/file.cpp:692
+#: kioworkers/file/file.cpp:727
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -3987,7 +3987,7 @@ msgstr ""
 "无法为 %1\n"
 "更改权限"
 
-#: kioworkers/file/file.cpp:700
+#: kioworkers/file/file.cpp:735
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -3997,37 +3997,37 @@ msgstr ""
 "无法更改 %1 的\n"
 "所有者和组"
 
-#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
+#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
 #, kde-format
 msgid "Could not open temporary file"
 msgstr "无法打开临时文件"
 
-#: kioworkers/file/file.cpp:804
+#: kioworkers/file/file.cpp:839
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "找不到程序“mount”"
 
-#: kioworkers/file/file.cpp:881
+#: kioworkers/file/file.cpp:916
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "找不到程序“umount”"
 
-#: kioworkers/file/file_unix.cpp:602
+#: kioworkers/file/file_unix.cpp:605
 #, kde-format
 msgid "Cannot copy file from %1 to %2. (Errno: %3)"
 msgstr "无法将文件从 %1 复制到 %2。(错误号码：%3)"
 
-#: kioworkers/file/file_unix.cpp:817
+#: kioworkers/file/file_unix.cpp:809
 #, kde-format
 msgid "No media in device for %1"
 msgstr "%1 设备中没有媒体"
 
-#: kioworkers/file/file_unix.cpp:1086
+#: kioworkers/file/file_unix.cpp:1083
 #, kde-format
 msgid "Could not get user id for given user name %1"
 msgstr "无法获取给定的用户名 %1 的用户 ID"
 
-#: kioworkers/file/file_unix.cpp:1097
+#: kioworkers/file/file_unix.cpp:1094
 #, kde-format
 msgid "Could not get group id for given group name %1"
 msgstr "无法获取给定的用户组名 %1 的用户组 ID"

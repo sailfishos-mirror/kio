@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:40+0000\n"
+"POT-Creation-Date: 2026-07-14 00:39+0000\n"
 "PO-Revision-Date: 2026-06-17 23:21+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Taiwanese Hokkien <zh-l10n@lists.slat.org>\n"
@@ -41,7 +41,7 @@ msgstr ""
 "Bô-huat-tōo siu-kái tóng-àn <filename>%1</filename> ê sóo-iú-tsiá. Lí bô "
 "khuân-hān tsò tsit-ê kái-piàn."
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
+#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
 #, kde-format
 msgctxt ""
 "The first arg is the path to the symlink that couldn't be created, the "
@@ -2236,7 +2236,7 @@ msgstr "(%1, kàu %2 ê liân-kiat)"
 msgid " (Points to %1)"
 msgstr " (liân-kiat bo̍k-piau: %1)"
 
-#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:150
+#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:174
 #: widgets/renamedialog.cpp:677
 #, kde-format
 msgid ""
@@ -3763,7 +3763,7 @@ msgstr ""
 "Bô-huat-tōo kā ho̍k-bū %1 piàn-tsò ē-sái tsip-hîng. Tiong-tsí tsip-hîng.\n"
 "%2."
 
-#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:653
+#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:677
 #, kde-format
 msgid "You are not authorized to select an application to open this file."
 msgstr ""
@@ -3841,12 +3841,12 @@ msgstr ""
 msgid "No terminal emulator found"
 msgstr "Tshuē-bô tsiong-tuan-ki"
 
-#: gui/openurljob.cpp:163
+#: gui/openurljob.cpp:187
 #, kde-format
 msgid "Failed to open %1"
 msgstr "Khui %1 sit-pāi"
 
-#: gui/openurljob.cpp:301
+#: gui/openurljob.cpp:325
 #, kde-format
 msgid ""
 "The desktop entry file\n"
@@ -3857,7 +3857,7 @@ msgstr ""
 "%1\n"
 "sī Liân-kiat luī ê, m̄-koh i suah bô URL=... ti̍t."
 
-#: gui/openurljob.cpp:379
+#: gui/openurljob.cpp:403
 #, kde-format
 msgid ""
 "The executable file \"%1\" is located on a remote filesystem. For safety "
@@ -3866,32 +3866,32 @@ msgstr ""
 "Tsip-hîng-tóng \"%1\" tī-leh uán-tuan tóng-àn-hē-thóng tíng-kuân, sóo-í uī-"
 "tio̍h an-tsuân, bē kā i tsip-hîng."
 
-#: gui/openurljob.cpp:420
+#: gui/openurljob.cpp:444
 #, kde-format
 msgid ""
 "For security reasons, launching executables is not allowed in this context."
 msgstr "Uī-tio̍h an-tsuân, bē-sái tī tsit-ê lāi-bûn tsip-hîng tóng-àn."
 
-#: gui/openurljob.cpp:450
+#: gui/openurljob.cpp:474
 #, kde-format
 msgid ""
 "The program \"%1\" needs to have executable permission before it can be "
 "launched."
 msgstr "Tîng-sik \"%1\" su-iàu ū tsip-hîng khuân-hān tsiah ē-sái khí-tōng."
 
-#: gui/openurljob.cpp:461
+#: gui/openurljob.cpp:485
 #, kde-format
 msgid ""
 "Unable to make file \"%1\" executable.\n"
 "%2."
 msgstr ""
 
-#: gui/openurljob.cpp:547
+#: gui/openurljob.cpp:571
 #, kde-format
 msgid "The desktop entry file %1 has no Type=... entry."
 msgstr "desktop hāng-bo̍k tóng-àn %1 bô Type=... ti̍t."
 
-#: gui/openurljob.cpp:639
+#: gui/openurljob.cpp:663
 #, kde-format
 msgid ""
 "This file is incomplete and should not be opened.\n"
@@ -3899,12 +3899,12 @@ msgid ""
 "or downloads."
 msgstr ""
 
-#: gui/openurljob.cpp:665
+#: gui/openurljob.cpp:689
 #, kde-format
 msgid "Failed to open the file."
 msgstr "Khui tóng-àn sit-pāi."
 
-#: gui/openurljob.cpp:699
+#: gui/openurljob.cpp:723
 #, kde-format
 msgid "The program \"%1\" could not be launched."
 msgstr "Tîng-sik \"%1\" bô-huat-tōo khí-tōng."
@@ -4054,14 +4054,14 @@ msgstr "Ài tsip-hîng ê tsí-līng"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr ""
 
-#: kioworkers/file/file.cpp:692
+#: kioworkers/file/file.cpp:727
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
 "%1"
 msgstr ""
 
-#: kioworkers/file/file.cpp:700
+#: kioworkers/file/file.cpp:735
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4071,37 +4071,37 @@ msgstr ""
 "Bô-huat-tōo kái-piàn tsit-ê hāng-bo̍k ê sóo-iú-tsiá kah kûn-tsoo\n"
 "%1"
 
-#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
+#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
 #, kde-format
 msgid "Could not open temporary file"
 msgstr "Bô-huat-tōo khui tsiām-sî-tóng-àn"
 
-#: kioworkers/file/file.cpp:804
+#: kioworkers/file/file.cpp:839
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "Tshuē-bô \"mount\" tîng-sik"
 
-#: kioworkers/file/file.cpp:881
+#: kioworkers/file/file.cpp:916
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "Tshuē-bô \"umount\" tîng-sik"
 
-#: kioworkers/file/file_unix.cpp:602
+#: kioworkers/file/file_unix.cpp:605
 #, kde-format
 msgid "Cannot copy file from %1 to %2. (Errno: %3)"
 msgstr ""
 
-#: kioworkers/file/file_unix.cpp:817
+#: kioworkers/file/file_unix.cpp:809
 #, kde-format
 msgid "No media in device for %1"
 msgstr "Tsong-tì bô muî-thé hōo %1"
 
-#: kioworkers/file/file_unix.cpp:1086
+#: kioworkers/file/file_unix.cpp:1083
 #, kde-format
 msgid "Could not get user id for given user name %1"
 msgstr ""
 
-#: kioworkers/file/file_unix.cpp:1097
+#: kioworkers/file/file_unix.cpp:1094
 #, kde-format
 msgid "Could not get group id for given group name %1"
 msgstr ""

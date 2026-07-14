@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:40+0000\n"
+"POT-Creation-Date: 2026-07-14 00:39+0000\n"
 "PO-Revision-Date: 2025-08-19 17:33+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -49,7 +49,7 @@ msgstr ""
 "Neizdevās mainīt īpašumtiesības <filename>%1</filename> datnei. Jums nav "
 "pietiekama piekļuve datnei, lai veiktu šādas izmaiņas."
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
+#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
 #, kde-format
 msgctxt ""
 "The first arg is the path to the symlink that couldn't be created, the "
@@ -2273,7 +2273,7 @@ msgstr "(„%1“, saite uz „%2“)"
 msgid " (Points to %1)"
 msgstr " (Norāda uz „%1“)"
 
-#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:150
+#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:174
 #: widgets/renamedialog.cpp:677
 #, kde-format
 msgid ""
@@ -3872,7 +3872,7 @@ msgstr ""
 "Neizdevās „%1“ padarīt izpildāmu, tāpēc izpilde tiek atcelta,\n"
 "%2"
 
-#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:653
+#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:677
 #, kde-format
 msgid "You are not authorized to select an application to open this file."
 msgstr "Jums nav atļauju atlasīt programmu šīs datnes atvēršanai."
@@ -3942,12 +3942,12 @@ msgstr "Komandu „<command>%1</command>“ neatrada."
 msgid "No terminal emulator found"
 msgstr "Nav atrasts termināļa emulators"
 
-#: gui/openurljob.cpp:163
+#: gui/openurljob.cpp:187
 #, kde-format
 msgid "Failed to open %1"
 msgstr "Neizdevās atvērt „%1“"
 
-#: gui/openurljob.cpp:301
+#: gui/openurljob.cpp:325
 #, kde-format
 msgid ""
 "The desktop entry file\n"
@@ -3958,7 +3958,7 @@ msgstr ""
 "„%1“\n"
 "ir saites tipa, bet nesatur „URL=...“ ierakstu."
 
-#: gui/openurljob.cpp:379
+#: gui/openurljob.cpp:403
 #, kde-format
 msgid ""
 "The executable file \"%1\" is located on a remote filesystem. For safety "
@@ -3966,20 +3966,20 @@ msgid ""
 msgstr ""
 "Izpilddatne „%1“ atrodas attālā datņu sistēmā. Drošības dēļ to nepalaidīs."
 
-#: gui/openurljob.cpp:420
+#: gui/openurljob.cpp:444
 #, kde-format
 msgid ""
 "For security reasons, launching executables is not allowed in this context."
 msgstr "Drošības dēļ izplddatņu palaišana šajā kontekstā nav atļauta."
 
-#: gui/openurljob.cpp:450
+#: gui/openurljob.cpp:474
 #, kde-format
 msgid ""
 "The program \"%1\" needs to have executable permission before it can be "
 "launched."
 msgstr "„%1“ programmai pirms palaišanas ir jāpiešķir izpildu atļaujas."
 
-#: gui/openurljob.cpp:461
+#: gui/openurljob.cpp:485
 #, kde-format
 msgid ""
 "Unable to make file \"%1\" executable.\n"
@@ -3988,12 +3988,12 @@ msgstr ""
 "Neizdevās izveidot datni „%1“ izpildāmu.\n"
 "%2."
 
-#: gui/openurljob.cpp:547
+#: gui/openurljob.cpp:571
 #, kde-format
 msgid "The desktop entry file %1 has no Type=... entry."
 msgstr "Darbvirsmas ieraksta datnei „%1“ nav tipa („Type=...“) ieraksta."
 
-#: gui/openurljob.cpp:639
+#: gui/openurljob.cpp:663
 #, kde-format
 msgid ""
 "This file is incomplete and should not be opened.\n"
@@ -4004,12 +4004,12 @@ msgstr ""
 "Pārbaudiet atvērtās programmas un paziņojumu zonu, vai nav kāda iesākta "
 "darba vai lejupielādes."
 
-#: gui/openurljob.cpp:665
+#: gui/openurljob.cpp:689
 #, kde-format
 msgid "Failed to open the file."
 msgstr "Neizdevās atvērt datni."
 
-#: gui/openurljob.cpp:699
+#: gui/openurljob.cpp:723
 #, kde-format
 msgid "The program \"%1\" could not be launched."
 msgstr "„%1“ programmu nevar palaist."
@@ -4159,7 +4159,7 @@ msgstr "Izpildāmā komanda"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "URL vai lokālā datne(-es), ko izmanto „komandai“"
 
-#: kioworkers/file/file.cpp:692
+#: kioworkers/file/file.cpp:727
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4168,7 +4168,7 @@ msgstr ""
 "Nevar izmainīt atļaujas\n"
 "„%1“"
 
-#: kioworkers/file/file.cpp:700
+#: kioworkers/file/file.cpp:735
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4178,38 +4178,38 @@ msgstr ""
 "Nevar izmainīt īpašnieku un grupu\n"
 "„%1“"
 
-#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
+#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
 #, fuzzy, kde-format
 #| msgid "Could Not Rename Temporary File"
 msgid "Could not open temporary file"
 msgstr "Neizdevās pārdēvēt pagaidu datni"
 
-#: kioworkers/file/file.cpp:804
+#: kioworkers/file/file.cpp:839
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "Nevar atrast programmu „mount“"
 
-#: kioworkers/file/file.cpp:881
+#: kioworkers/file/file.cpp:916
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "Nevar atrast programmu „umount“"
 
-#: kioworkers/file/file_unix.cpp:602
+#: kioworkers/file/file_unix.cpp:605
 #, kde-format
 msgid "Cannot copy file from %1 to %2. (Errno: %3)"
 msgstr "Nevar kopēt datni no „%1“ uz „%2“. (Kļūda: %3)"
 
-#: kioworkers/file/file_unix.cpp:817
+#: kioworkers/file/file_unix.cpp:809
 #, kde-format
 msgid "No media in device for %1"
 msgstr "Nav atrasts „%1“ datu nesējs"
 
-#: kioworkers/file/file_unix.cpp:1086
+#: kioworkers/file/file_unix.cpp:1083
 #, kde-format
 msgid "Could not get user id for given user name %1"
 msgstr "Nevar atrast lietotāja ID lietotājvārdam „%1“"
 
-#: kioworkers/file/file_unix.cpp:1097
+#: kioworkers/file/file_unix.cpp:1094
 #, kde-format
 msgid "Could not get group id for given group name %1"
 msgstr "Nevar atrast grupas ID grupas nosaukumam „%1“"

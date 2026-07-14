@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio 0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:40+0000\n"
+"POT-Creation-Date: 2026-07-14 00:39+0000\n"
 "PO-Revision-Date: 2026-06-21 23:22+0200\n"
 "Last-Translator: Igor Dobrača <igor.dobraca@skole.hr>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -51,7 +51,7 @@ msgstr ""
 "Nije bilo moguće mijenjati vlasništvo nad datotekom <filename>%1</filename>. "
 "Nemate dovoljan pristupa datoteci da biste izvršili promjenu."
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
+#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
 #, kde-format
 msgctxt ""
 "The first arg is the path to the symlink that couldn't be created, the "
@@ -2275,7 +2275,7 @@ msgstr "(%1, link na %2)"
 msgid " (Points to %1)"
 msgstr " (Pokazuje na %1)"
 
-#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:150
+#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:174
 #: widgets/renamedialog.cpp:677
 #, kde-format
 msgid ""
@@ -3868,7 +3868,7 @@ msgstr ""
 "Ne mogu učiniti uslugu %1 izvršnom, prekidam izvršenje.\n"
 "%2."
 
-#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:653
+#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:677
 #, kde-format
 msgid "You are not authorized to select an application to open this file."
 msgstr "Niste ovlašteni za odabir aplikacije koja će otvoriti ovu datoteku."
@@ -3940,12 +3940,12 @@ msgstr "Naredba <command>%1</command> nije se mogala pronaći."
 msgid "No terminal emulator found"
 msgstr "Nije pronađen emulator terminala"
 
-#: gui/openurljob.cpp:163
+#: gui/openurljob.cpp:187
 #, kde-format
 msgid "Failed to open %1"
 msgstr "Greška pri otvaranju %1"
 
-#: gui/openurljob.cpp:301
+#: gui/openurljob.cpp:325
 #, kde-format
 msgid ""
 "The desktop entry file\n"
@@ -3956,7 +3956,7 @@ msgstr ""
 "%1\n"
 "je tipa veze ali nema URL… unos."
 
-#: gui/openurljob.cpp:379
+#: gui/openurljob.cpp:403
 #, kde-format
 msgid ""
 "The executable file \"%1\" is located on a remote filesystem. For safety "
@@ -3965,7 +3965,7 @@ msgstr ""
 "Izvršna datoteka \"%1\" nalazi se na udaljenom datotečnom sustavu. Iz "
 "sigurnosnih razloga neće biti pokrenuta."
 
-#: gui/openurljob.cpp:420
+#: gui/openurljob.cpp:444
 #, kde-format
 msgid ""
 "For security reasons, launching executables is not allowed in this context."
@@ -3973,7 +3973,7 @@ msgstr ""
 "Iz sigurnosnih razloga, pokretanje izvršnih datoteka nije dopušteno u ovom "
 "kontekstu."
 
-#: gui/openurljob.cpp:450
+#: gui/openurljob.cpp:474
 #, kde-format
 msgid ""
 "The program \"%1\" needs to have executable permission before it can be "
@@ -3982,7 +3982,7 @@ msgstr ""
 "Program \"%1\" mora imati dozvolu za izvršnu datoteku prije nego što se može "
 "pokrenuti."
 
-#: gui/openurljob.cpp:461
+#: gui/openurljob.cpp:485
 #, kde-format
 msgid ""
 "Unable to make file \"%1\" executable.\n"
@@ -3991,12 +3991,12 @@ msgstr ""
 "Nije moguće učiniti datoteku \"%1\" izvršnom.\n"
 "%2."
 
-#: gui/openurljob.cpp:547
+#: gui/openurljob.cpp:571
 #, kde-format
 msgid "The desktop entry file %1 has no Type=... entry."
 msgstr "Stavka datoteke na radnoj površini %1  nema Type… unos."
 
-#: gui/openurljob.cpp:639
+#: gui/openurljob.cpp:663
 #, kde-format
 msgid ""
 "This file is incomplete and should not be opened.\n"
@@ -4007,12 +4007,12 @@ msgstr ""
 "Provjerite otvorene prijave i područje obavijesti za eventualne zadatke ili "
 "preuzimanja."
 
-#: gui/openurljob.cpp:665
+#: gui/openurljob.cpp:689
 #, kde-format
 msgid "Failed to open the file."
 msgstr "Nisam uspio otvoriti datoteku."
 
-#: gui/openurljob.cpp:699
+#: gui/openurljob.cpp:723
 #, kde-format
 msgid "The program \"%1\" could not be launched."
 msgstr "Program \"%1\" nije mogao biti pokrenut."
@@ -4162,7 +4162,7 @@ msgstr "Naredba koju treba izvršiti"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "URL(i) ili lokalna(e) datoteka(e) koje se koriste za 'naredbu'"
 
-#: kioworkers/file/file.cpp:692
+#: kioworkers/file/file.cpp:727
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4171,7 +4171,7 @@ msgstr ""
 "Ne mogu promijeniti ovlasti za\n"
 "%1"
 
-#: kioworkers/file/file.cpp:700
+#: kioworkers/file/file.cpp:735
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4181,37 +4181,37 @@ msgstr ""
 "Nisam mogao promijeniti vlasnika i grupu za\n"
 "%1"
 
-#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
+#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
 #, kde-format
 msgid "Could not open temporary file"
 msgstr "Ne mogu otvoriti privremenu datoteku"
 
-#: kioworkers/file/file.cpp:804
+#: kioworkers/file/file.cpp:839
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "Nije moguće pronaći program \"mount\""
 
-#: kioworkers/file/file.cpp:881
+#: kioworkers/file/file.cpp:916
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "Nije moguće pronaći program \"umount\""
 
-#: kioworkers/file/file_unix.cpp:602
+#: kioworkers/file/file_unix.cpp:605
 #, kde-format
 msgid "Cannot copy file from %1 to %2. (Errno: %3)"
 msgstr "Nije moguće kopirati datoteku sa %1 u %2. (Broj greške: %3)"
 
-#: kioworkers/file/file_unix.cpp:817
+#: kioworkers/file/file_unix.cpp:809
 #, kde-format
 msgid "No media in device for %1"
 msgstr "Nema medija u uređaju za %1"
 
-#: kioworkers/file/file_unix.cpp:1086
+#: kioworkers/file/file_unix.cpp:1083
 #, kde-format
 msgid "Could not get user id for given user name %1"
 msgstr "Nije moguće dobiti ID korisnika za korisničko ime %1"
 
-#: kioworkers/file/file_unix.cpp:1097
+#: kioworkers/file/file_unix.cpp:1094
 #, kde-format
 msgid "Could not get group id for given group name %1"
 msgstr "Nije moguće dobiti ID grupe za dan naziv grupe %1"

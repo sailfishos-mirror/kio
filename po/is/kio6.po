@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:40+0000\n"
+"POT-Creation-Date: 2026-07-14 00:39+0000\n"
 "PO-Revision-Date: 2026-06-24 11:19+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -56,7 +56,7 @@ msgstr ""
 "Ekki tókst að breyta eiganda skráarinnar <filename>%1</filename>. Þú hefur "
 "ekki heimild til að gera þessa breytingu."
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
+#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
 #, kde-format
 msgctxt ""
 "The first arg is the path to the symlink that couldn't be created, the "
@@ -2273,7 +2273,7 @@ msgstr "(%1, tengill á %2)"
 msgid " (Points to %1)"
 msgstr " (Vísar á %1)"
 
-#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:150
+#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:174
 #: widgets/renamedialog.cpp:677
 #, kde-format
 msgid ""
@@ -3866,7 +3866,7 @@ msgstr ""
 "Tókst ekki að gera þjónustuna %1 keyranlega, hætt við keyrslu.\n"
 "%2."
 
-#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:653
+#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:677
 #, kde-format
 msgid "You are not authorized to select an application to open this file."
 msgstr "Þú hefur ekki heimild til að velja forrit til að opna þessa skrá."
@@ -3938,12 +3938,12 @@ msgstr "Skipunin <command>%1</command> fannst ekki."
 msgid "No terminal emulator found"
 msgstr "Enginn skjáhermir fannst"
 
-#: gui/openurljob.cpp:163
+#: gui/openurljob.cpp:187
 #, kde-format
 msgid "Failed to open %1"
 msgstr "Mistókst að opna %1"
 
-#: gui/openurljob.cpp:301
+#: gui/openurljob.cpp:325
 #, kde-format
 msgid ""
 "The desktop entry file\n"
@@ -3954,7 +3954,7 @@ msgstr ""
 "%1\n"
 "er af gerðinni tengill en er ekki með neina URL=...-færslu."
 
-#: gui/openurljob.cpp:379
+#: gui/openurljob.cpp:403
 #, kde-format
 msgid ""
 "The executable file \"%1\" is located on a remote filesystem. For safety "
@@ -3963,14 +3963,14 @@ msgstr ""
 "Keyrsluskráin \"%1\" er staðsett á fjartengdu skráakerfi.  Af öryggisástæðum "
 "verður hún ekki keyrð."
 
-#: gui/openurljob.cpp:420
+#: gui/openurljob.cpp:444
 #, kde-format
 msgid ""
 "For security reasons, launching executables is not allowed in this context."
 msgstr ""
 "Öryggisins vegna er ekki leyfilegt að ræsa keyrsluskrár í þessu samhengi."
 
-#: gui/openurljob.cpp:450
+#: gui/openurljob.cpp:474
 #, kde-format
 msgid ""
 "The program \"%1\" needs to have executable permission before it can be "
@@ -3978,7 +3978,7 @@ msgid ""
 msgstr ""
 "Forritið \"%1\" þarf að vera með keyrsluheimild til að hægt sé að ræsa það."
 
-#: gui/openurljob.cpp:461
+#: gui/openurljob.cpp:485
 #, kde-format
 msgid ""
 "Unable to make file \"%1\" executable.\n"
@@ -3987,12 +3987,12 @@ msgstr ""
 "Tókst ekki að gera skrána \"%1\" keyranlega.\n"
 "%2."
 
-#: gui/openurljob.cpp:547
+#: gui/openurljob.cpp:571
 #, kde-format
 msgid "The desktop entry file %1 has no Type=... entry."
 msgstr "Skjáborðsfærsluskráin %1 er ekki með neina Type=...-færslu."
 
-#: gui/openurljob.cpp:639
+#: gui/openurljob.cpp:663
 #, kde-format
 msgid ""
 "This file is incomplete and should not be opened.\n"
@@ -4003,12 +4003,12 @@ msgstr ""
 "Athugaðu hvort verk í bið eða niðurhal sé að finna í forritum sem eru opin "
 "og á tilkynningasvæðinu."
 
-#: gui/openurljob.cpp:665
+#: gui/openurljob.cpp:689
 #, kde-format
 msgid "Failed to open the file."
 msgstr "Mistókst að opna skrána."
 
-#: gui/openurljob.cpp:699
+#: gui/openurljob.cpp:723
 #, kde-format
 msgid "The program \"%1\" could not be launched."
 msgstr "Ekki var hægt að ræsa forritið \"%1\"."
@@ -4156,7 +4156,7 @@ msgstr "Skipun til að keyra"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "Slóð(-ir) eða staðbundin skrá sem 'skipun' notar."
 
-#: kioworkers/file/file.cpp:692
+#: kioworkers/file/file.cpp:727
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4165,7 +4165,7 @@ msgstr ""
 "Ekki tókst að breyta aðgangsheimildum fyrir\n"
 "%1"
 
-#: kioworkers/file/file.cpp:700
+#: kioworkers/file/file.cpp:735
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4175,37 +4175,37 @@ msgstr ""
 "Ekki tókst að breyta eiganda og hóp fyrir\n"
 "%1"
 
-#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
+#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
 #, kde-format
 msgid "Could not open temporary file"
 msgstr "Mistókst að opna bráðabirgðaskrá"
 
-#: kioworkers/file/file.cpp:804
+#: kioworkers/file/file.cpp:839
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "Forritið \"mount\" fannst ekki"
 
-#: kioworkers/file/file.cpp:881
+#: kioworkers/file/file.cpp:916
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "Forritið \"umount\" fannst ekki"
 
-#: kioworkers/file/file_unix.cpp:602
+#: kioworkers/file/file_unix.cpp:605
 #, kde-format
 msgid "Cannot copy file from %1 to %2. (Errno: %3)"
 msgstr "Ekki tókst að afrita skrá frá %1 til %2. (Villa: %3)"
 
-#: kioworkers/file/file_unix.cpp:817
+#: kioworkers/file/file_unix.cpp:809
 #, kde-format
 msgid "No media in device for %1"
 msgstr "Engin miðill í tæki fyrir %1"
 
-#: kioworkers/file/file_unix.cpp:1086
+#: kioworkers/file/file_unix.cpp:1083
 #, kde-format
 msgid "Could not get user id for given user name %1"
 msgstr "Ekki tókst að sækja notandakenni fyrir notandanafnið %1"
 
-#: kioworkers/file/file_unix.cpp:1097
+#: kioworkers/file/file_unix.cpp:1094
 #, kde-format
 msgid "Could not get group id for given group name %1"
 msgstr "Ekki tókst að sækja hópkenni fyrir hópheitið %1"

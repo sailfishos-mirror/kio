@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:40+0000\n"
+"POT-Creation-Date: 2026-07-14 00:39+0000\n"
 "PO-Revision-Date: 2026-06-15 15:37+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -41,7 +41,7 @@ msgstr ""
 "Kon de eigenaar van het bestand <filename>%1</filename> niet wijzigen. U "
 "hebt niet de benodigde toegangsrechten voor deze wijziging."
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
+#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
 #, kde-format
 msgctxt ""
 "The first arg is the path to the symlink that couldn't be created, the "
@@ -2327,7 +2327,7 @@ msgstr "(%1, koppeling naar %2)"
 msgid " (Points to %1)"
 msgstr " (Verwijst naar %1)"
 
-#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:150
+#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:174
 #: widgets/renamedialog.cpp:677
 #, kde-format
 msgid ""
@@ -3935,7 +3935,7 @@ msgstr ""
 "Niet in staat om de service %1 uitvoerbaar te maken, uitvoeren afbreken.\n"
 "%2"
 
-#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:653
+#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:677
 #, kde-format
 msgid "You are not authorized to select an application to open this file."
 msgstr ""
@@ -4010,12 +4010,12 @@ msgstr "Het commando <command>%1</command> is niet gevonden."
 msgid "No terminal emulator found"
 msgstr "Geen terminalprogramma gevonden"
 
-#: gui/openurljob.cpp:163
+#: gui/openurljob.cpp:187
 #, kde-format
 msgid "Failed to open %1"
 msgstr "Openen van %1 is mislukt"
 
-#: gui/openurljob.cpp:301
+#: gui/openurljob.cpp:325
 #, kde-format
 msgid ""
 "The desktop entry file\n"
@@ -4026,7 +4026,7 @@ msgstr ""
 "%1\n"
 "is van het type Link, maar heeft geen URL=... sleutel."
 
-#: gui/openurljob.cpp:379
+#: gui/openurljob.cpp:403
 #, kde-format
 msgid ""
 "The executable file \"%1\" is located on a remote filesystem. For safety "
@@ -4035,7 +4035,7 @@ msgstr ""
 "Het uitvoerbare bestand \"%1\" staat op een bestandssysteem op afstand. Uit "
 "veiligheidsoverwegingen zal het niet worden gestart."
 
-#: gui/openurljob.cpp:420
+#: gui/openurljob.cpp:444
 #, kde-format
 msgid ""
 "For security reasons, launching executables is not allowed in this context."
@@ -4043,7 +4043,7 @@ msgstr ""
 "Vanwege veiligheidsredenen is het starten van uitvoerbare bestanden niet "
 "toegestaan in deze context."
 
-#: gui/openurljob.cpp:450
+#: gui/openurljob.cpp:474
 #, kde-format
 msgid ""
 "The program \"%1\" needs to have executable permission before it can be "
@@ -4052,7 +4052,7 @@ msgstr ""
 "Het programma \"%1\" moet rechten voor uitvoeren hebben voordat het gestart "
 "kan worden."
 
-#: gui/openurljob.cpp:461
+#: gui/openurljob.cpp:485
 #, kde-format
 msgid ""
 "Unable to make file \"%1\" executable.\n"
@@ -4061,12 +4061,12 @@ msgstr ""
 "Bestand \"%1\" uitvoerbaar maken lukt niet.\n"
 "%2."
 
-#: gui/openurljob.cpp:547
+#: gui/openurljob.cpp:571
 #, kde-format
 msgid "The desktop entry file %1 has no Type=... entry."
 msgstr "In het desktopbestand %1 ontbreekt de Type=... regel."
 
-#: gui/openurljob.cpp:639
+#: gui/openurljob.cpp:663
 #, kde-format
 msgid ""
 "This file is incomplete and should not be opened.\n"
@@ -4077,12 +4077,12 @@ msgstr ""
 "Controleer uw open toepassingen en het meldingengebied voor taken die "
 "wachten of op downloads."
 
-#: gui/openurljob.cpp:665
+#: gui/openurljob.cpp:689
 #, kde-format
 msgid "Failed to open the file."
 msgstr "Het bestand openen is mislukt."
 
-#: gui/openurljob.cpp:699
+#: gui/openurljob.cpp:723
 #, kde-format
 msgid "The program \"%1\" could not be launched."
 msgstr "Het programma \"%1\" kon niet worden gestart."
@@ -4233,7 +4233,7 @@ msgstr "Uit te voeren commando"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "URL-adres(sen) of lokale bestand(en) voor 'commando'"
 
-#: kioworkers/file/file.cpp:692
+#: kioworkers/file/file.cpp:727
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4242,7 +4242,7 @@ msgstr ""
 "Kon de toegangsrechten voor\n"
 "%1 niet wijzigen"
 
-#: kioworkers/file/file.cpp:700
+#: kioworkers/file/file.cpp:735
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4252,37 +4252,37 @@ msgstr ""
 "Kon de eigenaar en groep niet wijzigen voor\n"
 "%1"
 
-#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
+#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
 #, kde-format
 msgid "Could not open temporary file"
 msgstr "Kon tijdelijke bestand niet openen"
 
-#: kioworkers/file/file.cpp:804
+#: kioworkers/file/file.cpp:839
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "Kon het programma \"mount\" niet vinden"
 
-#: kioworkers/file/file.cpp:881
+#: kioworkers/file/file.cpp:916
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "Kon het programma \"umount\" niet vinden"
 
-#: kioworkers/file/file_unix.cpp:602
+#: kioworkers/file/file_unix.cpp:605
 #, kde-format
 msgid "Cannot copy file from %1 to %2. (Errno: %3)"
 msgstr "Bestand kan niet van %1 naar %2 worden gekopieerd. (foutcode: %3)"
 
-#: kioworkers/file/file_unix.cpp:817
+#: kioworkers/file/file_unix.cpp:809
 #, kde-format
 msgid "No media in device for %1"
 msgstr "Geen medium in station voor %1"
 
-#: kioworkers/file/file_unix.cpp:1086
+#: kioworkers/file/file_unix.cpp:1083
 #, kde-format
 msgid "Could not get user id for given user name %1"
 msgstr "Kon gebruikers-id voor de opgegeven gebruikersnaam %1 niet verkrijgen"
 
-#: kioworkers/file/file_unix.cpp:1097
+#: kioworkers/file/file_unix.cpp:1094
 #, kde-format
 msgid "Could not get group id for given group name %1"
 msgstr "Kon de groeps-id voor opgegeven groepsnaam %1 niet verkrijgen"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:40+0000\n"
+"POT-Creation-Date: 2026-07-14 00:39+0000\n"
 "PO-Revision-Date: 2026-04-03 14:15+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -45,7 +45,7 @@ msgstr ""
 "Nu s-a putut modifica proprietarul fișierului <filename>%1</filename>. Nu "
 "aveți acces suficient la fișier pentru a efectua această modificare."
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
+#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
 #, kde-format
 msgctxt ""
 "The first arg is the path to the symlink that couldn't be created, the "
@@ -2310,7 +2310,7 @@ msgstr "(%1, legătură către %2)"
 msgid " (Points to %1)"
 msgstr "(Indică către %1)"
 
-#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:150
+#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:174
 #: widgets/renamedialog.cpp:677
 #, kde-format
 msgid ""
@@ -3912,7 +3912,7 @@ msgstr ""
 "Serviciul %1 nu a putut fi făcut executabil, se abandonează execuția.\n"
 "%2."
 
-#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:653
+#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:677
 #, kde-format
 msgid "You are not authorized to select an application to open this file."
 msgstr ""
@@ -3985,12 +3985,12 @@ msgstr "Comanda <command>%1</command> nu a fost găsită."
 msgid "No terminal emulator found"
 msgstr "Nu a fost găsit niciun emulator de terminal"
 
-#: gui/openurljob.cpp:163
+#: gui/openurljob.cpp:187
 #, kde-format
 msgid "Failed to open %1"
 msgstr "Nu s-a putut deschide %1"
 
-#: gui/openurljob.cpp:301
+#: gui/openurljob.cpp:325
 #, kde-format
 msgid ""
 "The desktop entry file\n"
@@ -4001,7 +4001,7 @@ msgstr ""
 "%1\n"
 "este de tip Legătură dar nu are o înregistrare URL=..."
 
-#: gui/openurljob.cpp:379
+#: gui/openurljob.cpp:403
 #, kde-format
 msgid ""
 "The executable file \"%1\" is located on a remote filesystem. For safety "
@@ -4010,7 +4010,7 @@ msgstr ""
 "Fișierul executabil „%1” e amplasat pe un sistem de fișiere distant. Din "
 "motive de siguranță, acesta nu va fi pornit."
 
-#: gui/openurljob.cpp:420
+#: gui/openurljob.cpp:444
 #, kde-format
 msgid ""
 "For security reasons, launching executables is not allowed in this context."
@@ -4018,7 +4018,7 @@ msgstr ""
 "Din motive de securitate, lansarea executabilelor nu e permisă în acest "
 "context."
 
-#: gui/openurljob.cpp:450
+#: gui/openurljob.cpp:474
 #, kde-format
 msgid ""
 "The program \"%1\" needs to have executable permission before it can be "
@@ -4027,7 +4027,7 @@ msgstr ""
 "Programul „%1” trebuie să aibă permisiuni executabile înainte să poată fi "
 "lansat."
 
-#: gui/openurljob.cpp:461
+#: gui/openurljob.cpp:485
 #, kde-format
 msgid ""
 "Unable to make file \"%1\" executable.\n"
@@ -4036,13 +4036,13 @@ msgstr ""
 "Fișierul „%1” nu poate fi făcut executabil.\n"
 "%2."
 
-#: gui/openurljob.cpp:547
+#: gui/openurljob.cpp:571
 #, kde-format
 msgid "The desktop entry file %1 has no Type=... entry."
 msgstr ""
 "Fișierul cu înregistrări de birou %1 nu conține o înregistrare Type=..."
 
-#: gui/openurljob.cpp:639
+#: gui/openurljob.cpp:663
 #, kde-format
 msgid ""
 "This file is incomplete and should not be opened.\n"
@@ -4053,12 +4053,12 @@ msgstr ""
 "Verificați aplicațiile deschise și zona de notificare pentru sarcini sau "
 "descărcări în curs."
 
-#: gui/openurljob.cpp:665
+#: gui/openurljob.cpp:689
 #, kde-format
 msgid "Failed to open the file."
 msgstr "Deschiderea fișierului a eșuat."
 
-#: gui/openurljob.cpp:699
+#: gui/openurljob.cpp:723
 #, kde-format
 msgid "The program \"%1\" could not be launched."
 msgstr "Programul „%1” nu a putut fi lansat."
@@ -4209,7 +4209,7 @@ msgstr "Comanda de executat"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "URL-ul(urile) sau fișierul(le) local(e) utilizate pentru 'command'"
 
-#: kioworkers/file/file.cpp:692
+#: kioworkers/file/file.cpp:727
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4218,7 +4218,7 @@ msgstr ""
 "Nu s-au putut schimba permisiunile pentru\n"
 "%1"
 
-#: kioworkers/file/file.cpp:700
+#: kioworkers/file/file.cpp:735
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4228,37 +4228,37 @@ msgstr ""
 "Nu s-a putut schimba proprietarul și grupul pentru\n"
 "%1"
 
-#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
+#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
 #, kde-format
 msgid "Could not open temporary file"
 msgstr "Nu s-a putut deschide fișierul temporar"
 
-#: kioworkers/file/file.cpp:804
+#: kioworkers/file/file.cpp:839
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "Programul „mount” nu a putut fi găsit"
 
-#: kioworkers/file/file.cpp:881
+#: kioworkers/file/file.cpp:916
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "Programul „umount” nu a putut fi găsit"
 
-#: kioworkers/file/file_unix.cpp:602
+#: kioworkers/file/file_unix.cpp:605
 #, kde-format
 msgid "Cannot copy file from %1 to %2. (Errno: %3)"
 msgstr "Nu s-a putut copia fișierul din %1 în %2. (Nr. eroare: %3)"
 
-#: kioworkers/file/file_unix.cpp:817
+#: kioworkers/file/file_unix.cpp:809
 #, kde-format
 msgid "No media in device for %1"
 msgstr "Niciun mediu în dispozitiv pentru %1"
 
-#: kioworkers/file/file_unix.cpp:1086
+#: kioworkers/file/file_unix.cpp:1083
 #, kde-format
 msgid "Could not get user id for given user name %1"
 msgstr "Nu s-a putut obține id. utilizatorului pentru numele de utilizator %1"
 
-#: kioworkers/file/file_unix.cpp:1097
+#: kioworkers/file/file_unix.cpp:1094
 #, kde-format
 msgid "Could not get group id for given group name %1"
 msgstr "Nu s-a putut obține id. grupului pentru denumirea de grup %1"

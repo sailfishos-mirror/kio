@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:40+0000\n"
+"POT-Creation-Date: 2026-07-14 00:39+0000\n"
 "PO-Revision-Date: 2026-05-04 17:15+0300\n"
 "Last-Translator: Wesenseged <kde-i18n-de@kde.org>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -41,7 +41,7 @@ msgstr ""
 "የፋይል <filename>%1</filename> ባለቤትነትን መቀየር አልተቻለም። ለውጡን ለማከናወን ፋይሉን የመጠቀም በቂ "
 "ፈቃድ የሎትም።"
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
+#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
 #, kde-format
 msgctxt ""
 "The first arg is the path to the symlink that couldn't be created, the "
@@ -2185,7 +2185,7 @@ msgstr "(%1፣ አገናኝ ወደ %2)"
 msgid " (Points to %1)"
 msgstr "(ወደ %1 ይጠቁማል)"
 
-#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:150
+#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:174
 #: widgets/renamedialog.cpp:677
 #, kde-format
 msgid ""
@@ -3744,7 +3744,7 @@ msgstr ""
 "አገልግሎቱን %1 ተፈጻሚ ማድረግ አልተቻለም፣ አፈጻጸምን በማስወገድ።\n"
 "%2።"
 
-#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:653
+#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:677
 #, kde-format
 msgid "You are not authorized to select an application to open this file."
 msgstr "ይህን ፋይል ለመክፈት መተግበሪያ የመምረጥ ፍቃድ የለዎትም።"
@@ -3814,12 +3814,12 @@ msgstr "ትዕዛዙ <command>%1</command> ሊገኝ አልቻለም።"
 msgid "No terminal emulator found"
 msgstr "ምንም የተርሚናል ኢሙሌተር አልተገኘም"
 
-#: gui/openurljob.cpp:163
+#: gui/openurljob.cpp:187
 #, kde-format
 msgid "Failed to open %1"
 msgstr "%1 መክፈት አልተሳካም።"
 
-#: gui/openurljob.cpp:301
+#: gui/openurljob.cpp:325
 #, kde-format
 msgid ""
 "The desktop entry file\n"
@@ -3830,27 +3830,27 @@ msgstr ""
 "%1\n"
 "የሊንክ አይነት ነው ነገር ግን URL የለውም=…ግቤት።"
 
-#: gui/openurljob.cpp:379
+#: gui/openurljob.cpp:403
 #, kde-format
 msgid ""
 "The executable file \"%1\" is located on a remote filesystem. For safety "
 "reasons it will not be started."
 msgstr "\"%1\" የሚፈፀመው ፋይል በርቀት የፋይል ስርዓት ላይ ይገኛል። ለደህንነት ሲባል አይጀመርም።"
 
-#: gui/openurljob.cpp:420
+#: gui/openurljob.cpp:444
 #, kde-format
 msgid ""
 "For security reasons, launching executables is not allowed in this context."
 msgstr "ለደህንነት ሲባል፣ በዚህ አውድ ውስጥ አስፈፃሚዎችን ማስጀመር አይፈቀድም።"
 
-#: gui/openurljob.cpp:450
+#: gui/openurljob.cpp:474
 #, kde-format
 msgid ""
 "The program \"%1\" needs to have executable permission before it can be "
 "launched."
 msgstr "ፕሮግራም \"%1\" ከመጀመሩ በፊት ተፈፃሚነት ያለው ፈቃድ ሊኖረው ይገባል።"
 
-#: gui/openurljob.cpp:461
+#: gui/openurljob.cpp:485
 #, kde-format
 msgid ""
 "Unable to make file \"%1\" executable.\n"
@@ -3859,12 +3859,12 @@ msgstr ""
 "ፋይል \"%1\"ን ተፈጻሚ ማድረግ አልተቻለም።\n"
 "%2።"
 
-#: gui/openurljob.cpp:547
+#: gui/openurljob.cpp:571
 #, kde-format
 msgid "The desktop entry file %1 has no Type=... entry."
 msgstr "የዴስክቶፕ ግቤት ፋይል %1 አይነት የለውም=…ግቤት ።"
 
-#: gui/openurljob.cpp:639
+#: gui/openurljob.cpp:663
 #, kde-format
 msgid ""
 "This file is incomplete and should not be opened.\n"
@@ -3874,12 +3874,12 @@ msgstr ""
 "ይህ ፋይል ያልተሟላ ነው እና መከፈት የለበትም።\n"
 "ለማንኛውም በመጠባበቅ ላይ ያሉ ተግባራት ወይም ውርዶች የእርስዎን ክፍት መተግበሪያዎች እና የማሳወቂያ ቦታን ያረጋግጡ።"
 
-#: gui/openurljob.cpp:665
+#: gui/openurljob.cpp:689
 #, kde-format
 msgid "Failed to open the file."
 msgstr "ፋይሉን መክፈት አልተሳካም።"
 
-#: gui/openurljob.cpp:699
+#: gui/openurljob.cpp:723
 #, kde-format
 msgid "The program \"%1\" could not be launched."
 msgstr "ፕሮግራም \"%1\"ን ማስጀመር አልተቻለም።"
@@ -4026,7 +4026,7 @@ msgstr "ለማስፈጸም ትእዛዝ"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "ለ'ትዕዛዝ' ጥቅም ላይ የዋሉ URL(ዎች) ወይም አካባቢያዊ ፋይሎች"
 
-#: kioworkers/file/file.cpp:692
+#: kioworkers/file/file.cpp:727
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4035,7 +4035,7 @@ msgstr ""
 "ፈቃዶችን መቀየር አልተቻለም ለ\n"
 "%1"
 
-#: kioworkers/file/file.cpp:700
+#: kioworkers/file/file.cpp:735
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4045,37 +4045,37 @@ msgstr ""
 "ባለቤት እና ቡድን መቀየር አልተቻለም ለ\n"
 "%1"
 
-#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
+#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
 #, kde-format
 msgid "Could not open temporary file"
 msgstr "ጊዜያዊ ፋይል መክፈት አልተቻለም"
 
-#: kioworkers/file/file.cpp:804
+#: kioworkers/file/file.cpp:839
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "\"mount\" የተባለውን ፕሮግራም ማግኘት አልተቻለም"
 
-#: kioworkers/file/file.cpp:881
+#: kioworkers/file/file.cpp:916
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "\"umount\" የተባለውን ፕሮግራም ማግኘት አልተቻለም"
 
-#: kioworkers/file/file_unix.cpp:602
+#: kioworkers/file/file_unix.cpp:605
 #, kde-format
 msgid "Cannot copy file from %1 to %2. (Errno: %3)"
 msgstr "ፋይሉን ከ%1 ወደ %2 መቅዳት አይቻልም። (የስህተት ቁጥር፦ %3)"
 
-#: kioworkers/file/file_unix.cpp:817
+#: kioworkers/file/file_unix.cpp:809
 #, kde-format
 msgid "No media in device for %1"
 msgstr "ለ%1 በመሳሪያው ውስጥ ምንም ሚዲያ የለም"
 
-#: kioworkers/file/file_unix.cpp:1086
+#: kioworkers/file/file_unix.cpp:1083
 #, kde-format
 msgid "Could not get user id for given user name %1"
 msgstr "ለተጠቀሰው የተጠቃሚ ስም %1 የተጠቃሚ ID ማግኘት አልተቻለም"
 
-#: kioworkers/file/file_unix.cpp:1097
+#: kioworkers/file/file_unix.cpp:1094
 #, kde-format
 msgid "Could not get group id for given group name %1"
 msgstr "ለቡድን ስም %1 የቡድን ID ማግኘት አልተቻለም"

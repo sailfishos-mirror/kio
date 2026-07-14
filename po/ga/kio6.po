@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:40+0000\n"
+"POT-Creation-Date: 2026-07-14 00:39+0000\n"
 "PO-Revision-Date: 2026-07-03 22:06+0100\n"
 "Last-Translator: deck <altronic25@protonmail.com>\n"
 "Language-Team: English <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -43,7 +43,7 @@ msgstr ""
 "Níorbh fhéidir úinéireacht an chomhaid <filename>%1</filename> a athrú. Níl "
 "rochtain leordhóthanach agat ar an gcomhad chun an t-athrú a dhéanamh."
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
+#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
 #, kde-format
 msgctxt ""
 "The first arg is the path to the symlink that couldn't be created, the "
@@ -2313,7 +2313,7 @@ msgstr "(%1, Nasc le %2)"
 msgid " (Points to %1)"
 msgstr " (Dírithe ar %1)"
 
-#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:150
+#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:174
 #: widgets/renamedialog.cpp:677
 #, kde-format
 msgid ""
@@ -3929,7 +3929,7 @@ msgstr ""
 "bhforghníomhú.\n"
 "%2."
 
-#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:653
+#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:677
 #, kde-format
 msgid "You are not authorized to select an application to open this file."
 msgstr "Níl cead agat feidhmchlár a roghnú chun an comhad seo a oscailt."
@@ -4001,12 +4001,12 @@ msgstr "Níorbh fhéidir an t-ordú <command>%1</command> a aimsiú."
 msgid "No terminal emulator found"
 msgstr "Níor aimsíodh aon aithriseoir críochfoirt"
 
-#: gui/openurljob.cpp:163
+#: gui/openurljob.cpp:187
 #, kde-format
 msgid "Failed to open %1"
 msgstr "Theip ar %1 a oscailt"
 
-#: gui/openurljob.cpp:301
+#: gui/openurljob.cpp:325
 #, kde-format
 msgid ""
 "The desktop entry file\n"
@@ -4017,7 +4017,7 @@ msgstr ""
 "%1\n"
 "de chineál Nasc ach níl aon iontráil URL=... ann."
 
-#: gui/openurljob.cpp:379
+#: gui/openurljob.cpp:403
 #, kde-format
 msgid ""
 "The executable file \"%1\" is located on a remote filesystem. For safety "
@@ -4026,7 +4026,7 @@ msgstr ""
 "Tá an comhad inrite \"%1\" suite ar chóras comhad iargúlta. Ar chúiseanna "
 "sábháilteachta, ní thosófar é."
 
-#: gui/openurljob.cpp:420
+#: gui/openurljob.cpp:444
 #, kde-format
 msgid ""
 "For security reasons, launching executables is not allowed in this context."
@@ -4034,7 +4034,7 @@ msgstr ""
 "Ar chúiseanna slándála, ní cheadaítear comhaid inrite a sheoladh sa "
 "chomhthéacs seo."
 
-#: gui/openurljob.cpp:450
+#: gui/openurljob.cpp:474
 #, kde-format
 msgid ""
 "The program \"%1\" needs to have executable permission before it can be "
@@ -4043,7 +4043,7 @@ msgstr ""
 "Caithfidh cead inrite a bheith ag an gclár \"%1\" sula bhféadfar é a "
 "sheoladh."
 
-#: gui/openurljob.cpp:461
+#: gui/openurljob.cpp:485
 #, kde-format
 msgid ""
 "Unable to make file \"%1\" executable.\n"
@@ -4052,12 +4052,12 @@ msgstr ""
 "Ní féidir an comhad \"%1\" a dhéanamh inrite.\n"
 "%2."
 
-#: gui/openurljob.cpp:547
+#: gui/openurljob.cpp:571
 #, kde-format
 msgid "The desktop entry file %1 has no Type=... entry."
 msgstr "Níl iontráil `Type=...' i gcomhad na hiontrála deisce %1."
 
-#: gui/openurljob.cpp:639
+#: gui/openurljob.cpp:663
 #, kde-format
 msgid ""
 "This file is incomplete and should not be opened.\n"
@@ -4068,12 +4068,12 @@ msgstr ""
 "Seiceáil d’fheidhmchláir oscailte agus an limistéar fógraí le haghaidh aon "
 "tascanna nó íoslódálacha atá ar feitheamh."
 
-#: gui/openurljob.cpp:665
+#: gui/openurljob.cpp:689
 #, kde-format
 msgid "Failed to open the file."
 msgstr "Theip ar an gcomhad a oscailt."
 
-#: gui/openurljob.cpp:699
+#: gui/openurljob.cpp:723
 #, kde-format
 msgid "The program \"%1\" could not be launched."
 msgstr "Níorbh fhéidir an clár \"%1\" a sheoladh."
@@ -4224,7 +4224,7 @@ msgstr "Ordú le rith"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "URL(anna) nó comhad(anna) áitiúil a úsáidtear le haghaidh 'ordú'"
 
-#: kioworkers/file/file.cpp:692
+#: kioworkers/file/file.cpp:727
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4233,7 +4233,7 @@ msgstr ""
 "Níorbh fhéidir ceadanna a athrú le haghaidh\n"
 "%1"
 
-#: kioworkers/file/file.cpp:700
+#: kioworkers/file/file.cpp:735
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4243,38 +4243,38 @@ msgstr ""
 "Níorbh fhéidir úinéir agus grúpa a athrú do\n"
 "%1"
 
-#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
+#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
 #, kde-format
 msgid "Could not open temporary file"
 msgstr "Níorbh fhéidir an comhad neamhbhuan a oscailt"
 
-#: kioworkers/file/file.cpp:804
+#: kioworkers/file/file.cpp:839
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "Níorbh fhéidir clár \"mount\" a aimsiú"
 
-#: kioworkers/file/file.cpp:881
+#: kioworkers/file/file.cpp:916
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "Níorbh fhéidir clár \"umount\" a aimsiú"
 
-#: kioworkers/file/file_unix.cpp:602
+#: kioworkers/file/file_unix.cpp:605
 #, kde-format
 msgid "Cannot copy file from %1 to %2. (Errno: %3)"
 msgstr "Ní féidir comhad a chóipeáil ó %1 go %2. (Earráid: %3)"
 
-#: kioworkers/file/file_unix.cpp:817
+#: kioworkers/file/file_unix.cpp:809
 #, kde-format
 msgid "No media in device for %1"
 msgstr "Níl meáin sa ghléas le haghaidh %1"
 
-#: kioworkers/file/file_unix.cpp:1086
+#: kioworkers/file/file_unix.cpp:1083
 #, kde-format
 msgid "Could not get user id for given user name %1"
 msgstr ""
 "Níorbh fhéidir aitheantas úsáideora a fháil don ainm úsáideora tugtha %1"
 
-#: kioworkers/file/file_unix.cpp:1097
+#: kioworkers/file/file_unix.cpp:1094
 #, kde-format
 msgid "Could not get group id for given group name %1"
 msgstr "Níorbh fhéidir aitheantas grúpa a fháil don ainm grúpa tugtha %1"

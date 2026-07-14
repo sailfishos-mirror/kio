@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:40+0000\n"
+"POT-Creation-Date: 2026-07-14 00:39+0000\n"
 "PO-Revision-Date: 2025-03-20 15:34+0700\n"
 "Last-Translator: Pongsakorn S. <kde@xerusion.me>\n"
 "Language-Team: Thai\n"
@@ -42,7 +42,7 @@ msgid ""
 "insufficient access to the file to perform the change."
 msgstr "ไม่สามารถแก้ไขเจ้าของ ของไฟล์ <b>%1</b> ได้ คุณมีสิทธิ์ไม่เพียงพอในการจะแก้ไขไฟล์"
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
+#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
 #, kde-format
 msgctxt ""
 "The first arg is the path to the symlink that couldn't be created, the "
@@ -2206,7 +2206,7 @@ msgstr "(%1, เชื่อมโยงไปยัง %2)"
 msgid " (Points to %1)"
 msgstr " (ชี้ไปยัง %1)"
 
-#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:150
+#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:174
 #: widgets/renamedialog.cpp:677
 #, kde-format
 msgid ""
@@ -3781,7 +3781,7 @@ msgstr ""
 "ไม่สามารถทำให้บริการ %1 ประมวลผลได้ จึงทำการยุติการประมวลผล\n"
 "%2"
 
-#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:653
+#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:677
 #, kde-format
 msgid "You are not authorized to select an application to open this file."
 msgstr "คุณไม่ได้รับการอนุญาตให้เลือกโปรแกรมที่จะเปิดใช้แฟ้มนี้"
@@ -3851,12 +3851,12 @@ msgstr "ไม่พบคำสั่ง <command>%1</command>"
 msgid "No terminal emulator found"
 msgstr "ไม่พบโปรแกรม terminal emulator"
 
-#: gui/openurljob.cpp:163
+#: gui/openurljob.cpp:187
 #, kde-format
 msgid "Failed to open %1"
 msgstr "ไม่สามารถเปิด %1 ได้"
 
-#: gui/openurljob.cpp:301
+#: gui/openurljob.cpp:325
 #, kde-format
 msgid ""
 "The desktop entry file\n"
@@ -3867,27 +3867,27 @@ msgstr ""
 "%1\n"
 "เป็นประเภทการเชื่อมโยง แต่ไม่มีส่วน URL=... อยู่"
 
-#: gui/openurljob.cpp:379
+#: gui/openurljob.cpp:403
 #, kde-format
 msgid ""
 "The executable file \"%1\" is located on a remote filesystem. For safety "
 "reasons it will not be started."
 msgstr "ไฟล์ปฏิบัติการ \"%1\" อยู่บนระบบไฟล์ระยะไกล ด้วยเหตุผลด้านความปลอดภัยจึงไม่เริ่ม"
 
-#: gui/openurljob.cpp:420
+#: gui/openurljob.cpp:444
 #, kde-format
 msgid ""
 "For security reasons, launching executables is not allowed in this context."
 msgstr "ด้วยเหตุผลด้านความปลอดภัย การเปิดใช้ไฟล์ปฏิบัติการไม่ได้รับอนุญาตในบริบทนี้"
 
-#: gui/openurljob.cpp:450
+#: gui/openurljob.cpp:474
 #, kde-format
 msgid ""
 "The program \"%1\" needs to have executable permission before it can be "
 "launched."
 msgstr "โปรแกรม \"%1\" ต้องได้รับอนุญาตก่อนจึงจะเปิดใช้งานได้"
 
-#: gui/openurljob.cpp:461
+#: gui/openurljob.cpp:485
 #, kde-format
 msgid ""
 "Unable to make file \"%1\" executable.\n"
@@ -3896,12 +3896,12 @@ msgstr ""
 "ไม่สามารถสร้างไฟล์ \"%1\" ให้สามารถเรียกทำงานได้\n"
 "%2."
 
-#: gui/openurljob.cpp:547
+#: gui/openurljob.cpp:571
 #, kde-format
 msgid "The desktop entry file %1 has no Type=... entry."
 msgstr "ภายในแฟ้มพื้นที่ทำงาน %1 ไม่มีส่วน Type=... อยู่"
 
-#: gui/openurljob.cpp:639
+#: gui/openurljob.cpp:663
 #, kde-format
 msgid ""
 "This file is incomplete and should not be opened.\n"
@@ -3911,12 +3911,12 @@ msgstr ""
 "ไฟล์นี้ยังไม่สมบูรณ์และไม่ควรเปิด\n"
 "ตรวจสอบแอปพลิเคชันที่เปิดอยู่และพื้นที่การแจ้งเตือนว่ามีงานหรือการดาวน์โหลดใด ๆ ที่กำลังรออยู่หรือไม่"
 
-#: gui/openurljob.cpp:665
+#: gui/openurljob.cpp:689
 #, kde-format
 msgid "Failed to open the file."
 msgstr "ไม่สามารถเปิดไฟล์ได้"
 
-#: gui/openurljob.cpp:699
+#: gui/openurljob.cpp:723
 #, kde-format
 msgid "The program \"%1\" could not be launched."
 msgstr "ไม่สามารถเปิดโปรแกรม \"%1\" ได้"
@@ -4064,7 +4064,7 @@ msgstr "คำสั่งให้ดำเนินการ"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "URL หรือไฟล์ภายในเครื่องที่ใช้สำหรับ 'คำสั่ง'"
 
-#: kioworkers/file/file.cpp:692
+#: kioworkers/file/file.cpp:727
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4073,7 +4073,7 @@ msgstr ""
 "ไม่สามารถเปลี่ยนสิทธิ์ที่อนุญาตของ\n"
 "%1 ได้"
 
-#: kioworkers/file/file.cpp:700
+#: kioworkers/file/file.cpp:735
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4083,38 +4083,38 @@ msgstr ""
 "ไม่สามารถเปลี่ยนเจ้าของและกลุ่มสำหรับ\n"
 "%1"
 
-#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
+#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
 #, fuzzy, kde-format
 #| msgid "Could Not Rename Temporary File"
 msgid "Could not open temporary file"
 msgstr "ไม่สามารถเปลี่ยนชื่อแฟ้มชั่วคราวได้"
 
-#: kioworkers/file/file.cpp:804
+#: kioworkers/file/file.cpp:839
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "ไม่สามารถค้นหาโปรแกรม \"mount\" ได้"
 
-#: kioworkers/file/file.cpp:881
+#: kioworkers/file/file.cpp:916
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "ไม่สามารถค้นหาโปรแกรม \"umount\" ได้"
 
-#: kioworkers/file/file_unix.cpp:602
+#: kioworkers/file/file_unix.cpp:605
 #, kde-format
 msgid "Cannot copy file from %1 to %2. (Errno: %3)"
 msgstr "ไม่สามารถคัดลอกแฟ้มจาก %1 ไปยัง %2 ได้ (หมายเลขข้อผิดพลาด: %3)"
 
-#: kioworkers/file/file_unix.cpp:817
+#: kioworkers/file/file_unix.cpp:809
 #, kde-format
 msgid "No media in device for %1"
 msgstr "ไม่พบสื่อในอุปกรณ์ %1"
 
-#: kioworkers/file/file_unix.cpp:1086
+#: kioworkers/file/file_unix.cpp:1083
 #, kde-format
 msgid "Could not get user id for given user name %1"
 msgstr "ไม่สามารถรับเอาหมายเลขผู้ใช้ (user id) ของชื่อผู้ใช้ %1 ได้"
 
-#: kioworkers/file/file_unix.cpp:1097
+#: kioworkers/file/file_unix.cpp:1094
 #, kde-format
 msgid "Could not get group id for given group name %1"
 msgstr "ไม่สามารถรับเอาหมายเลขกลุ่ม (group id) ของชื่อกลุ่ม %1 ได้"

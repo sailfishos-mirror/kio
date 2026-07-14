@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:40+0000\n"
+"POT-Creation-Date: 2026-07-14 00:39+0000\n"
 "PO-Revision-Date: 2014-02-25 01:34+0100\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -46,7 +46,7 @@ msgstr ""
 "<qt>De Eegner vun de Datei <b>%1</b> lett sik nich ännern. Du hest dor nich "
 "noog Verlöven för.</qt>"
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
+#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
 #, fuzzy, kde-format
 #| msgid ""
 #| "Could not create symlink %1.\n"
@@ -2340,7 +2340,7 @@ msgstr "(%1, Link op \"%2\")"
 msgid " (Points to %1)"
 msgstr " (wiest op %1)"
 
-#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:150
+#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:174
 #: widgets/renamedialog.cpp:677
 #, kde-format
 msgid ""
@@ -4016,7 +4016,7 @@ msgid ""
 msgstr ""
 "De Deenst \"%1\" lett sik nich utföhrbor maken, Utföhren warrt afbraken"
 
-#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:653
+#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:677
 #, kde-format
 msgid "You are not authorized to select an application to open this file."
 msgstr "Du muttst keen Programm utsöken, mit dat sik disse Datei opmaken lett."
@@ -4089,12 +4089,12 @@ msgstr "De Datei \"%1\" lett sik nich finnen"
 msgid "No terminal emulator found"
 msgstr ""
 
-#: gui/openurljob.cpp:163
+#: gui/openurljob.cpp:187
 #, kde-format
 msgid "Failed to open %1"
 msgstr ""
 
-#: gui/openurljob.cpp:301
+#: gui/openurljob.cpp:325
 #, kde-format
 msgid ""
 "The desktop entry file\n"
@@ -4105,7 +4105,7 @@ msgstr ""
 "%1\n"
 "hett den Typ \"Link\", man se bargt keen Indrag \"URL=...\"."
 
-#: gui/openurljob.cpp:379
+#: gui/openurljob.cpp:403
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt>The file <b>%1</b> is an executable program. For safety it will not "
@@ -4117,20 +4117,20 @@ msgstr ""
 "<qt>De Datei <b>%1</b> is en utföhrbor Programm. Dat warrt ut Sekerheitgrünn "
 "nich start.</qt>"
 
-#: gui/openurljob.cpp:420
+#: gui/openurljob.cpp:444
 #, kde-format
 msgid ""
 "For security reasons, launching executables is not allowed in this context."
 msgstr ""
 
-#: gui/openurljob.cpp:450
+#: gui/openurljob.cpp:474
 #, kde-format
 msgid ""
 "The program \"%1\" needs to have executable permission before it can be "
 "launched."
 msgstr ""
 
-#: gui/openurljob.cpp:461
+#: gui/openurljob.cpp:485
 #, fuzzy, kde-format
 #| msgid "<qt>The template file <b>%1</b> does not exist.</qt>"
 msgid ""
@@ -4138,12 +4138,12 @@ msgid ""
 "%2."
 msgstr "<qt>Dat gifft de Vörlaagdatei <b>%1</b> nich.</qt>"
 
-#: gui/openurljob.cpp:547
+#: gui/openurljob.cpp:571
 #, kde-format
 msgid "The desktop entry file %1 has no Type=... entry."
 msgstr "De Schriefdisch-Datei %1 bargt keen Indrag \"Type=...\""
 
-#: gui/openurljob.cpp:639
+#: gui/openurljob.cpp:663
 #, kde-format
 msgid ""
 "This file is incomplete and should not be opened.\n"
@@ -4151,13 +4151,13 @@ msgid ""
 "or downloads."
 msgstr ""
 
-#: gui/openurljob.cpp:665
+#: gui/openurljob.cpp:689
 #, fuzzy, kde-format
 #| msgid "Cannot open file"
 msgid "Failed to open the file."
 msgstr "Datei lett sik nich opmaken"
 
-#: gui/openurljob.cpp:699
+#: gui/openurljob.cpp:723
 #, fuzzy, kde-format
 #| msgid "The file \"%1\" could not be found"
 msgid "The program \"%1\" could not be launched."
@@ -4319,7 +4319,7 @@ msgstr "Befehl, den Du utföhren wullt"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "URL(s) oder lokaal Datei(en) för \"command\""
 
-#: kioworkers/file/file.cpp:692
+#: kioworkers/file/file.cpp:727
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4328,7 +4328,7 @@ msgstr ""
 "Verlöven laat sik nich ännern för:\n"
 "%1"
 
-#: kioworkers/file/file.cpp:700
+#: kioworkers/file/file.cpp:735
 #, fuzzy, kde-format
 #| msgid "Could not change ownership for %1."
 msgctxt "@info"
@@ -4337,38 +4337,38 @@ msgid ""
 "%1"
 msgstr "Eegner vun \"%1\" lett sik nich ännern."
 
-#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
+#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
 #, fuzzy, kde-format
 #| msgid "Could Not Rename Temporary File"
 msgid "Could not open temporary file"
 msgstr "Temporeerdatei lett sik nich ümnömen"
 
-#: kioworkers/file/file.cpp:804
+#: kioworkers/file/file.cpp:839
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "Programm \"mount\" lett sik nich finnen."
 
-#: kioworkers/file/file.cpp:881
+#: kioworkers/file/file.cpp:916
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "Programm \"umount\" lett sik nich finnen."
 
-#: kioworkers/file/file_unix.cpp:602
+#: kioworkers/file/file_unix.cpp:605
 #, kde-format
 msgid "Cannot copy file from %1 to %2. (Errno: %3)"
 msgstr "Datei lett sik nich vun %1 na %2 koperen. (Fehlernr.: %3)"
 
-#: kioworkers/file/file_unix.cpp:817
+#: kioworkers/file/file_unix.cpp:809
 #, kde-format
 msgid "No media in device for %1"
 msgstr "Keen Medium in Reedschap för %1"
 
-#: kioworkers/file/file_unix.cpp:1086
+#: kioworkers/file/file_unix.cpp:1083
 #, kde-format
 msgid "Could not get user id for given user name %1"
 msgstr "De Bruker-ID för den Brukernaam \"%1\" lett sik nich halen."
 
-#: kioworkers/file/file_unix.cpp:1097
+#: kioworkers/file/file_unix.cpp:1094
 #, kde-format
 msgid "Could not get group id for given group name %1"
 msgstr "De Koppel-ID för den Brukernaam \"%1\" lett sik nich halen."

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:40+0000\n"
+"POT-Creation-Date: 2026-07-14 00:39+0000\n"
 "PO-Revision-Date: 2026-07-04 21:41+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -51,7 +51,7 @@ msgstr ""
 "تعذّر تغيير ملكيّة الملفّ <filename>%1</filename>. ليس لديك نفاذ كاف إلى الملفّ "
 "لإجراء التّغيير."
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
+#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
 #, kde-format
 msgctxt ""
 "The first arg is the path to the symlink that couldn't be created, the "
@@ -2226,7 +2226,7 @@ msgstr "(%1، رابط إلى %2)"
 msgid " (Points to %1)"
 msgstr " (يشير إلى %1)"
 
-#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:150
+#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:174
 #: widgets/renamedialog.cpp:677
 #, kde-format
 msgid ""
@@ -3817,7 +3817,7 @@ msgstr ""
 "تعذّر جعل الخدمة %1 تنفيذيّة، أُبطل التّنفيذ.\n"
 "%2."
 
-#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:653
+#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:677
 #, kde-format
 msgid "You are not authorized to select an application to open this file."
 msgstr "ليس مصرّحًا لك اختيار تطبيق لفتح هذا الملفّ."
@@ -3887,12 +3887,12 @@ msgstr "تعذّر العثور على الأمر <command>%1</command>"
 msgid "No terminal emulator found"
 msgstr "لم يعثر على محاكي الطرفية"
 
-#: gui/openurljob.cpp:163
+#: gui/openurljob.cpp:187
 #, kde-format
 msgid "Failed to open %1"
 msgstr "فشل في فتح %1"
 
-#: gui/openurljob.cpp:301
+#: gui/openurljob.cpp:325
 #, kde-format
 msgid ""
 "The desktop entry file\n"
@@ -3903,7 +3903,7 @@ msgstr ""
 "%1\n"
 "هو من النوع رابط ولكن ليس له مدخلة URL=... "
 
-#: gui/openurljob.cpp:379
+#: gui/openurljob.cpp:403
 #, kde-format
 msgid ""
 "The executable file \"%1\" is located on a remote filesystem. For safety "
@@ -3911,20 +3911,20 @@ msgid ""
 msgstr ""
 "الملف \"%1\" عبارة عن برنامج تنفيذي في نظام ملفات بعيد. للأمان لن تبدأ ."
 
-#: gui/openurljob.cpp:420
+#: gui/openurljob.cpp:444
 #, kde-format
 msgid ""
 "For security reasons, launching executables is not allowed in this context."
 msgstr "لأسباب أمنية، لا يُسمح بتشغيل الملفات التنفيذية في هذا السياق. "
 
-#: gui/openurljob.cpp:450
+#: gui/openurljob.cpp:474
 #, kde-format
 msgid ""
 "The program \"%1\" needs to have executable permission before it can be "
 "launched."
 msgstr "يحتاج البرنامج \"%1\" إلى صلاحيات التنفيذ حتى يمكن تشغيله."
 
-#: gui/openurljob.cpp:461
+#: gui/openurljob.cpp:485
 #, kde-format
 msgid ""
 "Unable to make file \"%1\" executable.\n"
@@ -3933,12 +3933,12 @@ msgstr ""
 "تعذّر جعل الملف \"%1\"  تنفيذيّ.\n"
 "%2."
 
-#: gui/openurljob.cpp:547
+#: gui/openurljob.cpp:571
 #, kde-format
 msgid "The desktop entry file %1 has no Type=... entry."
 msgstr "ليس لملفّ مدخلة سطح المكتب %1 مدخلة Type=...‎."
 
-#: gui/openurljob.cpp:639
+#: gui/openurljob.cpp:663
 #, kde-format
 msgid ""
 "This file is incomplete and should not be opened.\n"
@@ -3949,12 +3949,12 @@ msgstr ""
 "تحقق من التطبيقات المفتوحة ومنطقة الإشعارات بحثًا عن أي مهام أو تنزيلات غير "
 "منتهية."
 
-#: gui/openurljob.cpp:665
+#: gui/openurljob.cpp:689
 #, kde-format
 msgid "Failed to open the file."
 msgstr "فشل في فتح الملفّ"
 
-#: gui/openurljob.cpp:699
+#: gui/openurljob.cpp:723
 #, kde-format
 msgid "The program \"%1\" could not be launched."
 msgstr "تعذّر تشغيل البرنامج ”%1“."
@@ -4100,7 +4100,7 @@ msgstr "أمر لتنفيذه"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "العنوان أو ملف المحلي المستخدم للأمر"
 
-#: kioworkers/file/file.cpp:692
+#: kioworkers/file/file.cpp:727
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4109,7 +4109,7 @@ msgstr ""
 "تعذّر تغيير أذونات\n"
 "%1"
 
-#: kioworkers/file/file.cpp:700
+#: kioworkers/file/file.cpp:735
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4119,37 +4119,37 @@ msgstr ""
 "تعذّر تغيير المالك والمجموعة لـ\n"
 "%1"
 
-#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
+#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
 #, kde-format
 msgid "Could not open temporary file"
 msgstr "تعذّر فتح الملفّ المؤقّت"
 
-#: kioworkers/file/file.cpp:804
+#: kioworkers/file/file.cpp:839
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "تعذّر العثور على برنامج ”mount“"
 
-#: kioworkers/file/file.cpp:881
+#: kioworkers/file/file.cpp:916
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "تعذّر العثور على برنامج ”umount“"
 
-#: kioworkers/file/file_unix.cpp:602
+#: kioworkers/file/file_unix.cpp:605
 #, kde-format
 msgid "Cannot copy file from %1 to %2. (Errno: %3)"
 msgstr "تعذّر نسخ الملفّ من %1 إلى %2. (رقم الخطأ: %3)"
 
-#: kioworkers/file/file_unix.cpp:817
+#: kioworkers/file/file_unix.cpp:809
 #, kde-format
 msgid "No media in device for %1"
 msgstr "لا يوجد وسائط في الجهاز لـ%1"
 
-#: kioworkers/file/file_unix.cpp:1086
+#: kioworkers/file/file_unix.cpp:1083
 #, kde-format
 msgid "Could not get user id for given user name %1"
 msgstr "تعذّر جلب معرّف المستخدم لاسم المستخدم %1 المعطى"
 
-#: kioworkers/file/file_unix.cpp:1097
+#: kioworkers/file/file_unix.cpp:1094
 #, kde-format
 msgid "Could not get group id for given group name %1"
 msgstr "تعذّر جلب معرّف المجموعة لاسم المجموعة %1 المعطى"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:40+0000\n"
+"POT-Creation-Date: 2026-07-14 00:39+0000\n"
 "PO-Revision-Date: 2024-12-15 19:32+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -48,7 +48,7 @@ msgstr ""
 "<qt>फ़ाइल <b>%1</b> का स्वामित्व परिवर्तित नहीं कर सकता. आपके पास परिवर्तन करने के "
 "लिए अपर्याप्त पंहुच है.</qt>"
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
+#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
 #, fuzzy, kde-format
 #| msgid ""
 #| "Could not create symlink %1.\n"
@@ -2200,7 +2200,7 @@ msgstr "(%1, इस पर कड़ी: %2)"
 msgid " (Points to %1)"
 msgstr "की ओर इशाराः"
 
-#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:150
+#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:174
 #: widgets/renamedialog.cpp:677
 #, kde-format
 msgid ""
@@ -3850,7 +3850,7 @@ msgid ""
 "%2."
 msgstr ""
 
-#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:653
+#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:677
 #, kde-format
 msgid "You are not authorized to select an application to open this file."
 msgstr "इस फ़ाइल को खोलने के लिए आप किसी अनुप्रयोग को चुनने के लिए अधिकृत नहीं हैं."
@@ -3927,12 +3927,12 @@ msgstr "निवेदित तालाबंद दिया नहीं �
 msgid "No terminal emulator found"
 msgstr ""
 
-#: gui/openurljob.cpp:163
+#: gui/openurljob.cpp:187
 #, kde-format
 msgid "Failed to open %1"
 msgstr ""
 
-#: gui/openurljob.cpp:301
+#: gui/openurljob.cpp:325
 #, kde-format
 msgid ""
 "The desktop entry file\n"
@@ -3943,7 +3943,7 @@ msgstr ""
 "%1\n"
 "लिंक क़िस्म का है पर कोई URL=... प्रविष्टि नहीं है."
 
-#: gui/openurljob.cpp:379
+#: gui/openurljob.cpp:403
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt>The file <b>%1</b> is an executable program. For safety it will not "
@@ -3955,20 +3955,20 @@ msgstr ""
 "<qt>फ़ाइल <b>%1</b> एक चलाने लायक प्रोग्राम है. सुरक्षा के लिए इसे चलाया नहीं जाएगा.</"
 "qt>"
 
-#: gui/openurljob.cpp:420
+#: gui/openurljob.cpp:444
 #, kde-format
 msgid ""
 "For security reasons, launching executables is not allowed in this context."
 msgstr ""
 
-#: gui/openurljob.cpp:450
+#: gui/openurljob.cpp:474
 #, kde-format
 msgid ""
 "The program \"%1\" needs to have executable permission before it can be "
 "launched."
 msgstr ""
 
-#: gui/openurljob.cpp:461
+#: gui/openurljob.cpp:485
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt>Unable to run the command specified. The file or folder <b>%1</b> "
@@ -3979,12 +3979,12 @@ msgid ""
 msgstr ""
 "<qt>उल्लेखित कमांड चलाने में अक्षम. फ़ाइल या फ़ोल्डर<b>%1</b> अस्तित्व में नहीं है.</qt>"
 
-#: gui/openurljob.cpp:547
+#: gui/openurljob.cpp:571
 #, kde-format
 msgid "The desktop entry file %1 has no Type=... entry."
 msgstr "डेस्कटॉप प्रविष्टि फ़ाइल %1 में कोई क़िस्म=... प्रविष्टि दर्ज नहीं है."
 
-#: gui/openurljob.cpp:639
+#: gui/openurljob.cpp:663
 #, kde-format
 msgid ""
 "This file is incomplete and should not be opened.\n"
@@ -3992,12 +3992,12 @@ msgid ""
 "or downloads."
 msgstr ""
 
-#: gui/openurljob.cpp:665
+#: gui/openurljob.cpp:689
 #, kde-format
 msgid "Failed to open the file."
 msgstr ""
 
-#: gui/openurljob.cpp:699
+#: gui/openurljob.cpp:723
 #, fuzzy, kde-format
 #| msgid "The requested lock could not be granted. %1"
 msgid "The program \"%1\" could not be launched."
@@ -4141,7 +4141,7 @@ msgstr ""
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr ""
 
-#: kioworkers/file/file.cpp:692
+#: kioworkers/file/file.cpp:727
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4150,7 +4150,7 @@ msgstr ""
 " %1 के लिए \n"
 "अनुमतियाँ बदल नहीं सका."
 
-#: kioworkers/file/file.cpp:700
+#: kioworkers/file/file.cpp:735
 #, fuzzy, kde-format
 #| msgid "Could not change ownership for %1."
 msgctxt "@info"
@@ -4159,38 +4159,38 @@ msgid ""
 "%1"
 msgstr "%1 के लिए मालिकाना बदल नहीं सकता."
 
-#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
+#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
 #, fuzzy, kde-format
 #| msgid "Could Not Rename Temporary File"
 msgid "Could not open temporary file"
 msgstr "अस्थायी फ़ाइल तैयार नहीं कर सकते."
 
-#: kioworkers/file/file.cpp:804
+#: kioworkers/file/file.cpp:839
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "प्रोग्राम \"mount\" नहीं मिला"
 
-#: kioworkers/file/file.cpp:881
+#: kioworkers/file/file.cpp:916
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "प्रोग्राम \"umount\" नहीं मिला"
 
-#: kioworkers/file/file_unix.cpp:602
+#: kioworkers/file/file_unix.cpp:605
 #, kde-format
 msgid "Cannot copy file from %1 to %2. (Errno: %3)"
 msgstr "फ़ाइल को %1 से %2 पर नक़ल नहीं कर सका. (त्रुटि क्र.: %3)"
 
-#: kioworkers/file/file_unix.cpp:817
+#: kioworkers/file/file_unix.cpp:809
 #, kde-format
 msgid "No media in device for %1"
 msgstr "%1 के लिए उपकरण में कोई मीडिया नहीं "
 
-#: kioworkers/file/file_unix.cpp:1086
+#: kioworkers/file/file_unix.cpp:1083
 #, kde-format
 msgid "Could not get user id for given user name %1"
 msgstr "दिए गए उपयोक्ता नाम %1 के लिए उपयोक्ता आईडी प्राप्त नहीं कर सका"
 
-#: kioworkers/file/file_unix.cpp:1097
+#: kioworkers/file/file_unix.cpp:1094
 #, kde-format
 msgid "Could not get group id for given group name %1"
 msgstr "दिए गए समूह नाम %1 के लिए समूह आईडी प्राप्त नहीं कर सका"

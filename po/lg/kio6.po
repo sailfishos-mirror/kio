@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:40+0000\n"
+"POT-Creation-Date: 2026-07-14 00:39+0000\n"
 "PO-Revision-Date: 2024-12-21 00:27+0000\n"
 "Last-Translator: Kizito Birabwa <kbirabwa@yahoo.co.uk>\n"
 "Language-Team: Luganda\n"
@@ -41,7 +41,7 @@ msgstr ""
 "Tekisobose okukyusamu obwanannyini bwa fayiro <filename>%1</filename>. "
 "Endukusa z'olina ku sisitemu eno tezikumala okutuukiriza kino."
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
+#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
 #, kde-format
 msgctxt ""
 "The first arg is the path to the symlink that couldn't be created, the "
@@ -2321,7 +2321,7 @@ msgstr "(%1, Nyunzi egguka ku %2)"
 msgid " (Points to %1)"
 msgstr " (Egguka ku %1)"
 
-#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:150
+#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:174
 #: widgets/renamedialog.cpp:677
 #, kde-format
 msgid ""
@@ -3933,7 +3933,7 @@ msgstr ""
 "Nnemedwa okusobozesa pulguramu empeereze %1 okutandika, omulimu ngusazzamu.\n"
 "%2."
 
-#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:653
+#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:677
 #, kde-format
 msgid "You are not authorized to select an application to open this file."
 msgstr "Tokkirizibwa okulonda puloguramu ey'obikkula fayiro eno."
@@ -4005,12 +4005,12 @@ msgstr "Puloguramu ey'ekiragiro <command>%1</command> terabika."
 msgid "No terminal emulator found"
 msgstr "Tewali puloguramu egeegeenya ekiwandikiro"
 
-#: gui/openurljob.cpp:163
+#: gui/openurljob.cpp:187
 #, kde-format
 msgid "Failed to open %1"
 msgstr "Nnemedwa okubikkula %1"
 
-#: gui/openurljob.cpp:301
+#: gui/openurljob.cpp:325
 #, kde-format
 msgid ""
 "The desktop entry file\n"
@@ -4021,7 +4021,7 @@ msgstr ""
 "%1\n"
 "ya kika kya Link naye w'eraga URL eggukirwako wereere."
 
-#: gui/openurljob.cpp:379
+#: gui/openurljob.cpp:403
 #, kde-format
 msgid ""
 "The executable file \"%1\" is located on a remote filesystem. For safety "
@@ -4030,7 +4030,7 @@ msgstr ""
 "Fayiro eya puloguramu \"%1\" eri ku sisitemu eya fayiro ey'ebunaayira. "
 "Olw'ensonga za kwerinda tejja okutandikibwa."
 
-#: gui/openurljob.cpp:420
+#: gui/openurljob.cpp:444
 #, kde-format
 msgid ""
 "For security reasons, launching executables is not allowed in this context."
@@ -4038,14 +4038,14 @@ msgstr ""
 "Olw'ensonga za bya kwerinda, puloguramu tezikkiriziba okutandikibwa mu "
 "mbeera eriwo kakano."
 
-#: gui/openurljob.cpp:450
+#: gui/openurljob.cpp:474
 #, kde-format
 msgid ""
 "The program \"%1\" needs to have executable permission before it can be "
 "launched."
 msgstr "Okutandika puloguramu \"%1\" kyetaagisa okukyusa ndukusa ezigiriko."
 
-#: gui/openurljob.cpp:461
+#: gui/openurljob.cpp:485
 #, kde-format
 msgid ""
 "Unable to make file \"%1\" executable.\n"
@@ -4054,12 +4054,12 @@ msgstr ""
 "Nnemedwa okusobozesa fayiro \"%1\" okutandikibwa nga puloguramu.\n"
 "%2."
 
-#: gui/openurljob.cpp:547
+#: gui/openurljob.cpp:571
 #, kde-format
 msgid "The desktop entry file %1 has no Type=... entry."
 msgstr "Fayiro ey'enyunzi ey'awakolerwa %1 ebulamu omuko gwa Type=... ."
 
-#: gui/openurljob.cpp:639
+#: gui/openurljob.cpp:663
 #, kde-format
 msgid ""
 "This file is incomplete and should not be opened.\n"
@@ -4070,12 +4070,12 @@ msgstr ""
 "Kebera puloguramu zo ezibumbujja n'obubaka obulabikira awakolerwa okulaba "
 "oba waliwo emirimu egya ku fayiro oba okuwanula egitannaba okuggwa."
 
-#: gui/openurljob.cpp:665
+#: gui/openurljob.cpp:689
 #, kde-format
 msgid "Failed to open the file."
 msgstr "Nnemedwa okubikkula fayiro."
 
-#: gui/openurljob.cpp:699
+#: gui/openurljob.cpp:723
 #, kde-format
 msgid "The program \"%1\" could not be launched."
 msgstr "Tekisobose okutandika puloguramu \"%1\"."
@@ -4231,7 +4231,7 @@ msgstr ""
 "Endagiriro eya (eza) URL oba fayiro eya (eza) ku sisitemu eno 'kiragiro' mwe "
 "kinaanonebwa"
 
-#: kioworkers/file/file.cpp:692
+#: kioworkers/file/file.cpp:727
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4240,7 +4240,7 @@ msgstr ""
 "Nnemedwa okukyusa obuyinza obw'oku\n"
 "%1"
 
-#: kioworkers/file/file.cpp:700
+#: kioworkers/file/file.cpp:735
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4250,38 +4250,38 @@ msgstr ""
 "Nnemedwa okukyusa obwanannyini ne guluupu ku\n"
 "%1"
 
-#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
+#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
 #, fuzzy, kde-format
 #| msgid "Could Not Rename Temporary File"
 msgid "Could not open temporary file"
 msgstr "Nnemedwa Okukyusa Erinnya Lya Fayiro Ey'ekiseerabuseera"
 
-#: kioworkers/file/file.cpp:804
+#: kioworkers/file/file.cpp:839
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "Puloguramu \"mount\" embuze"
 
-#: kioworkers/file/file.cpp:881
+#: kioworkers/file/file.cpp:916
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "Puloguramu \"umount\" embuze"
 
-#: kioworkers/file/file_unix.cpp:602
+#: kioworkers/file/file_unix.cpp:605
 #, kde-format
 msgid "Cannot copy file from %1 to %2. (Errno: %3)"
 msgstr "Nnemedwa okukola koppi %2 mu fayiro %1. (Nmaba ya kiremya: %3)"
 
-#: kioworkers/file/file_unix.cpp:817
+#: kioworkers/file/file_unix.cpp:809
 #, kde-format
 msgid "No media in device for %1"
 msgstr "Mu kyuma temuli mediya ya %1"
 
-#: kioworkers/file/file_unix.cpp:1086
+#: kioworkers/file/file_unix.cpp:1083
 #, kde-format
 msgid "Could not get user id for given user name %1"
 msgstr "Nnemedwa okufuna ennamba ya mukozesa egendera ku linnya %1"
 
-#: kioworkers/file/file_unix.cpp:1097
+#: kioworkers/file/file_unix.cpp:1094
 #, kde-format
 msgid "Could not get group id for given group name %1"
 msgstr "Nnemedwa okufuna ennamba ya guluupu egendera ku guluupu %1"

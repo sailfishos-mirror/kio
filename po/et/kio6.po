@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-10 00:40+0000\n"
+"POT-Creation-Date: 2026-07-14 00:39+0000\n"
 "PO-Revision-Date: 2022-10-19 21:51+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -46,7 +46,7 @@ msgstr ""
 "Faili <filename>%1</filename> omanikku pole võimalik muuta. Sul pole "
 "muutmiseks piisavalt õigusi."
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1015
+#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
 #, kde-format
 msgctxt ""
 "The first arg is the path to the symlink that couldn't be created, the "
@@ -2277,7 +2277,7 @@ msgstr "(%1, viit asukohale %2)"
 msgid " (Points to %1)"
 msgstr " (Viitab asukohale %1)"
 
-#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:150
+#: core/mimetypefinderjob.cpp:57 gui/openurljob.cpp:174
 #: widgets/renamedialog.cpp:677
 #, kde-format
 msgid ""
@@ -3898,7 +3898,7 @@ msgstr ""
 "Teenust %1 ei õnnestunud muuta käivitatavaks, käivitamisest loobutakse.\n"
 "%2."
 
-#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:653
+#: gui/applicationlauncherjob.cpp:291 gui/openurljob.cpp:677
 #, kde-format
 msgid "You are not authorized to select an application to open this file."
 msgstr "Sul puuduvad õigused valida rakendust selle faili avamiseks."
@@ -3971,12 +3971,12 @@ msgstr "Faili \"%1\" ei leitud"
 msgid "No terminal emulator found"
 msgstr "Ühtegi terminaliemulaatorit ei leitud"
 
-#: gui/openurljob.cpp:163
+#: gui/openurljob.cpp:187
 #, kde-format
 msgid "Failed to open %1"
 msgstr "%1 avamine nurjus"
 
-#: gui/openurljob.cpp:301
+#: gui/openurljob.cpp:325
 #, kde-format
 msgid ""
 "The desktop entry file\n"
@@ -3987,7 +3987,7 @@ msgstr ""
 "%1\n"
 "on viida tüüpi, kuid ei sisalda kirjet URL=..."
 
-#: gui/openurljob.cpp:379
+#: gui/openurljob.cpp:403
 #, kde-format
 msgid ""
 "The executable file \"%1\" is located on a remote filesystem. For safety "
@@ -3996,7 +3996,7 @@ msgstr ""
 "Täitmisfail \"%1\" asub kaugfailisüsteemis. Turvalisuse huvides seda ei "
 "käivitata."
 
-#: gui/openurljob.cpp:420
+#: gui/openurljob.cpp:444
 #, kde-format
 msgid ""
 "For security reasons, launching executables is not allowed in this context."
@@ -4004,14 +4004,14 @@ msgstr ""
 "Turvakaalutlustel ei ole selles kontekstis täitmisfailide käivitamine "
 "lubatud."
 
-#: gui/openurljob.cpp:450
+#: gui/openurljob.cpp:474
 #, kde-format
 msgid ""
 "The program \"%1\" needs to have executable permission before it can be "
 "launched."
 msgstr "Programm \"%1\" vajab käivitusõigust, enne kui seda saab käivitada."
 
-#: gui/openurljob.cpp:461
+#: gui/openurljob.cpp:485
 #, kde-format
 msgid ""
 "Unable to make file \"%1\" executable.\n"
@@ -4020,12 +4020,12 @@ msgstr ""
 "Faili \"%1\" muutmine käivitatavaks nurjus.\n"
 "%2."
 
-#: gui/openurljob.cpp:547
+#: gui/openurljob.cpp:571
 #, kde-format
 msgid "The desktop entry file %1 has no Type=... entry."
 msgstr "Töölaua kirje fail %1 ei sisalda kirjet Type=..."
 
-#: gui/openurljob.cpp:639
+#: gui/openurljob.cpp:663
 #, kde-format
 msgid ""
 "This file is incomplete and should not be opened.\n"
@@ -4036,12 +4036,12 @@ msgstr ""
 "Vaata, kas faili allalaadimine on ehk alles pooleli või kas mõni avatud "
 "rakendus salvestab parajasti seda faili."
 
-#: gui/openurljob.cpp:665
+#: gui/openurljob.cpp:689
 #, kde-format
 msgid "Failed to open the file."
 msgstr "Faili avamine nurjus."
 
-#: gui/openurljob.cpp:699
+#: gui/openurljob.cpp:723
 #, kde-format
 msgid "The program \"%1\" could not be launched."
 msgstr "Programmi \"%1\" pole võimalik käivitada."
@@ -4193,7 +4193,7 @@ msgstr "Käivitatav käsk"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "URL(id) või kohalik(ud) fail(id), mida kasutab 'command'"
 
-#: kioworkers/file/file.cpp:692
+#: kioworkers/file/file.cpp:727
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4202,7 +4202,7 @@ msgstr ""
 "Faili/kataloogi %1\n"
 "õiguste muutmine pole võimalik"
 
-#: kioworkers/file/file.cpp:700
+#: kioworkers/file/file.cpp:735
 #, fuzzy, kde-format
 #| msgid "Could not change ownership for %1."
 msgctxt "@info"
@@ -4211,38 +4211,38 @@ msgid ""
 "%1"
 msgstr "%1 omaniku muutmine pole võimalik."
 
-#: kioworkers/file/file.cpp:780 kioworkers/file/file.cpp:872
+#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
 #, fuzzy, kde-format
 #| msgid "Could Not Rename Temporary File"
 msgid "Could not open temporary file"
 msgstr "Ajutist faili pole võimalik ümber nimetada"
 
-#: kioworkers/file/file.cpp:804
+#: kioworkers/file/file.cpp:839
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "Rakendust \"mount\" ei leitud"
 
-#: kioworkers/file/file.cpp:881
+#: kioworkers/file/file.cpp:916
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "Rakendust \"umount\" ei leitud"
 
-#: kioworkers/file/file_unix.cpp:602
+#: kioworkers/file/file_unix.cpp:605
 #, kde-format
 msgid "Cannot copy file from %1 to %2. (Errno: %3)"
 msgstr "Faili kopeerimine asukohast %1 asukohta %2 nurjus (viga: %3)."
 
-#: kioworkers/file/file_unix.cpp:817
+#: kioworkers/file/file_unix.cpp:809
 #, kde-format
 msgid "No media in device for %1"
 msgstr "Andmekandja pole %1 seadmes"
 
-#: kioworkers/file/file_unix.cpp:1086
+#: kioworkers/file/file_unix.cpp:1083
 #, kde-format
 msgid "Could not get user id for given user name %1"
 msgstr "Määratud kasutajanimele %1 ei õnnestunud hankida kasutaja ID-d."
 
-#: kioworkers/file/file_unix.cpp:1097
+#: kioworkers/file/file_unix.cpp:1094
 #, kde-format
 msgid "Could not get group id for given group name %1"
 msgstr "Määratud grupi nimele %1 ei õnnestunud hankida grupi ID-d"
