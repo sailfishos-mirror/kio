@@ -58,6 +58,7 @@
 #include <KIO/FileSystemFreeSpaceJob>
 
 #include <list>
+#include <optional>
 #include <set>
 
 #include <QLoggingCategory>
@@ -274,6 +275,8 @@ public:
     QUrl m_globalDest;
     // The state info about that global dest
     DestinationState m_globalDestinationState;
+    // Cached filesystem type of m_globalDest. It is invariant once the destination has been stated.
+    std::optional<KFileSystemType::Type> m_globalDestFsType;
     // See setDefaultPermissions
     bool m_defaultPermissions;
     // Whether URLs changed (and need to be emitted by the next slotReport call)
@@ -377,6 +380,15 @@ public:
     // don't support symlinks, this method detects those conditions and tries to handle it
     bool handleMsdosFsQuirks(QList<CopyInfo>::Iterator it, KFileSystemType::Type fsType);
     void copyNextFile();
+    // Filesystem type of m_globalDest, determined once and cached (see m_globalDestFsType). Returns
+    // KFileSystemType::Unknown for a non-local destination.
+    KFileSystemType::Type globalDestFsType()
+    {
+        if (!m_globalDestFsType) {
+            m_globalDestFsType = m_globalDest.isLocalFile() ? KFileSystemType::fileSystemType(m_globalDest.toLocalFile()) : KFileSystemType::Unknown;
+        }
+        return *m_globalDestFsType;
+    }
     void processCopyNextFile(const QList<CopyInfo>::Iterator &it, int result, SkipType skipType);
 
     void slotResultDeletingDirs(KJob *job);
@@ -2020,7 +2032,7 @@ void CopyJobPrivate::copyNextFile()
         }
 
         if (it != files.end() && isDestLocal && (*it).size > 0xFFFFFFFF) { // 4GB-1
-            const auto destFileSystem = KFileSystemType::fileSystemType(m_globalDest.toLocalFile());
+            const auto destFileSystem = globalDestFsType();
             if (destFileSystem == KFileSystemType::Fat) {
                 q->setError(ERR_FILE_TOO_LARGE_FOR_FAT32);
                 q->setErrorText((*it).uDest.toDisplayString());
@@ -2031,7 +2043,7 @@ void CopyJobPrivate::copyNextFile()
     }
 
     if (bCopyFile) { // any file to create, finally ?
-        const KFileSystemType::Type destFileSystem = isDestLocal ? KFileSystemType::fileSystemType(m_globalDest.toLocalFile()) : KFileSystemType::Unknown;
+        const KFileSystemType::Type destFileSystem = globalDestFsType();
         if (destDisallowsMsdosChars(m_globalDest, destFileSystem)) {
             if (handleMsdosFsQuirks(it, destFileSystem)) {
                 return;
