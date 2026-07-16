@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-14 00:39+0000\n"
+"POT-Creation-Date: 2026-07-16 00:39+0000\n"
 "PO-Revision-Date: 2026-06-10 23:33+0200\n"
 "Last-Translator: Jan Papez (honyczek) <honyczek@centrum.cz>\n"
 "Language-Team: Czech <kde-i18n-cs@kde.org>\n"
@@ -45,7 +45,7 @@ msgstr ""
 "Nelze změnit vlastnictví souboru<filename>%1</filename>. Nemáte dostatečná "
 "přístupová práva k vykonání této změny vlastností souboru."
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
+#: core/copyjob.cpp:191 kioworkers/file/file_unix.cpp:1010
 #, kde-format
 msgctxt ""
 "The first arg is the path to the symlink that couldn't be created, the "
@@ -57,7 +57,7 @@ msgstr ""
 "Nelze vytvořit symbolický odkaz %1.\n"
 "Cílový souborový systém (%2) nepodporuje symbolické odkazy."
 
-#: core/copyjob.cpp:202
+#: core/copyjob.cpp:203
 #, kde-format
 msgid ""
 "Could not create \"%1\".\n"
@@ -72,7 +72,7 @@ msgstr ""
 "Výběrem Nahradit dojde k nahrazení jakýchkoliv neplatných znaků (v cílovém "
 "názvu složky) podtržítkem „_“."
 
-#: core/copyjob.cpp:210
+#: core/copyjob.cpp:211
 #, kde-format
 msgid ""
 "Could not create \"%1\".\n"
@@ -87,23 +87,23 @@ msgstr ""
 "Výběrem Nahradit dojde k nahrazení jakýchkoliv neplatných znaků (v cílovém "
 "názvu souboru) podtržítkem „_“."
 
-#: core/copyjob.cpp:1429 core/job_error.cpp:588
+#: core/copyjob.cpp:1441 core/job_error.cpp:588
 #, kde-format
 msgid "Folder Already Exists"
 msgstr "Složka již existuje"
 
-#: core/copyjob.cpp:1764 core/copyjob.cpp:2480 core/filecopyjob.cpp:371
+#: core/copyjob.cpp:1776 core/copyjob.cpp:2492 core/filecopyjob.cpp:371
 #: core/job_error.cpp:577 widgets/paste.cpp:49
 #, kde-format
 msgid "File Already Exists"
 msgstr "Soubor již existuje"
 
-#: core/copyjob.cpp:1764 core/copyjob.cpp:2480
+#: core/copyjob.cpp:1776 core/copyjob.cpp:2492
 #, kde-format
 msgid "Already Exists as Folder"
 msgstr "Již existuje jako složka"
 
-#: core/copyjob.cpp:1918 kioworkers/trash/kio_trash.cpp:295
+#: core/copyjob.cpp:1930 kioworkers/trash/kio_trash.cpp:295
 #, kde-format
 msgid "Trash"
 msgstr "Koš"
@@ -3879,7 +3879,7 @@ msgstr "Chyba během ukládání obrázku do %1"
 msgid "Icon file too big, download aborted"
 msgstr "Soubor ikony je příliš velký. Stahování bylo přerušeno"
 
-#: gui/filepreviewjob.cpp:294
+#: gui/filepreviewjob.cpp:295
 #, kde-format
 msgctxt "%1 is a file url"
 msgid "FilePreviewJob: skipping an empty file, might be a broken symlink: %1"

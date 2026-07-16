@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-14 00:39+0000\n"
+"POT-Creation-Date: 2026-07-16 00:39+0000\n"
 "PO-Revision-Date: 2026-06-14 09:42+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -48,7 +48,7 @@ msgstr ""
 "No s'ha pogut modificar el propietari del fitxer <filename>%1</filename>. No "
 "teniu accés suficient al fitxer per a realitzar el canvi."
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
+#: core/copyjob.cpp:191 kioworkers/file/file_unix.cpp:1010
 #, kde-format
 msgctxt ""
 "The first arg is the path to the symlink that couldn't be created, the "
@@ -60,7 +60,7 @@ msgstr ""
 "No s'ha pogut crear l'enllaç simbòlic «%1».\n"
 "El sistema de fitxers de destinació (%2) no els admet."
 
-#: core/copyjob.cpp:202
+#: core/copyjob.cpp:203
 #, kde-format
 msgid ""
 "Could not create \"%1\".\n"
@@ -75,7 +75,7 @@ msgstr ""
 "Seleccionar substitució, substituirà qualsevol caràcter no vàlid (en el nom "
 "de la carpeta de destinació) amb un subratllat «_»."
 
-#: core/copyjob.cpp:210
+#: core/copyjob.cpp:211
 #, kde-format
 msgid ""
 "Could not create \"%1\".\n"
@@ -90,23 +90,23 @@ msgstr ""
 "Seleccionar substitució, substituirà qualsevol caràcter no vàlid (en el nom "
 "del fitxer de destinació) amb un subratllat «_»."
 
-#: core/copyjob.cpp:1429 core/job_error.cpp:588
+#: core/copyjob.cpp:1441 core/job_error.cpp:588
 #, kde-format
 msgid "Folder Already Exists"
 msgstr "La carpeta ja existeix"
 
-#: core/copyjob.cpp:1764 core/copyjob.cpp:2480 core/filecopyjob.cpp:371
+#: core/copyjob.cpp:1776 core/copyjob.cpp:2492 core/filecopyjob.cpp:371
 #: core/job_error.cpp:577 widgets/paste.cpp:49
 #, kde-format
 msgid "File Already Exists"
 msgstr "El fitxer ja existeix"
 
-#: core/copyjob.cpp:1764 core/copyjob.cpp:2480
+#: core/copyjob.cpp:1776 core/copyjob.cpp:2492
 #, kde-format
 msgid "Already Exists as Folder"
 msgstr "Ja existeix com a carpeta"
 
-#: core/copyjob.cpp:1918 kioworkers/trash/kio_trash.cpp:295
+#: core/copyjob.cpp:1930 kioworkers/trash/kio_trash.cpp:295
 #, kde-format
 msgid "Trash"
 msgstr "Paperera"
@@ -3944,7 +3944,7 @@ msgstr "Error en desar la imatge a %1"
 msgid "Icon file too big, download aborted"
 msgstr "El fitxer d'icona és massa gran, s'interromp la baixada"
 
-#: gui/filepreviewjob.cpp:294
+#: gui/filepreviewjob.cpp:295
 #, kde-format
 msgctxt "%1 is a file url"
 msgid "FilePreviewJob: skipping an empty file, might be a broken symlink: %1"

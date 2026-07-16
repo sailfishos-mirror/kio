@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-14 00:39+0000\n"
+"POT-Creation-Date: 2026-07-16 00:39+0000\n"
 "PO-Revision-Date: 2025-03-23 07:29+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -52,7 +52,7 @@ msgstr ""
 "Ne eblis modifi la proprieton de dosiero <filename>%1</filename>. Vi ne "
 "havas sufiĉan aliron al la dosiero por fari la ŝanĝon."
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
+#: core/copyjob.cpp:191 kioworkers/file/file_unix.cpp:1010
 #, kde-format
 msgctxt ""
 "The first arg is the path to the symlink that couldn't be created, the "
@@ -64,7 +64,7 @@ msgstr ""
 "Ne eblis krei simbolligon \"%1\".\n"
 "La celdosiersistemo (%2) ne subtenas simbolligojn."
 
-#: core/copyjob.cpp:202
+#: core/copyjob.cpp:203
 #, kde-format
 msgid ""
 "Could not create \"%1\".\n"
@@ -78,7 +78,7 @@ msgstr ""
 "Elekti Anstataŭigi anstataŭigos ajnajn nevalidajn signojn (en la "
 "celdosierujo) per substreko \"_\"."
 
-#: core/copyjob.cpp:210
+#: core/copyjob.cpp:211
 #, kde-format
 msgid ""
 "Could not create \"%1\".\n"
@@ -92,23 +92,23 @@ msgstr ""
 "Elekti Anstataŭigi anstataŭigos ajnajn nevalidajn signojn (en la "
 "celdosiernomo) per substreko \"_\"."
 
-#: core/copyjob.cpp:1429 core/job_error.cpp:588
+#: core/copyjob.cpp:1441 core/job_error.cpp:588
 #, kde-format
 msgid "Folder Already Exists"
 msgstr "Dosierujo Jam Ekzistas"
 
-#: core/copyjob.cpp:1764 core/copyjob.cpp:2480 core/filecopyjob.cpp:371
+#: core/copyjob.cpp:1776 core/copyjob.cpp:2492 core/filecopyjob.cpp:371
 #: core/job_error.cpp:577 widgets/paste.cpp:49
 #, kde-format
 msgid "File Already Exists"
 msgstr "Dosiero Jam Ekzistas"
 
-#: core/copyjob.cpp:1764 core/copyjob.cpp:2480
+#: core/copyjob.cpp:1776 core/copyjob.cpp:2492
 #, kde-format
 msgid "Already Exists as Folder"
 msgstr "Jam Ekzistas kiel Dosierujo"
 
-#: core/copyjob.cpp:1918 kioworkers/trash/kio_trash.cpp:295
+#: core/copyjob.cpp:1930 kioworkers/trash/kio_trash.cpp:295
 #, kde-format
 msgid "Trash"
 msgstr "Rubujo"
@@ -3915,7 +3915,7 @@ msgstr "Eraro dum konservado de bildo al %1"
 msgid "Icon file too big, download aborted"
 msgstr "Piktogramodosiero tro granda, elŝuto ĉesigita"
 
-#: gui/filepreviewjob.cpp:294
+#: gui/filepreviewjob.cpp:295
 #, kde-format
 msgctxt "%1 is a file url"
 msgid "FilePreviewJob: skipping an empty file, might be a broken symlink: %1"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-14 00:39+0000\n"
+"POT-Creation-Date: 2026-07-16 00:39+0000\n"
 "PO-Revision-Date: 2017-12-17 18:00+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -50,7 +50,7 @@ msgstr ""
 "<qt>Ne mogu da promijenim vlasništvo nad fajlom <tt>%1</tt>. Nemate dovoljno "
 "dozvola za ovakvu promjenu.</qt>"
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
+#: core/copyjob.cpp:191 kioworkers/file/file_unix.cpp:1010
 #, fuzzy, kde-format
 #| msgid ""
 #| "Could not create symlink %1.\n"
@@ -65,7 +65,7 @@ msgstr ""
 "Ne mogu da napravim simboličku vezu ‘%1’.\n"
 "Provjerite dozvole."
 
-#: core/copyjob.cpp:202
+#: core/copyjob.cpp:203
 #, kde-format
 msgid ""
 "Could not create \"%1\".\n"
@@ -75,7 +75,7 @@ msgid ""
 "folder name) with an underscore \"_\"."
 msgstr ""
 
-#: core/copyjob.cpp:210
+#: core/copyjob.cpp:211
 #, kde-format
 msgid ""
 "Could not create \"%1\".\n"
@@ -85,23 +85,23 @@ msgid ""
 "file name) with an underscore \"_\"."
 msgstr ""
 
-#: core/copyjob.cpp:1429 core/job_error.cpp:588
+#: core/copyjob.cpp:1441 core/job_error.cpp:588
 #, kde-format
 msgid "Folder Already Exists"
 msgstr "Fascikla već postoji"
 
-#: core/copyjob.cpp:1764 core/copyjob.cpp:2480 core/filecopyjob.cpp:371
+#: core/copyjob.cpp:1776 core/copyjob.cpp:2492 core/filecopyjob.cpp:371
 #: core/job_error.cpp:577 widgets/paste.cpp:49
 #, kde-format
 msgid "File Already Exists"
 msgstr "Fajl već postoji"
 
-#: core/copyjob.cpp:1764 core/copyjob.cpp:2480
+#: core/copyjob.cpp:1776 core/copyjob.cpp:2492
 #, kde-format
 msgid "Already Exists as Folder"
 msgstr "Već postoji kao fascikla"
 
-#: core/copyjob.cpp:1918 kioworkers/trash/kio_trash.cpp:295
+#: core/copyjob.cpp:1930 kioworkers/trash/kio_trash.cpp:295
 #, fuzzy, kde-format
 #| msgctxt "KFile System Bookmarks"
 #| msgid "Trash"
@@ -4039,7 +4039,7 @@ msgstr "Greška pri upisivanju slike u %1"
 msgid "Icon file too big, download aborted"
 msgstr "Fajl ikonice prevelik, preuzimanje obustavljeno"
 
-#: gui/filepreviewjob.cpp:294
+#: gui/filepreviewjob.cpp:295
 #, kde-format
 msgctxt "%1 is a file url"
 msgid "FilePreviewJob: skipping an empty file, might be a broken symlink: %1"

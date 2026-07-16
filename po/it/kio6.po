@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-14 00:39+0000\n"
+"POT-Creation-Date: 2026-07-16 00:39+0000\n"
 "PO-Revision-Date: 2026-06-14 23:30+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -47,7 +47,7 @@ msgstr ""
 "Impossibile modificare il proprietario del file <filename>%1</filename>. Non "
 "hai accesso sufficiente al file per effettuare la modifica."
 
-#: core/copyjob.cpp:190 kioworkers/file/file_unix.cpp:1010
+#: core/copyjob.cpp:191 kioworkers/file/file_unix.cpp:1010
 #, kde-format
 msgctxt ""
 "The first arg is the path to the symlink that couldn't be created, the "
@@ -59,7 +59,7 @@ msgstr ""
 "Impossibile creare il collegamento simbolico «%1».\n"
 "Il filesystem di destinazione (%2) non supporta i collegamenti simbolici."
 
-#: core/copyjob.cpp:202
+#: core/copyjob.cpp:203
 #, kde-format
 msgid ""
 "Could not create \"%1\".\n"
@@ -75,7 +75,7 @@ msgstr ""
 "cartella di destinazione) saranno rimpiazzati da un carattere di "
 "sottolineatura «_»."
 
-#: core/copyjob.cpp:210
+#: core/copyjob.cpp:211
 #, kde-format
 msgid ""
 "Could not create \"%1\".\n"
@@ -90,23 +90,23 @@ msgstr ""
 "Selezionando Sostituisci tutti i caratteri non validi (nel nome del file di "
 "destinazione) saranno rimpiazzati da un carattere di sottolineatura «_»."
 
-#: core/copyjob.cpp:1429 core/job_error.cpp:588
+#: core/copyjob.cpp:1441 core/job_error.cpp:588
 #, kde-format
 msgid "Folder Already Exists"
 msgstr "La cartella esiste già"
 
-#: core/copyjob.cpp:1764 core/copyjob.cpp:2480 core/filecopyjob.cpp:371
+#: core/copyjob.cpp:1776 core/copyjob.cpp:2492 core/filecopyjob.cpp:371
 #: core/job_error.cpp:577 widgets/paste.cpp:49
 #, kde-format
 msgid "File Already Exists"
 msgstr "Il file esiste già"
 
-#: core/copyjob.cpp:1764 core/copyjob.cpp:2480
+#: core/copyjob.cpp:1776 core/copyjob.cpp:2492
 #, kde-format
 msgid "Already Exists as Folder"
 msgstr "Esiste già come cartella"
 
-#: core/copyjob.cpp:1918 kioworkers/trash/kio_trash.cpp:295
+#: core/copyjob.cpp:1930 kioworkers/trash/kio_trash.cpp:295
 #, kde-format
 msgid "Trash"
 msgstr "Cestino"
@@ -3968,7 +3968,7 @@ msgstr "Errore durante il salvataggio dell'immagine in %1"
 msgid "Icon file too big, download aborted"
 msgstr "File dell'icona troppo grande, scaricamento interrotto"
 
-#: gui/filepreviewjob.cpp:294
+#: gui/filepreviewjob.cpp:295
 #, kde-format
 msgctxt "%1 is a file url"
 msgid "FilePreviewJob: skipping an empty file, might be a broken symlink: %1"
