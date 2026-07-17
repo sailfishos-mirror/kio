@@ -26,6 +26,7 @@
 #include <QKeySequence>
 #include <QMenu>
 #include <QMimeData>
+#include <QPainter>
 
 #include <private/qguiapplication_p.h>
 #include <qpa/qplatformtheme.h>
@@ -104,7 +105,28 @@ private:
             QMimeData *mimeData = new QMimeData;
             mimeData->setUrls(m_button->m_urls);
             drag->setMimeData(mimeData);
+            const QPixmap preview = createPixmap(m_button->m_urls.first().toDisplayString(QUrl::PreferLocalFile));
+            drag->setPixmap(preview);
             return drag;
+        }
+        QPixmap createPixmap(const QString &text) const
+        {
+            // render text using same style as UI,
+            // TODO: using what as reference for the text? button? lineedit if present or combobox?
+            const QFontMetrics fontMetrics = m_button->fontMetrics();
+            const QRect rect = fontMetrics.boundingRect(text);
+
+            const qreal dpr = qApp->devicePixelRatio();
+            QPixmap pixmap(rect.size() * dpr);
+            pixmap.setDevicePixelRatio(dpr);
+            pixmap.fill(Qt::transparent);
+            QPainter painter(&pixmap);
+            painter.setPen(m_button->palette().color(QPalette::Text));
+            painter.setFont(m_button->font());
+            // using the original bounding rect size, painter uses dpr set to scale
+            painter.drawText(QRect(QPoint(0, 0), rect.size()), Qt::AlignCenter, text);
+
+            return pixmap;
         }
 
     private:
