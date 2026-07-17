@@ -502,32 +502,34 @@ void KIO::WidgetsAskUserActionHandler::setWindow(QWidget *window)
 
 void KIO::WidgetsAskUserActionHandler::askIgnoreSslErrors(const QVariantMap &sslErrorData, QWidget *parent)
 {
-    QWidget *parentWidget = d->getParentWidget(parent);
+    QMetaObject::invokeMethod(qGuiApp, [=, this] {
+        QWidget *parentWidget = d->getParentWidget(parent);
 
-    QString message = i18n("The server failed the authenticity check (%1).\n\n", sslErrorData[QLatin1String("hostname")].toString());
+        QString message = i18n("The server failed the authenticity check (%1).\n\n", sslErrorData[QLatin1String("hostname")].toString());
 
-    message += sslErrorData[QLatin1String("sslError")].toString();
+        message += sslErrorData[QLatin1String("sslError")].toString();
 
-    auto *dialog = new KMessageDialog(KMessageDialog::WarningTwoActionsCancel, message, parentWidget);
+        auto *dialog = new KMessageDialog(KMessageDialog::WarningTwoActionsCancel, message, parentWidget);
 
-    dialog->setAttribute(Qt::WA_DeleteOnClose);
-    dialog->setCaption(i18n("Server Authentication"));
-    dialog->setIcon(QIcon{});
-    dialog->setButtons(KGuiItem{i18n("&Details"), QStringLiteral("documentinfo")}, KStandardGuiItem::cont(), KStandardGuiItem::cancel());
+        dialog->setAttribute(Qt::WA_DeleteOnClose);
+        dialog->setCaption(i18n("Server Authentication"));
+        dialog->setIcon(QIcon{});
+        dialog->setButtons(KGuiItem{i18n("&Details"), QStringLiteral("documentinfo")}, KStandardGuiItem::cont(), KStandardGuiItem::cancel());
 
-    connect(dialog, &KMessageDialog::finished, this, [this, parentWidget, sslErrorData](int result) {
-        if (result == KMessageDialog::PrimaryAction) {
-            showSslDetails(sslErrorData, parentWidget);
-        } else if (result == KMessageDialog::SecondaryAction) {
-            // continue();
-            Q_EMIT askIgnoreSslErrorsResult(1);
-        } else if (result == KMessageDialog::Cancel) {
-            // cancel();
-            Q_EMIT askIgnoreSslErrorsResult(0);
-        }
+        connect(dialog, &KMessageDialog::finished, this, [this, parentWidget, sslErrorData](int result) {
+            if (result == KMessageDialog::PrimaryAction) {
+                showSslDetails(sslErrorData, parentWidget);
+            } else if (result == KMessageDialog::SecondaryAction) {
+                // continue();
+                Q_EMIT askIgnoreSslErrorsResult(1);
+            } else if (result == KMessageDialog::Cancel) {
+                // cancel();
+                Q_EMIT askIgnoreSslErrorsResult(0);
+            }
+        });
+
+        dialog->show();
     });
-
-    dialog->show();
 }
 
 void KIO::WidgetsAskUserActionHandler::showSslDetails(const QVariantMap &sslErrorData, QWidget *parentWidget)
