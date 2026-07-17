@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-16 00:39+0000\n"
+"POT-Creation-Date: 2026-07-17 00:39+0000\n"
 "PO-Revision-Date: 2026-04-12 18:17+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -3752,7 +3752,7 @@ msgid "Go to any location on the path <filename>%1</filename>"
 msgstr ""
 "<filename>%1</filename> எனும் பாதையிலுள்ள எந்த இடத்திற்கு வேண்டுமானாலும் செல்லலாம்."
 
-#: filewidgets/kurlnavigatorbutton.cpp:725
+#: filewidgets/kurlnavigatorbutton.cpp:726
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "More"
