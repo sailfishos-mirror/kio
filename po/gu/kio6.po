@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio-gu\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-17 00:39+0000\n"
+"POT-Creation-Date: 2026-07-19 00:40+0000\n"
 "PO-Revision-Date: 2026-03-31 23:12+0530\n"
 "Last-Translator: CrazyCourt651 <CrazyCourt651@gmail.com>\n"
 "Language-Team: Gujarati\n"
@@ -2419,7 +2419,7 @@ msgid "Can not find 'kioworker' executable at '%1'"
 msgstr "'%1' પર 'kioworker' એક્ઝિક્યુટેબલ શોધી શકાયું નથી"
 
 #: core/workerinterface.cpp:343 widgets/sslui.cpp:61
-#: widgets/widgetsaskuseractionhandler.cpp:516
+#: widgets/widgetsaskuseractionhandler.cpp:517
 #, kde-format
 msgid "&Details"
 msgstr "વિગતો (&D)"
@@ -3514,44 +3514,44 @@ msgstr ""
 "<qt>આ ફાઇલ પ્રકાર પસંદગીકાર છે. તેનો ઉપયોગ બતાવેલી ફાઇલોનું ફોર્મેટ પસંદ કરવા માટે થાય "
 "છે.</qt>"
 
-#: filewidgets/knewfilemenu.cpp:221
+#: filewidgets/knewfilemenu.cpp:218
 #, kde-format
 msgctxt "@label:textbox Prompt for new file of type"
 msgid "Enter %1 filename:"
 msgstr "%1 નુ ફાઇલનામ દાખલ કરો:"
 
-#: filewidgets/knewfilemenu.cpp:529
+#: filewidgets/knewfilemenu.cpp:530
 #, kde-format
 msgid "Sorry"
 msgstr "માફ કરશો"
 
-#: filewidgets/knewfilemenu.cpp:540
+#: filewidgets/knewfilemenu.cpp:541
 #, kde-format
 msgid "<qt>The template file <b>%1</b> does not exist.</qt>"
 msgstr "<qt>ટેમ્પલેટ ફાઇલ <b>%1</b> અસ્તિત્વમાં નથી.</qt>"
 
-#: filewidgets/knewfilemenu.cpp:691 filewidgets/knewfilemenu.cpp:756
+#: filewidgets/knewfilemenu.cpp:692 filewidgets/knewfilemenu.cpp:757
 #, kde-format
 msgid "Name for new link:"
 msgstr "નવા લિંક માટેનું નામ:"
 
-#: filewidgets/knewfilemenu.cpp:694
+#: filewidgets/knewfilemenu.cpp:695
 #, kde-format
 msgid "Create Symlink"
 msgstr "સંજ્ઞા કડી  બનાવો"
 
-#: filewidgets/knewfilemenu.cpp:760
+#: filewidgets/knewfilemenu.cpp:761
 #, kde-format
 msgid "Create link to URL"
 msgstr "URL માટે લિંક બનાવો"
 
-#: filewidgets/knewfilemenu.cpp:800 filewidgets/knewfilemenu.cpp:824
+#: filewidgets/knewfilemenu.cpp:801 filewidgets/knewfilemenu.cpp:825
 #, kde-format
 msgctxt "@item:inmenu Create New"
 msgid "%1"
 msgstr "%1"
 
-#: filewidgets/knewfilemenu.cpp:1164
+#: filewidgets/knewfilemenu.cpp:1165
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -3561,7 +3561,7 @@ msgstr ""
 "<filename>%1</filename> નામ વાપરી શકાતું નથી કારણ કે તે ઓપરેટિંગ સિસ્ટમ દ્વારા ઉપયોગ "
 "માટે અનામત રાખવામાં આવ્યું છે."
 
-#: filewidgets/knewfilemenu.cpp:1172
+#: filewidgets/knewfilemenu.cpp:1173
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -3569,7 +3569,7 @@ msgid ""
 "default."
 msgstr "નામ <filename>%1</filename> ટપકાથી શરૂ થાય છે, તેથી તે મૂળભૂત રીતે છુપાયેલું રહેશે."
 
-#: filewidgets/knewfilemenu.cpp:1180
+#: filewidgets/knewfilemenu.cpp:1181
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -3581,27 +3581,27 @@ msgstr ""
 "મૂળાક્ષરો પ્રમાણે ગોઠવવામાં આવશે ત્યારે તે અન્ય વસ્તુઓ પહેલાં બતાવવામાં આવશે, અન્ય સંભવિત "
 "વિચિત્રતાઓ વચ્ચે."
 
-#: filewidgets/knewfilemenu.cpp:1198
+#: filewidgets/knewfilemenu.cpp:1199
 #, kde-format
 msgid "Using slashes in folder names will create sub-folders, like so:"
 msgstr "ફોલ્ડરના નામમાં સ્લેશનો ઉપયોગ કરવાથી આ રીતે પેટા-ફોલ્ડર્સ બનશે:"
 
-#: filewidgets/knewfilemenu.cpp:1212
+#: filewidgets/knewfilemenu.cpp:1213
 #, kde-format
 msgid "Using slashes in folder names will create sub-folders."
 msgstr "ફોલ્ડરના નામમાં સ્લેશ (/) વાપરવાથી સબ-ફોલ્ડર્સ બનશે."
 
-#: filewidgets/knewfilemenu.cpp:1224
+#: filewidgets/knewfilemenu.cpp:1225
 #, kde-format
 msgid "Slashes cannot be used in file and folder names."
 msgstr "ફાઇલ અને ફોલ્ડરના નામોમાં સ્લેશનો ઉપયોગ કરી શકાતો નથી."
 
-#: filewidgets/knewfilemenu.cpp:1229
+#: filewidgets/knewfilemenu.cpp:1230
 #, kde-format
 msgid "Backslashes cannot be used in file and folder names."
 msgstr "બેકસ્લેશનો ઉપયોગ ફાઇલ અને ફોલ્ડરના નામોમાં કરી શકાતો નથી."
 
-#: filewidgets/knewfilemenu.cpp:1243
+#: filewidgets/knewfilemenu.cpp:1244
 #, kde-kuit-format
 msgctxt "@error"
 msgid ""
@@ -3611,7 +3611,7 @@ msgstr ""
 "<filename>%1</filename> નામ સાથે ફાઇલ અથવા ફોલ્ડર બનાવવું શક્ય નથી કારણ કે તે "
 "વપરાશકર્તાના હોમ ફોલ્ડરના સ્થાન સાથે ઓવરલેપ થશે."
 
-#: filewidgets/knewfilemenu.cpp:1252
+#: filewidgets/knewfilemenu.cpp:1253
 #, kde-format
 msgid ""
 "Starting a file or folder name with a tilde is not recommended because it "
@@ -3621,52 +3621,52 @@ msgstr ""
 "વસ્તુઓ કાઢી નાખવા માટે ટર્મિનલનો ઉપયોગ કરવામાં આવે ત્યારે તે મૂંઝવણભર્યું અથવા જોખમી હોઈ "
 "શકે છે."
 
-#: filewidgets/knewfilemenu.cpp:1324
+#: filewidgets/knewfilemenu.cpp:1325
 #, kde-kuit-format
 msgctxt "@info"
 msgid "A directory with name <filename>%1</filename> already exists."
 msgstr "<filename>%1</filename> નામની ડિરેક્ટરી પહેલેથી જ અસ્તિત્વમાં છે."
 
-#: filewidgets/knewfilemenu.cpp:1326
+#: filewidgets/knewfilemenu.cpp:1327
 #, kde-kuit-format
 msgctxt "@info"
 msgid "A file with name <filename>%1</filename> already exists."
 msgstr "<filename>%1</filename> નામની ફાઇલ પહેલેથી જ અસ્તિત્વમાં છે."
 
-#: filewidgets/knewfilemenu.cpp:1412
+#: filewidgets/knewfilemenu.cpp:1413
 #, kde-format
 msgid "Create New"
 msgstr "નવું બનાવો"
 
-#: filewidgets/knewfilemenu.cpp:1447
+#: filewidgets/knewfilemenu.cpp:1448
 #, kde-format
 msgid "Link to Device"
 msgstr "ઉપકરણ સાથેની કડી"
 
-#: filewidgets/knewfilemenu.cpp:1486
+#: filewidgets/knewfilemenu.cpp:1487
 #, kde-format
 msgctxt "Default name for a new folder"
 msgid "New Folder"
 msgstr "નવું ફોલ્ડર"
 
-#: filewidgets/knewfilemenu.cpp:1509
+#: filewidgets/knewfilemenu.cpp:1510
 #, kde-format
 msgctxt "@title:window"
 msgid "Create New Folder"
 msgstr "નવું ફોલ્ડર બનાવો"
 
-#: filewidgets/knewfilemenu.cpp:1511
+#: filewidgets/knewfilemenu.cpp:1512
 #, kde-format
 msgid "Create new folder in %1:"
 msgstr "અહીં નવું ફોલ્ડર બનાવો:%1:"
 
-#: filewidgets/knewfilemenu.cpp:1514 widgets/kpropertiesdialogbuiltin_p.cpp:363
+#: filewidgets/knewfilemenu.cpp:1515 widgets/kpropertiesdialogbuiltin_p.cpp:363
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Enter folder name"
 msgstr "ફોલ્ડર નામ દાખલ કરો"
 
-#: filewidgets/knewfilemenu.cpp:1571
+#: filewidgets/knewfilemenu.cpp:1572
 #, kde-format
 msgid "Default"
 msgstr "મૂળભૂત"
@@ -4304,7 +4304,7 @@ msgid ""
 msgstr "શું તમે પૂછ્યા વગર આ પ્રમાણપત્રને કાયમ માટે સ્વીકારવા માંગો છો?"
 
 #: kioworkers/http/http.cpp:214 widgets/sslui.cpp:60 widgets/sslui.cpp:96
-#: widgets/widgetsaskuseractionhandler.cpp:514
+#: widgets/widgetsaskuseractionhandler.cpp:515
 #, kde-format
 msgid "Server Authentication"
 msgstr "સર્વર સત્તાધિકરણ"
@@ -7223,7 +7223,7 @@ msgstr ""
 "દૂરસ્થ હોસ્ટે કોઈપણ SSL પ્રમાણપત્રો મોકલ્યા નથી. યજમાનની ઓળખ સ્થાપિત કરી શકાતી ન "
 "હોવાથી પડતું મુકવામાં આવે છે."
 
-#: widgets/sslui.cpp:50 widgets/widgetsaskuseractionhandler.cpp:507
+#: widgets/sslui.cpp:50 widgets/widgetsaskuseractionhandler.cpp:508
 #, kde-format
 msgid ""
 "The server failed the authenticity check (%1).\n"
@@ -7343,12 +7343,12 @@ msgctxt "@option:check"
 msgid "Do not show this message again"
 msgstr "આ સંદેશ ફરીથી બતાવશો નહીં"
 
-#: widgets/widgetsaskuseractionhandler.cpp:572
+#: widgets/widgetsaskuseractionhandler.cpp:574
 #, kde-format
 msgid "The peer SSL certificate chain appears to be corrupt."
 msgstr "પીઅર SSL પ્રમાણપત્ર સાંકળ ખરાબ હોય તેમ લાગે છે."
 
-#: widgets/widgetsaskuseractionhandler.cpp:575
+#: widgets/widgetsaskuseractionhandler.cpp:577
 #, kde-format
 msgid "SSL"
 msgstr "SSL"

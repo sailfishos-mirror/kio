@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-17 00:39+0000\n"
+"POT-Creation-Date: 2026-07-19 00:40+0000\n"
 "PO-Revision-Date: 2026-07-04 21:41+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -2396,7 +2396,7 @@ msgid "Can not find 'kioworker' executable at '%1'"
 msgstr "تعذّر العثور على تنفيذيّ 'kioworker' في ’%1‘"
 
 #: core/workerinterface.cpp:343 widgets/sslui.cpp:61
-#: widgets/widgetsaskuseractionhandler.cpp:516
+#: widgets/widgetsaskuseractionhandler.cpp:517
 #, kde-format
 msgid "&Details"
 msgstr "التّ&فاصيل"
@@ -3507,44 +3507,44 @@ msgid ""
 "files shown.</qt>"
 msgstr "<qt>هذا هو محدد نوع الملف. يُستخدم لتحديد تنسيق الملفات المعروضة.</qt>"
 
-#: filewidgets/knewfilemenu.cpp:221
+#: filewidgets/knewfilemenu.cpp:218
 #, kde-format
 msgctxt "@label:textbox Prompt for new file of type"
 msgid "Enter %1 filename:"
 msgstr "أدخل اسم الملف %1:"
 
-#: filewidgets/knewfilemenu.cpp:529
+#: filewidgets/knewfilemenu.cpp:530
 #, kde-format
 msgid "Sorry"
 msgstr "نأسف"
 
-#: filewidgets/knewfilemenu.cpp:540
+#: filewidgets/knewfilemenu.cpp:541
 #, kde-format
 msgid "<qt>The template file <b>%1</b> does not exist.</qt>"
 msgstr "<qt>ملفّ القالب <b>%1</b> غير موجود.</qt>"
 
-#: filewidgets/knewfilemenu.cpp:691 filewidgets/knewfilemenu.cpp:756
+#: filewidgets/knewfilemenu.cpp:692 filewidgets/knewfilemenu.cpp:757
 #, kde-format
 msgid "Name for new link:"
 msgstr "اسم للوصلة الجديدة:"
 
-#: filewidgets/knewfilemenu.cpp:694
+#: filewidgets/knewfilemenu.cpp:695
 #, kde-format
 msgid "Create Symlink"
 msgstr "إنشاء الرّابط الرّمزيّ"
 
-#: filewidgets/knewfilemenu.cpp:760
+#: filewidgets/knewfilemenu.cpp:761
 #, kde-format
 msgid "Create link to URL"
 msgstr "أنشئ رابط إلى عنوان "
 
-#: filewidgets/knewfilemenu.cpp:800 filewidgets/knewfilemenu.cpp:824
+#: filewidgets/knewfilemenu.cpp:801 filewidgets/knewfilemenu.cpp:825
 #, kde-format
 msgctxt "@item:inmenu Create New"
 msgid "%1"
 msgstr "‏%1"
 
-#: filewidgets/knewfilemenu.cpp:1164
+#: filewidgets/knewfilemenu.cpp:1165
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -3554,7 +3554,7 @@ msgstr ""
 "لا يمكن استخدام اسم <filename>%1</filename> لأنه محجوز للاستخدام بواسطة نظام "
 "التشغيل."
 
-#: filewidgets/knewfilemenu.cpp:1172
+#: filewidgets/knewfilemenu.cpp:1173
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -3562,7 +3562,7 @@ msgid ""
 "default."
 msgstr "يبدأ الاسم <filename>%1</filename> بنقطة، لذا سيُخفى مبدئيًّا."
 
-#: filewidgets/knewfilemenu.cpp:1180
+#: filewidgets/knewfilemenu.cpp:1181
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -3573,28 +3573,28 @@ msgstr ""
 "الاسم <filename>%1</filename> يبدأ بفراغ مما يجعل النظام يتصرف بعه بغرابة في "
 "بعض الأحيان مثل أن يظهر قبل العناصر الأخرى حين يفرز ألفبائيا."
 
-#: filewidgets/knewfilemenu.cpp:1198
+#: filewidgets/knewfilemenu.cpp:1199
 #, kde-format
 msgid "Using slashes in folder names will create sub-folders, like so:"
 msgstr ""
 "سيؤدي استخدام الخطوط المائلة في أسماء المجلدات إلى إنشاء مجلدات فرعية، مثل: "
 
-#: filewidgets/knewfilemenu.cpp:1212
+#: filewidgets/knewfilemenu.cpp:1213
 #, kde-format
 msgid "Using slashes in folder names will create sub-folders."
 msgstr "سيؤدي استخدام الخطوط المائلة في أسماء المجلدات إلى إنشاء مجلدات فرعية."
 
-#: filewidgets/knewfilemenu.cpp:1224
+#: filewidgets/knewfilemenu.cpp:1225
 #, kde-format
 msgid "Slashes cannot be used in file and folder names."
 msgstr "لا يمكن استخدام الخطوط المائلة في أسماء الملفات والمجلدات. "
 
-#: filewidgets/knewfilemenu.cpp:1229
+#: filewidgets/knewfilemenu.cpp:1230
 #, kde-format
 msgid "Backslashes cannot be used in file and folder names."
 msgstr "لا يمكن استخدام الخطوط المائلة للخلف في أسماء الملفات والمجلدات. "
 
-#: filewidgets/knewfilemenu.cpp:1243
+#: filewidgets/knewfilemenu.cpp:1244
 #, kde-kuit-format
 msgctxt "@error"
 msgid ""
@@ -3604,7 +3604,7 @@ msgstr ""
 "لا يمكن إنشاء ملف أو مجلد باسم <filename>%1</filename> لأنه يتداخل مع موقع "
 "المجلد المنزل للمستخدم."
 
-#: filewidgets/knewfilemenu.cpp:1252
+#: filewidgets/knewfilemenu.cpp:1253
 #, kde-format
 msgid ""
 "Starting a file or folder name with a tilde is not recommended because it "
@@ -3613,52 +3613,52 @@ msgstr ""
 "لا يُنصح ببدء اسم ملف أو مجلد باستخدام علامة التلدة لأنه قد يكون محيرًا أو "
 "خطيرًا عند استخدام الجهاز لحذف الأشياء. "
 
-#: filewidgets/knewfilemenu.cpp:1324
+#: filewidgets/knewfilemenu.cpp:1325
 #, kde-kuit-format
 msgctxt "@info"
 msgid "A directory with name <filename>%1</filename> already exists."
 msgstr "يوجد مجلد باسم <filename>%1</filename> فعلًا."
 
-#: filewidgets/knewfilemenu.cpp:1326
+#: filewidgets/knewfilemenu.cpp:1327
 #, kde-kuit-format
 msgctxt "@info"
 msgid "A file with name <filename>%1</filename> already exists."
 msgstr "يوجد ملفّ له اسم <filename>%1</filename> فعلًا."
 
-#: filewidgets/knewfilemenu.cpp:1412
+#: filewidgets/knewfilemenu.cpp:1413
 #, kde-format
 msgid "Create New"
 msgstr "أنشئ جديدًا"
 
-#: filewidgets/knewfilemenu.cpp:1447
+#: filewidgets/knewfilemenu.cpp:1448
 #, kde-format
 msgid "Link to Device"
 msgstr "اربط بالجهاز"
 
-#: filewidgets/knewfilemenu.cpp:1486
+#: filewidgets/knewfilemenu.cpp:1487
 #, kde-format
 msgctxt "Default name for a new folder"
 msgid "New Folder"
 msgstr "مجلد جديد"
 
-#: filewidgets/knewfilemenu.cpp:1509
+#: filewidgets/knewfilemenu.cpp:1510
 #, kde-format
 msgctxt "@title:window"
 msgid "Create New Folder"
 msgstr "أنشئ مجلدًّا جديدًا"
 
-#: filewidgets/knewfilemenu.cpp:1511
+#: filewidgets/knewfilemenu.cpp:1512
 #, kde-format
 msgid "Create new folder in %1:"
 msgstr "أنشئ مجلدًّا جديدًا في %1:"
 
-#: filewidgets/knewfilemenu.cpp:1514 widgets/kpropertiesdialogbuiltin_p.cpp:363
+#: filewidgets/knewfilemenu.cpp:1515 widgets/kpropertiesdialogbuiltin_p.cpp:363
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Enter folder name"
 msgstr "أدخِل اسم المجلد"
 
-#: filewidgets/knewfilemenu.cpp:1571
+#: filewidgets/knewfilemenu.cpp:1572
 #, kde-format
 msgid "Default"
 msgstr "المبدئيّ"
@@ -4291,7 +4291,7 @@ msgid ""
 msgstr "أتريد قبول هذه الشّهادة للأبد دون سؤال؟"
 
 #: kioworkers/http/http.cpp:214 widgets/sslui.cpp:60 widgets/sslui.cpp:96
-#: widgets/widgetsaskuseractionhandler.cpp:514
+#: widgets/widgetsaskuseractionhandler.cpp:515
 #, kde-format
 msgid "Server Authentication"
 msgstr "استيثاق الخادم"
@@ -7283,7 +7283,7 @@ msgstr ""
 "لم يُرسل المضيف البعيد أيّ شهادة SSL.\n"
 "سأُجهض هذا بسبب تعذّر إنشاء هويّة المضيف."
 
-#: widgets/sslui.cpp:50 widgets/widgetsaskuseractionhandler.cpp:507
+#: widgets/sslui.cpp:50 widgets/widgetsaskuseractionhandler.cpp:508
 #, kde-format
 msgid ""
 "The server failed the authenticity check (%1).\n"
@@ -7446,12 +7446,12 @@ msgctxt "@option:check"
 msgid "Do not show this message again"
 msgstr "لا تظهر هذه الرسالة مرة أخرى"
 
-#: widgets/widgetsaskuseractionhandler.cpp:572
+#: widgets/widgetsaskuseractionhandler.cpp:574
 #, kde-format
 msgid "The peer SSL certificate chain appears to be corrupt."
 msgstr "يبدو أن سلسلة شهادات النظير SSL تالفة."
 
-#: widgets/widgetsaskuseractionhandler.cpp:575
+#: widgets/widgetsaskuseractionhandler.cpp:577
 #, kde-format
 msgid "SSL"
 msgstr "‏SSL"
