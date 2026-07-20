@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-19 00:40+0000\n"
-"PO-Revision-Date: 2026-07-18 04:57+0900\n"
+"PO-Revision-Date: 2026-07-19 10:39+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Min Nan Chinese Latin <zh-l10n@lists.slat.org>\n"
 "Language: nan_TW@latin\n"
@@ -6735,12 +6735,16 @@ msgid ""
 "You will be prompted again in case of a conflict with an existing file in "
 "the directory."
 msgstr ""
+"Tóng-àn kap tsu-liāu-giap-á ē khóo-pih kàu hiān-tsûn bo̍k-lo̍k (pau-kuat in ê "
+"lāi-iông).\n"
+"Nā-sī tse ē kap bo̍k-ti̍k-tē bo̍k-lo̍k lāi-té ê tóng-àn ū tshiong-tu̍t, ē koh mn̄g "
+"lí tsi̍t-kái."
 
 #: widgets/renamedialog.cpp:319
 #, kde-format
 msgctxt "Overwrite files into an existing folder when files are older"
 msgid "&Overwrite older files"
-msgstr ""
+msgstr "Khàm-tiāu kū-ê tóng-àn(&O)"
 
 #: widgets/renamedialog.cpp:323
 #, kde-format
@@ -6760,6 +6764,8 @@ msgid ""
 "This action would overwrite '%1' with itself.\n"
 "Please enter a new file name:"
 msgstr ""
+"Tsit-ê tōng-tsok ē kā '%1' khàm kàu i ka-kī sin-siōng.\n"
+"Tshiánn su-ji̍p sin-ê tóng-miâ:"
 
 #: widgets/renamedialog.cpp:350
 #, kde-format
@@ -6900,7 +6906,7 @@ msgstr ""
 msgctxt "@label:textbox by: [Replacing: xx] [With: yy]"
 msgid "Rename the %1 selected item by:"
 msgid_plural "Rename the %1 selected items by:"
-msgstr[0] ""
+msgstr[0] "Kā %1 ê í-king suán-ti̍k ê hāng-bo̍k án-ne kái-miâ:"
 
 #: widgets/renamefiledialog.cpp:314
 #, kde-format
@@ -6939,6 +6945,8 @@ msgid ""
 "Replacing “%1” with an empty replacement would cause <filename>%2</filename> "
 "to have an empty file name."
 msgstr ""
+"Nā kā “%1” thè-uānn tsò khàng-pe̍h tse ē hāi <filename>%2</filename> tóng-miâ "
+"piàn-tsò khang-ê."
 
 #: widgets/renamefiledialog.cpp:404
 #, kde-format
@@ -7226,7 +7234,7 @@ msgstr[0] ""
 msgctxt "@info"
 msgid "Do you really want to move this %1 item to the Trash?"
 msgid_plural "Do you really want to move these %1 items to the Trash?"
-msgstr[0] ""
+msgstr[0] "Lí kám tsin-tsiànn ài kā tse %1 ê hāng-bo̍k suá-khì Pùn-sò-tháng?"
 
 #: widgets/widgetsaskuseractionhandler.cpp:367
 #, kde-format
