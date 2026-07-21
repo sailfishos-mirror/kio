@@ -172,11 +172,13 @@ WorkerResult FileProtocol::chmod(const QUrl &_url, int permissions)
     const QByteArray _path(QFile::encodeName(path));
 #ifdef Q_OS_UNIX
     // QFile::Permissions does not support special attributes like sticky
-    if (::chmod(_path.constData(), permissions) == -1)
+    if (::chmod(_path.constData(), permissions) == -1 ||
 #else
-    if (!QFile::setPermissions(path, modeToQFilePermissions(permissions)))
+    if (!QFile::setPermissions(path, modeToQFilePermissions(permissions)) ||
 #endif
-    {
+        (setACL(_path.data(), permissions, false) == -1) ||
+        /* if not a directory, cannot set default ACLs */
+        (setACL(_path.data(), permissions, true) == -1 && errno != ENOTDIR)) {
         return WorkerResult::fail(KIO::ERR_CANNOT_CHMOD, path);
     }
 
