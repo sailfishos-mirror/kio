@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio stable\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-19 00:40+0000\n"
+"POT-Creation-Date: 2026-07-22 00:41+0000\n"
 "PO-Revision-Date: 2005-11-26 17:02+0200\n"
 "Last-Translator: Kobus <kabousv@therugby.co.za>\n"
 "Language-Team: AFRIKAANS <translate-discuss-af@lists.sourceforge.net>\n"
@@ -4407,7 +4407,7 @@ msgstr "Opdrag om uit te voer"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "URL(s) en plaaslike lêer(s) gebruik vir 'opdrag'"
 
-#: kioworkers/file/file.cpp:727
+#: kioworkers/file/file.cpp:729
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4416,7 +4416,7 @@ msgstr ""
 "Kon nie verander regte vir\n"
 "%1"
 
-#: kioworkers/file/file.cpp:735
+#: kioworkers/file/file.cpp:737
 #, fuzzy, kde-format
 #| msgid "Could not change permissions for %1."
 msgctxt "@info"
@@ -4425,18 +4425,18 @@ msgid ""
 "%1"
 msgstr "Kon nie regte vir %1 verander nie."
 
-#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
+#: kioworkers/file/file.cpp:817 kioworkers/file/file.cpp:909
 #, fuzzy, kde-format
 #| msgid "Could Not Rename Temporary File"
 msgid "Could not open temporary file"
 msgstr "Kon Nie Herbenaam Tydelike Lêer"
 
-#: kioworkers/file/file.cpp:839
+#: kioworkers/file/file.cpp:841
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "Kon nie vind program \"heg\""
 
-#: kioworkers/file/file.cpp:916
+#: kioworkers/file/file.cpp:918
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "Kon nie vind program \"ontheg\""

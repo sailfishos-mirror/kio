@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-19 00:40+0000\n"
+"POT-Creation-Date: 2026-07-22 00:41+0000\n"
 "PO-Revision-Date: 2026-04-03 14:15+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -4209,7 +4209,7 @@ msgstr "Comanda de executat"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "URL-ul(urile) sau fișierul(le) local(e) utilizate pentru 'command'"
 
-#: kioworkers/file/file.cpp:727
+#: kioworkers/file/file.cpp:729
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4218,7 +4218,7 @@ msgstr ""
 "Nu s-au putut schimba permisiunile pentru\n"
 "%1"
 
-#: kioworkers/file/file.cpp:735
+#: kioworkers/file/file.cpp:737
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4228,17 +4228,17 @@ msgstr ""
 "Nu s-a putut schimba proprietarul și grupul pentru\n"
 "%1"
 
-#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
+#: kioworkers/file/file.cpp:817 kioworkers/file/file.cpp:909
 #, kde-format
 msgid "Could not open temporary file"
 msgstr "Nu s-a putut deschide fișierul temporar"
 
-#: kioworkers/file/file.cpp:839
+#: kioworkers/file/file.cpp:841
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "Programul „mount” nu a putut fi găsit"
 
-#: kioworkers/file/file.cpp:916
+#: kioworkers/file/file.cpp:918
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "Programul „umount” nu a putut fi găsit"

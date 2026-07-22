@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-19 00:40+0000\n"
+"POT-Creation-Date: 2026-07-22 00:41+0000\n"
 "PO-Revision-Date: 2025-03-23 07:29+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -4175,7 +4175,7 @@ msgstr "Ordono por plenumi"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "URL(j) aŭ loka(j) dosiero(j) uzata(j) por 'komando'"
 
-#: kioworkers/file/file.cpp:727
+#: kioworkers/file/file.cpp:729
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4184,7 +4184,7 @@ msgstr ""
 "Ne eblis ŝanĝi permesojn por\n"
 "%1"
 
-#: kioworkers/file/file.cpp:735
+#: kioworkers/file/file.cpp:737
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4194,18 +4194,18 @@ msgstr ""
 "Ne eblis ŝanĝi posedanton kaj grupon por\n"
 "%1"
 
-#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
+#: kioworkers/file/file.cpp:817 kioworkers/file/file.cpp:909
 #, fuzzy, kde-format
 #| msgid "Could Not Rename Temporary File"
 msgid "Could not open temporary file"
 msgstr "Ne Eblis Renomi Provizora Dosiero"
 
-#: kioworkers/file/file.cpp:839
+#: kioworkers/file/file.cpp:841
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "Ne eblis trovi programon \"munti\""
 
-#: kioworkers/file/file.cpp:916
+#: kioworkers/file/file.cpp:918
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "Ne eblis trovi programon \"umount\""

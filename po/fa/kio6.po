@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-19 00:40+0000\n"
+"POT-Creation-Date: 2026-07-22 00:41+0000\n"
 "PO-Revision-Date: 2023-06-08 11:57+0330\n"
 "Last-Translator: MohammadSaleh Kamyab <mskf1383@envs.net>\n"
 "Language-Team: Persian <kde-i18n-fa@kde.org>\n"
@@ -4188,7 +4188,7 @@ msgstr "فرمان برای اجرا"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr ""
 
-#: kioworkers/file/file.cpp:727
+#: kioworkers/file/file.cpp:729
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4197,7 +4197,7 @@ msgstr ""
 "نتوانست مجوزها را برای\n"
 "%1 تغییر دهد"
 
-#: kioworkers/file/file.cpp:735
+#: kioworkers/file/file.cpp:737
 #, fuzzy, kde-format
 #| msgid "Could not change ownership for %1."
 msgctxt "@info"
@@ -4206,18 +4206,18 @@ msgid ""
 "%1"
 msgstr "نتوانست مالکیت را برای %1 تغییر دهد."
 
-#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
+#: kioworkers/file/file.cpp:817 kioworkers/file/file.cpp:909
 #, fuzzy, kde-format
 #| msgid "Could Not Rename Temporary File"
 msgid "Could not open temporary file"
 msgstr "نتوانست نام پرونده موقت را تغییر دهد"
 
-#: kioworkers/file/file.cpp:839
+#: kioworkers/file/file.cpp:841
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "نتوانست برنامه «سوار کردن» را پیدا کند"
 
-#: kioworkers/file/file.cpp:916
+#: kioworkers/file/file.cpp:918
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "نتوانست برنامه «پیاده کردن» را پیدا کند"

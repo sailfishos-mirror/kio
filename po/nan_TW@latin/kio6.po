@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-19 00:40+0000\n"
+"POT-Creation-Date: 2026-07-22 00:41+0000\n"
 "PO-Revision-Date: 2026-07-19 10:39+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Min Nan Chinese Latin <zh-l10n@lists.slat.org>\n"
@@ -4061,7 +4061,7 @@ msgstr "Ài tsip-hîng ê tsí-līng"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr ""
 
-#: kioworkers/file/file.cpp:727
+#: kioworkers/file/file.cpp:729
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4070,7 +4070,7 @@ msgstr ""
 "Bô-huat-tōo kái-piàn tsit-ê hāng-bo̍k ê khuân-hān\n"
 "%1"
 
-#: kioworkers/file/file.cpp:735
+#: kioworkers/file/file.cpp:737
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4080,17 +4080,17 @@ msgstr ""
 "Bô-huat-tōo kái-piàn tsit-ê hāng-bo̍k ê sóo-iú-tsiá kah kûn-tsoo\n"
 "%1"
 
-#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
+#: kioworkers/file/file.cpp:817 kioworkers/file/file.cpp:909
 #, kde-format
 msgid "Could not open temporary file"
 msgstr "Bô-huat-tōo khui tsiām-sî-tóng-àn"
 
-#: kioworkers/file/file.cpp:839
+#: kioworkers/file/file.cpp:841
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "Tshuē-bô \"mount\" tîng-sik"
 
-#: kioworkers/file/file.cpp:916
+#: kioworkers/file/file.cpp:918
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "Tshuē-bô \"umount\" tîng-sik"

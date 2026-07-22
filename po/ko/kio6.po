@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-19 00:40+0000\n"
+"POT-Creation-Date: 2026-07-22 00:41+0000\n"
 "PO-Revision-Date: 2026-06-06 13:00+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -4071,7 +4071,7 @@ msgstr "실행할 명령"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "'command'에 사용할 URL이나 로컬 파일"
 
-#: kioworkers/file/file.cpp:727
+#: kioworkers/file/file.cpp:729
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4080,7 +4080,7 @@ msgstr ""
 "%1\n"
 "의 권한을 바꿀 수 없습니다"
 
-#: kioworkers/file/file.cpp:735
+#: kioworkers/file/file.cpp:737
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4090,17 +4090,17 @@ msgstr ""
 "%1\n"
 "의 소유자와 그룹을 변경할 수 없습니다"
 
-#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
+#: kioworkers/file/file.cpp:817 kioworkers/file/file.cpp:909
 #, kde-format
 msgid "Could not open temporary file"
 msgstr "임시 파일을 열 수 없음"
 
-#: kioworkers/file/file.cpp:839
+#: kioworkers/file/file.cpp:841
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "\"mount\" 프로그램을 찾을 수 없음"
 
-#: kioworkers/file/file.cpp:916
+#: kioworkers/file/file.cpp:918
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "\"umount\" 프로그램을 찾을 수 없음"

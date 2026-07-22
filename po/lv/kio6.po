@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-19 00:40+0000\n"
+"POT-Creation-Date: 2026-07-22 00:41+0000\n"
 "PO-Revision-Date: 2025-08-19 17:33+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -4159,7 +4159,7 @@ msgstr "Izpildāmā komanda"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "URL vai lokālā datne(-es), ko izmanto „komandai“"
 
-#: kioworkers/file/file.cpp:727
+#: kioworkers/file/file.cpp:729
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4168,7 +4168,7 @@ msgstr ""
 "Nevar izmainīt atļaujas\n"
 "„%1“"
 
-#: kioworkers/file/file.cpp:735
+#: kioworkers/file/file.cpp:737
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4178,18 +4178,18 @@ msgstr ""
 "Nevar izmainīt īpašnieku un grupu\n"
 "„%1“"
 
-#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
+#: kioworkers/file/file.cpp:817 kioworkers/file/file.cpp:909
 #, fuzzy, kde-format
 #| msgid "Could Not Rename Temporary File"
 msgid "Could not open temporary file"
 msgstr "Neizdevās pārdēvēt pagaidu datni"
 
-#: kioworkers/file/file.cpp:839
+#: kioworkers/file/file.cpp:841
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "Nevar atrast programmu „mount“"
 
-#: kioworkers/file/file.cpp:916
+#: kioworkers/file/file.cpp:918
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "Nevar atrast programmu „umount“"

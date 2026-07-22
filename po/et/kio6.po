@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmkio\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-19 00:40+0000\n"
+"POT-Creation-Date: 2026-07-22 00:41+0000\n"
 "PO-Revision-Date: 2022-10-19 21:51+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -4193,7 +4193,7 @@ msgstr "Käivitatav käsk"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "URL(id) või kohalik(ud) fail(id), mida kasutab 'command'"
 
-#: kioworkers/file/file.cpp:727
+#: kioworkers/file/file.cpp:729
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4202,7 +4202,7 @@ msgstr ""
 "Faili/kataloogi %1\n"
 "õiguste muutmine pole võimalik"
 
-#: kioworkers/file/file.cpp:735
+#: kioworkers/file/file.cpp:737
 #, fuzzy, kde-format
 #| msgid "Could not change ownership for %1."
 msgctxt "@info"
@@ -4211,18 +4211,18 @@ msgid ""
 "%1"
 msgstr "%1 omaniku muutmine pole võimalik."
 
-#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
+#: kioworkers/file/file.cpp:817 kioworkers/file/file.cpp:909
 #, fuzzy, kde-format
 #| msgid "Could Not Rename Temporary File"
 msgid "Could not open temporary file"
 msgstr "Ajutist faili pole võimalik ümber nimetada"
 
-#: kioworkers/file/file.cpp:839
+#: kioworkers/file/file.cpp:841
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "Rakendust \"mount\" ei leitud"
 
-#: kioworkers/file/file.cpp:916
+#: kioworkers/file/file.cpp:918
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "Rakendust \"umount\" ei leitud"

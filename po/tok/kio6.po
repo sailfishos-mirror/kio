@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ante-toki-pi-ilo-kde\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-19 00:40+0000\n"
+"POT-Creation-Date: 2026-07-22 00:41+0000\n"
 "PO-Revision-Date: 2024-04-26 14:54-0400\n"
 "Last-Translator: Janet Blackquill <uhhadd@gmail.com>\n"
 "Language-Team: C <kde-i18n-doc@kde.org>\n"
@@ -3993,7 +3993,7 @@ msgstr "ilo tawa kepeken"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "nimi URL anu lipu li kepeken tawa 'ilo'"
 
-#: kioworkers/file/file.cpp:727
+#: kioworkers/file/file.cpp:729
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4002,7 +4002,7 @@ msgstr ""
 "mi ken ala ante e lawa tawa\n"
 "%1"
 
-#: kioworkers/file/file.cpp:735
+#: kioworkers/file/file.cpp:737
 #, fuzzy, kde-format
 #| msgid "Could not change ownership for %1."
 msgctxt "@info"
@@ -4011,18 +4011,18 @@ msgid ""
 "%1"
 msgstr "ilo li ken ala ante e jo pi ijo %1."
 
-#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
+#: kioworkers/file/file.cpp:817 kioworkers/file/file.cpp:909
 #, fuzzy, kde-format
 #| msgid "Could Not Rename Temporary File"
 msgid "Could not open temporary file"
 msgstr "mi ken ala ante e nimi pi lipu pali"
 
-#: kioworkers/file/file.cpp:839
+#: kioworkers/file/file.cpp:841
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "mi ken ala alasa e ilo \"mount\""
 
-#: kioworkers/file/file.cpp:916
+#: kioworkers/file/file.cpp:918
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "mi ken ala alasa e ilo \"umount\""

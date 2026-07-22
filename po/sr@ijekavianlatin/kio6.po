@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kio5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-19 00:40+0000\n"
+"POT-Creation-Date: 2026-07-22 00:41+0000\n"
 "PO-Revision-Date: 2017-12-17 18:00+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -4304,7 +4304,7 @@ msgstr "Naredba za izvršavanje"
 msgid "URL(s) or local file(s) used for 'command'"
 msgstr "URL‑ovi ili lokalni fajlovi upotrijebljeni za „command“."
 
-#: kioworkers/file/file.cpp:727
+#: kioworkers/file/file.cpp:729
 #, kde-format
 msgid ""
 "Could not change permissions for\n"
@@ -4313,7 +4313,7 @@ msgstr ""
 "Ne mogu da izmijenim dozvole za\n"
 "‘%1’"
 
-#: kioworkers/file/file.cpp:735
+#: kioworkers/file/file.cpp:737
 #, fuzzy, kde-format
 #| msgid "Could not change ownership for %1."
 msgctxt "@info"
@@ -4322,18 +4322,18 @@ msgid ""
 "%1"
 msgstr "Ne mogu da promijenim vlasništvo nad ‘%1’."
 
-#: kioworkers/file/file.cpp:815 kioworkers/file/file.cpp:907
+#: kioworkers/file/file.cpp:817 kioworkers/file/file.cpp:909
 #, fuzzy, kde-format
 #| msgid "Could Not Rename Temporary File"
 msgid "Could not open temporary file"
 msgstr "Ne mogu da preimenujem privremeni fajl"
 
-#: kioworkers/file/file.cpp:839
+#: kioworkers/file/file.cpp:841
 #, kde-format
 msgid "Could not find program \"mount\""
 msgstr "Ne mogu da pronađem naredbu mount"
 
-#: kioworkers/file/file.cpp:916
+#: kioworkers/file/file.cpp:918
 #, kde-format
 msgid "Could not find program \"umount\""
 msgstr "Ne mogu da pronađem naredbu umount"
