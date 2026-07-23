@@ -1868,7 +1868,16 @@ void KFilePlacesViewPrivate::adaptItemSize()
     }
 
     const int totalSectionsHeight = m_delegate->sectionHeaderHeight(QModelIndex()) * sectionsCount();
-    const int maxHeight = qCeil((q->height() - totalSectionsHeight) / rowCount) - s_lateralMargin;
+
+    // Height a row needs beyond the icon (item frame padding), from the style, so the chosen
+    // icon size leaves all rows fitting the viewport and does not force a scrollbar.
+    QStyleOptionViewItem rowOption;
+    rowOption.initFrom(q);
+    rowOption.features |= QStyleOptionViewItem::HasDecoration;
+    rowOption.decorationSize = QSize(maxSize, maxSize);
+    const int rowOverhead = q->style()->sizeFromContents(QStyle::CT_ItemViewItem, &rowOption, {}, q).height() - maxSize;
+
+    const int maxHeight = (q->height() - totalSectionsHeight) / rowCount - rowOverhead;
 
     int size = qMin(maxHeight, maxWidth);
 
