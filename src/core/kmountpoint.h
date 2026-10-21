@@ -166,6 +166,19 @@ public:
     bool isEncryptedFs() const;
 
     /*!
+     * Returns \c true if this mount is on a device that can be unplugged: removable media such as a
+     * USB stick or a memory card, or a disk behind a USB port or a PCIe slot that the system marks
+     * as removable. An encrypted or LVM volume is on a removable device when the disk under it is.
+     *
+     * This is only implemented on Linux, where the answer comes from sysfs, read at the first call.
+     * On other systems, and for a mount that is not on a block device, such as a network
+     * filesystem, it is \c false.
+     *
+     * \since 6.32
+     */
+    bool isOnRemovableDevice() const;
+
+    /*!
      * Returns the device ID (dev_t, major, minor) of this mount point. This
      * ID is unique per device (including network mounts).
      *
